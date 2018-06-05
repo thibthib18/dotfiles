@@ -24,6 +24,9 @@ antigen apply
 
 
 
+# Always use tmux 
+if [ "$TMUX" = "" ]; then tmux; fi
+
 
 # Vi Mode
 bindkey -v
@@ -63,3 +66,7 @@ bindkey -M vicmd "j" down-line-or-beginning-search
 
 # Source ROS setup 
 source /opt/ros/kinetic/setup.zsh
+
+
+export EDITOR='vim'
+

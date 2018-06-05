@@ -21,6 +21,10 @@ set wrap "Wrap lines
 set wildmenu            " visual autocomplete for command menu
 set showmatch           " highlight matching [{()}]
 
+" Open new windows
+map <leader>- <C-w>s
+map <leader>\ <C-w>v
+
 
 " Switch betweeen buffered files
 map <leader>l :bnext<cr>
