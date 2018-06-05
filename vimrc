@@ -37,6 +37,8 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 
+set timeoutlen=1000 ttimeoutlen=0
+
 
 " Auto load / install plugin manager
 
