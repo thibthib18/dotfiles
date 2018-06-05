@@ -1,9 +1,11 @@
+#/bin/bash
+
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 
 sudo apt install zsh
-chsh -s /usr/local/bin/zsh
+chsh -s $(which zsh)
 
 rm -rf ~/.vim ~/.vimrc ~/.zshrc ~/.tmux ~/.tmux.conf ~/.config/nvim 2> /dev/null
 
