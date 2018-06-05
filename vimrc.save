@@ -74,6 +74,11 @@ let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
 
+
+
+
+
+
 " move vertically by visual line
 nnoremap j gj
 nnoremap k gk
@@ -85,20 +90,3 @@ nnoremap E $
 " $/^ doesn't do anything
 nnoremap $ <nop>
 nnoremap ^ <nop>
-
-
-
-
-let g:tmux_resizer_no_mappings = 1
-"
-execute "set <M-h>=\eh"
-nnoremap <silent> <M-h> :TmuxResizeLeft<cr>
-
-execute "set <M-j>=\ej"
-nnoremap <silent> <M-j> :TmuxResizeDown<cr>
-
-execute "set <M-k>=\ek"
-nnoremap <silent> <M-k> :TmuxResizeUp<cr>
-
-execute "set <M-l>=\el"
-nnoremap <silent> <M-l> :TmuxResizeRight<cr>
