@@ -23,6 +23,8 @@ antigen theme ys
 antigen apply
 
 
+setopt auto_cd
+
 
 # Always use tmux 
 if [ "$TMUX" = "" ]; then tmux; fi

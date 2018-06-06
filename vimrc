@@ -36,6 +36,13 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" Search results appear in the middle of the screen
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
 
 set timeoutlen=1000 ttimeoutlen=0
 
