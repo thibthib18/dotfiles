@@ -63,6 +63,22 @@ Plug 'christoomey/vim-tmux-navigator'
 " Vim Tmux Resizer
 Plug 'melonmanchan/vim-tmux-resizer'
 
+" A lot of colorschemes
+Plug 'flazz/vim-colorschemes'
+
+" Dracula theme, maybe again
+Plug 'dracula/vim'
+
+" Tab and status bar
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" Fuzzy Finder
+Plug 'ctrlpvim/ctrlp.vim', { 'on': 'CtrlP' }
+
+" Sneak
+Plug 'justinmk/vim-sneak'
+
 call plug#end()
 " Required: Enable filetype plugins
 filetype plugin indent on
@@ -79,6 +95,33 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
+" Set status from vim-airline
+let g:airline#extensions#tabline#enabled=1
+let g:airline_powerline_fonts=1
+set laststatus=2
+
+" CtrlP settings
+nnoremap <Leader>p :CtrlP<CR>
+nnoremap <Leader>t :CtrlP<CR>
+
+" Sneak settings
+" f <key> to jump to next <key>
+" F <key> to jump to previous <key>
+" f to following match
+" s <key><key> to jump to next <key><key>
+" S <key><key> to jump to previous <key><key>
+" s to following match
+
+let g:sneak#s_next = 1
+nmap f <Plug>Sneak_f
+nmap F <Plug>Sneak_F
+xmap f <Plug>Sneak_f
+xmap F <Plug>Sneak_F
+omap f <Plug>Sneak_f
+omap F <Plug>Sneak_F
+
+
+
 
 " move vertically by visual line
 nnoremap j gj
@@ -92,19 +135,6 @@ nnoremap E $
 nnoremap $ <nop>
 nnoremap ^ <nop>
 
+" Colorscheme
+colorscheme dracula 
 
-
-
-let g:tmux_resizer_no_mappings = 1
-"
-execute "set <M-h>=\eh"
-nnoremap <silent> <M-h> :TmuxResizeLeft<cr>
-
-execute "set <M-j>=\ej"
-nnoremap <silent> <M-j> :TmuxResizeDown<cr>
-
-execute "set <M-k>=\ek"
-nnoremap <silent> <M-k> :TmuxResizeUp<cr>
-
-execute "set <M-l>=\el"
-nnoremap <silent> <M-l> :TmuxResizeRight<cr>
