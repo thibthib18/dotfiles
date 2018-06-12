@@ -75,3 +75,7 @@ source /opt/ros/kinetic/setup.zsh
 export EDITOR='vim'
 export ROSCONSOLE_FORMAT='[${severity}] [${node}] [${time}]: ${message}'
 
+
+# Issue finding tensorflow without this
+export PYTHONPATH=/usr/local:$PYTHONPATH
+export PYTHONPATH=$PYTHONPATH:/home/ubuntu/caffe2/build
