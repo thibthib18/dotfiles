@@ -73,4 +73,5 @@ source /opt/ros/kinetic/setup.zsh
 
 
 export EDITOR='vim'
+export ROSCONSOLE_FORMAT='[${severity}] [${node}] [${time}]: ${message}'
 
