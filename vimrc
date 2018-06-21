@@ -4,12 +4,17 @@ set encoding=utf8
 " Number gutter
 set number relativenumber
 
+" Ctags completion
+set autochdir
+set tags=./tags;tags
 
 " Set the leader to SPACE
 let mapleader="\<SPACE>"
 
 " Highlight search results
 set hlsearch
+
+set ruler
 
 " Makes search act like search in modern browsers
 set incsearch
@@ -36,6 +41,15 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+
+" Resize splits
+map <M-h> :resize -1
+map <M-j> :vertical resize +1
+map <M-k> :vertical resize -1
+map <M-l> :resize +1
+
+
+
 " Search results appear in the middle of the screen
 nnoremap n nzz
 nnoremap N Nzz
@@ -61,6 +75,9 @@ endif
 " VimPlug 
 call plug#begin('~/.vim/plugged')
 
+" Unite
+Plug 'Shougo/unite.vim'
+
 " NERDTree
 Plug 'scrooloose/nerdtree'
 
@@ -85,6 +102,14 @@ Plug 'ctrlpvim/ctrlp.vim', { 'on': 'CtrlP' }
 
 " Sneak
 Plug 'justinmk/vim-sneak'
+
+" clang_complete
+Plug 'Rip-Rip/clang_complete'
+let g:clang_library_path='/usr/lib/x86_64-linux-gnu/libclang-3.8.so.1'
+
+" Cpp enhanced highlight
+Plug 'octol/vim-cpp-enhanced-highlight'
+
 
 call plug#end()
 " Required: Enable filetype plugins
@@ -144,4 +169,3 @@ nnoremap ^ <nop>
 
 " Colorscheme
 colorscheme dracula 
-
