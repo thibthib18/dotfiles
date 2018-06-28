@@ -49,6 +49,13 @@ function vi_mode_prompt_info() {
   echo "${${KEYMAP/vicmd/[% NORMAL]%}/(main|viins)/[% INSERT]%}"
 }
 
+
+# Auto cd and ls
+function chpwd() {
+	emulate -L zsh
+	ls --almost-all
+}
+
 # define right prompt, regardless of whether the theme defined it
 RPS1='$(vi_mode_prompt_info)'
 RPS2=$RPS1
@@ -71,6 +78,8 @@ colors
 # Source ROS setup 
 source /opt/ros/kinetic/setup.zsh
 
+# Copy to clipboard cmd
+alias copy="xclip -sel clip"
 
 export EDITOR='vim'
 export ROSCONSOLE_FORMAT='[${severity}] [${node}] [${time}]: ${message}'

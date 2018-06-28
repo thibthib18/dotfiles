@@ -41,12 +41,22 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" Fix stupid issue with Alt key
+let c='a'
+while c <= 'z'
+	  exec "set <A-".c.">=\e".c
+	    exec "imap \e".c." <A-".c.">"
+	      let c = nr2char(1+char2nr(c))
+      endw
+
+      set timeout ttimeoutlen=50
+
 
 " Resize splits
-map <M-h> :resize -1
-map <M-j> :vertical resize +1
-map <M-k> :vertical resize -1
-map <M-l> :resize +1
+nnoremap <A-h> :resize -1
+nnoremap <A-j> :vertical resize +1
+nnoremap <A-k> :vertical resize -1
+nnoremap <A-l> :resize +1
 
 
 
