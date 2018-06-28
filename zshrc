@@ -78,6 +78,23 @@ colors
 # Source ROS setup 
 source /opt/ros/kinetic/setup.zsh
 
+# ROS aliases
+alias rotl="rostopic list"
+compdef rotl='rostopic list'
+alias rote="rostopic echo"
+compdef rote='rostopic echo'
+alias ronl="rosnode list"
+compdef ronl='rosnode list'
+alias roti="rostopic info"
+compdef roti='rostopic info'
+alias rotp="rostopic pub"
+compdef rotp='rostopic pub'
+
+
+alias rosvar="echo ROS_MASTER_URI=$ROS_MASTER_URI && echo ROS_IP=$ROS_IP && echo ROS_HOSTNAME=$ROS_HOSTNAME"
+
+setopt complete_aliases
+
 # Copy to clipboard cmd
 alias copy="xclip -sel clip"
 
