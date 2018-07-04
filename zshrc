@@ -105,3 +105,21 @@ export ROSCONSOLE_FORMAT='[${severity}] [${node}] [${time}]: ${message}'
 # Issue finding tensorflow without this
 export PYTHONPATH=/usr/local:$PYTHONPATH
 export PYTHONPATH=$PYTHONPATH:/home/ubuntu/caffe2/build
+
+
+# tmuxinator
+source ~/.bin/tmuxinator.zsh
+
+# i3 switch Caps_Lock and Escape
+# xmodmap -e "clear lock"
+# xmodmap -e "keysym Caps_Lock = Escape"
+# OR
+# setxkbdmap -layout us -option caps:escape
+
+
+
+
+
+
+
+
