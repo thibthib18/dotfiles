@@ -23,4 +23,5 @@ ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/vimrc ~/.vimrc
 ln -s ~/dotfiles/ctags ~/.ctags
 
-wget -o ~/.bin/tmuxinator.zsh https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.zsh
+mkdir -p ~/.bin
+wget -O ~/.bin/tmuxinator.zsh https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.zsh
