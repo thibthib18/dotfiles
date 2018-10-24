@@ -77,31 +77,19 @@ colors
 
 # Source ROS setup 
 source /opt/ros/kinetic/setup.zsh
-
-# ROS aliases
-alias rotl="rostopic list"
-compdef rotl='rostopic list'
-alias rote="rostopic echo"
-compdef rote='rostopic echo'
-alias ronl="rosnode list"
-compdef ronl='rosnode list'
-alias roti="rostopic info"
-compdef roti='rostopic info'
-alias rotp="rostopic pub"
-compdef rotp='rostopic pub'
-
-
+export ROSCONSOLE_FORMAT='[${severity}] [${node}] [${time}]: ${message}'
 alias rosvar="echo ROS_MASTER_URI=$ROS_MASTER_URI && echo ROS_IP=$ROS_IP && echo ROS_HOSTNAME=$ROS_HOSTNAME"
 
 setopt complete_aliases
 
-# Copy to clipboard cmd
+# Copy to clipboard cmd (to use with piping)
 alias copy="xclip -sel clip"
 
 export EDITOR='vim'
-export ROSCONSOLE_FORMAT='[${severity}] [${node}] [${time}]: ${message}'
 
 
 # Issue finding tensorflow without this
 export PYTHONPATH=/usr/local:$PYTHONPATH
 export PYTHONPATH=$PYTHONPATH:/home/ubuntu/caffe2/build
+export PATH=/home/thib/QtCreator/latest/bin:$PATH
+export PATH=/home/thib/hdd/UE4/UnrealEngine-4.18.3-release/Engine/Binaries/Linux:$PATH
