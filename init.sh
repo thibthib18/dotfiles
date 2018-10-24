@@ -1,13 +1,14 @@
 #/bin/bash
 
 
+sudo apt install zsh git curl guake vim
+
 # Vim-plug plug-in manager
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 
 # Zsh and its antigen plug-in manager
-sudo apt install zsh
 chsh -s $(which zsh)
 
 sudo apt-get install zsh-antigen
@@ -22,3 +23,5 @@ ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/vimrc ~/.vimrc
 ln -s ~/dotfiles/ctags ~/.ctags
 
+mkdir -p ~/.bin
+wget -O ~/.bin/tmuxinator.zsh https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.zsh

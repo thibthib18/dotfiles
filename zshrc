@@ -93,3 +93,22 @@ export PYTHONPATH=/usr/local:$PYTHONPATH
 export PYTHONPATH=$PYTHONPATH:/home/ubuntu/caffe2/build
 export PATH=/home/thib/QtCreator/latest/bin:$PATH
 export PATH=/home/thib/hdd/UE4/UnrealEngine-4.18.3-release/Engine/Binaries/Linux:$PATH
+
+
+# tmuxinator
+source ~/.bin/tmuxinator.zsh
+
+# i3 switch Caps_Lock and Escape
+# xmodmap -e "clear lock"
+# xmodmap -e "keysym Caps_Lock = Escape"
+# OR
+# setxkbdmap -layout us -option caps:escape
+
+
+
+
+
+
+
+
+>>>>>>> 31597fe2d3f6d7a551e86793e814324d858a34ba
