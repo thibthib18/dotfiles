@@ -4,6 +4,12 @@ set encoding=utf8
 " Number gutter
 set number relativenumber
 
+" auto paste
+set paste
+
+" Auto Folding
+set foldmethod=syntax
+
 " Ctags completion
 set autochdir
 set tags=./tags;tags
@@ -83,6 +89,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 " VimPlug 
+" Use PlugUpdate to update Plugins
 call plug#begin('~/.vim/plugged')
 
 " Unite
@@ -103,6 +110,9 @@ Plug 'flazz/vim-colorschemes'
 " Dracula theme, maybe again
 Plug 'dracula/vim'
 
+" For html/xml stuff
+Plug 'alvan/vim-closetag'
+
 " Tab and status bar
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -120,6 +130,9 @@ let g:clang_library_path='/usr/lib/x86_64-linux-gnu/libclang-3.8.so.1'
 " Cpp enhanced highlight
 Plug 'octol/vim-cpp-enhanced-highlight'
 
+" Panes swapper
+" Use: <leader>ww on each window to swap them
+Plug 'wesQ3/vim-windowswap'
 
 call plug#end()
 " Required: Enable filetype plugins

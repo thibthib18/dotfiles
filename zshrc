@@ -82,7 +82,7 @@ alias rosvar="echo ROS_MASTER_URI=$ROS_MASTER_URI && echo ROS_IP=$ROS_IP && echo
 
 setopt complete_aliases
 
-# Copy to clipboard cmd (to use with piping)
+# Copy to clipboard cmd (to use with piping)   -> copy the ouput of `cmd` to clipboard with :$ cmd | copy
 alias copy="xclip -sel clip"
 
 export EDITOR='vim'
@@ -96,7 +96,7 @@ export PATH=/home/thib/hdd/UE4/UnrealEngine-4.18.3-release/Engine/Binaries/Linux
 
 
 # tmuxinator
-source ~/.bin/tmuxinator.zsh
+#source ~/.bin/tmuxinator.zsh
 
 # i3 switch Caps_Lock and Escape
 # xmodmap -e "clear lock"
@@ -106,9 +106,5 @@ source ~/.bin/tmuxinator.zsh
 
 
 
-
-
-
-
-
->>>>>>> 31597fe2d3f6d7a551e86793e814324d858a34ba
+# Navio
+export PATH=/home/thib/hdd/UE4.21/UnrealEngine/Engine/Binaries/Linux:/home/thib/hdd/UE4/UnrealEngine-4.18.3-release/Engine/Binaries/Linux:/home/thib/QtCreator/latest/bin:/opt/ros/kinetic/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/thib/.local/bin
