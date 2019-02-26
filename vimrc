@@ -92,6 +92,10 @@ endif
 " Use PlugUpdate to update Plugins
 call plug#begin('~/.vim/plugged')
 
+
+" vim-javascript : better javascript highlighting and stuff
+Plug 'pangloss/vim-javascript'
+
 " Unite
 Plug 'Shougo/unite.vim'
 
@@ -137,6 +141,12 @@ Plug 'wesQ3/vim-windowswap'
 call plug#end()
 " Required: Enable filetype plugins
 filetype plugin indent on
+" show existing tab with 4 spaces width
+set tabstop=4
+" when indenting with '>', use 4 spaces width
+set shiftwidth=4
+" On pressing tab, insert 4 spaces
+set expandtab
 
 
 " Set to auto read when a file is changed from the outside
