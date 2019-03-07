@@ -48,14 +48,15 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 " Fix stupid issue with Alt key
-let c='a'
-while c <= 'z'
-	  exec "set <A-".c.">=\e".c
-	    exec "imap \e".c." <A-".c.">"
-	      let c = nr2char(1+char2nr(c))
-      endw
-
-      set timeout ttimeoutlen=50
+" Actually this fucks up the macro recording Esc key
+" let c='a'
+" while c <= 'z'
+" 	  exec "set <A-".c.">=\e".c
+" 	    exec "imap \e".c." <A-".c.">"
+" 	      let c = nr2char(1+char2nr(c))
+"       endw
+" 
+"       set timeout ttimeoutlen=50
 
 
 " Resize splits
@@ -139,6 +140,7 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'wesQ3/vim-windowswap'
 
 call plug#end()
+
 " Required: Enable filetype plugins
 filetype plugin indent on
 " show existing tab with 4 spaces width
@@ -169,7 +171,7 @@ set laststatus=2
 nnoremap <Leader>p :CtrlP<CR>
 nnoremap <Leader>t :CtrlP<CR>
 
-" Sneak settings
+" Sneak settings (same as f)
 " f <key> to jump to next <key>
 " F <key> to jump to previous <key>
 " f to following match
