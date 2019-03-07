@@ -12,7 +12,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 # Zsh and its antigen plug-in manager
 chsh -s $(which zsh)
 
-#sudo apt-get install zsh-antigen # version from Ubuntu rep is broken
+sudo apt-get install zsh-antigen # version from Ubuntu rep is broken
 sudo curl -o /usr/share/zsh-antigen/antigen.zsh -sL git.io/antigen
 
 
