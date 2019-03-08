@@ -12,13 +12,14 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 # Zsh and its antigen plug-in manager
 chsh -s $(which zsh)
 
-sudo apt-get install zsh-antigen
+sudo apt-get install zsh-antigen # version from Ubuntu rep is broken
+sudo curl -o /usr/share/zsh-antigen/antigen.zsh -sL git.io/antigen
 
 
 # Remove previous config files
 rm -rf ~/.vim ~/.vimrc ~/.zshrc ~/.tmux ~/.tmux.conf ~/.config/nvim 2> /dev/null
 
-# Link the config giles with the dotfiles 
+# Link the config files with the dotfiles 
 ln -s ~/dotfiles/zshrc ~/.zshrc
 ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/vimrc ~/.vimrc
@@ -26,3 +27,24 @@ ln -s ~/dotfiles/ctags ~/.ctags
 
 mkdir -p ~/.bin
 wget -O ~/.bin/tmuxinator.zsh https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.zsh
+
+
+
+# Install utilities
+
+	# npm
+	curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
+	sudo apt install nodejs ctop
+
+	# how2 (stack overflow from terminal)
+	npm install -g how-2
+
+	# ag
+	sudo apt install silversearcher-ag
+
+
+
+
+
+
+
