@@ -15,6 +15,12 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 # Auto suggestions
 antigen bundle zsh-users/zsh-autosuggestions
 
+# Docker aliases
+antigen bundle "akarzim/zsh-docker-aliases"
+
+# Docker completion
+antigen bundle docker
+
 
 # Load the theme.
 antigen theme ys
