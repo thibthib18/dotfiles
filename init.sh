@@ -2,7 +2,7 @@
 
 sudo apt update
 
-sudo apt install zsh git curl guake vim
+sudo apt install zsh git curl guake vim tmux
 
 # Vim-plug plug-in manager
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
