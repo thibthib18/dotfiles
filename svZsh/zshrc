@@ -1,0 +1,70 @@
+
+
+source /usr/share/zsh-antigen/antigen.zsh
+
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
+
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen bundle git
+antigen bundle command-not-found
+
+# Syntax highlighting bundle.
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# Auto suggestions
+antigen bundle zsh-users/zsh-autosuggestions
+
+# Docker aliases
+antigen bundle "akarzim/zsh-docker-aliases"
+
+# Docker completion
+antigen bundle docker
+
+# Load the theme.
+antigen theme ys
+
+# Tell Antigen that you're done.
+antigen apply
+
+
+setopt auto_cd
+
+
+# Kill The Lag
+export KEYTIMEOUT=1
+
+# Mode Indicator
+# Updates editor information when the keymap changes.
+function zle-keymap-select() {
+  zle reset-prompt
+  zle -R
+}
+
+zle -N zle-keymap-select
+
+#  cd does auto ls
+function chpwd() {
+	emulate -L zsh
+	ls --almost-all
+}
+
+
+
+# Beginning search with arrow keys
+bindkey "^[OA" up-line-or-beginning-search
+bindkey "^[OB" down-line-or-beginning-search
+
+# Enable colors
+autoload colors zsh/terminfo
+colors
+
+# Source ROS setup 
+source /opt/ros/$(rosversion -d)/setup.zsh
+export ROSCONSOLE_FORMAT='[${severity}] [${node}] [${time}]: ${message}'
+alias rosvar="echo ROS_MASTER_URI=$ROS_MASTER_URI && echo ROS_IP=$ROS_IP && echo ROS_HOSTNAME=$ROS_HOSTNAME"
+
+setopt complete_aliases
+
+# Copy to clipboard cmd (to use with piping)   -> copy the ouput of `cmd` to clipboard with :$ cmd | copy
+alias copy="xclip -sel clip"
