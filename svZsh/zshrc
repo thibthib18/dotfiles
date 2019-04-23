@@ -68,3 +68,11 @@ setopt complete_aliases
 
 # Copy to clipboard cmd (to use with piping)   -> copy the ouput of `cmd` to clipboard with :$ cmd | copy
 alias copy="xclip -sel clip"
+
+# Source the catkin_ws 
+source ~/catkin_ws/devel/setup.bash
+
+
+
+
+
