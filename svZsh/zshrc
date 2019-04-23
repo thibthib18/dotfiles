@@ -60,7 +60,7 @@ autoload colors zsh/terminfo
 colors
 
 # Source ROS setup 
-source /opt/ros/$(rosversion -d)/setup.zsh
+source /opt/ros/melodic/setup.zsh
 export ROSCONSOLE_FORMAT='[${severity}] [${node}] [${time}]: ${message}'
 alias rosvar="echo ROS_MASTER_URI=$ROS_MASTER_URI && echo ROS_IP=$ROS_IP && echo ROS_HOSTNAME=$ROS_HOSTNAME"
 
