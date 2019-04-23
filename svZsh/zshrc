@@ -70,7 +70,7 @@ setopt complete_aliases
 alias copy="xclip -sel clip"
 
 # Source the catkin_ws 
-source ~/catkin_ws/devel/setup.bash
+source ~/catkin_ws/devel/setup.zsh
 
 
 
