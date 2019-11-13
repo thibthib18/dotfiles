@@ -15,6 +15,11 @@ chsh -s $(which zsh)
 sudo apt-get install zsh-antigen # version from Ubuntu rep is broken
 sudo curl -o /usr/share/zsh-antigen/antigen.zsh -sL git.io/antigen
 
+# powerlevel9k
+git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+# fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
+
 
 # Remove previous config files
 rm -rf ~/.vim ~/.vimrc ~/.zshrc ~/.tmux ~/.tmux.conf ~/.config/nvim 2> /dev/null

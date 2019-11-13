@@ -7,6 +7,9 @@ set number relativenumber
 " auto paste
 set paste
 
+" set default register to clipboard
+set clipboard=unnamedplus
+
 " Auto Folding
 set foldmethod=syntax
 
@@ -49,14 +52,18 @@ map <C-l> <C-W>l
 
 " Fix stupid issue with Alt key
 " Actually this fucks up the macro recording Esc key
-" let c='a'
-" while c <= 'z'
-" 	  exec "set <A-".c.">=\e".c
-" 	    exec "imap \e".c." <A-".c.">"
-" 	      let c = nr2char(1+char2nr(c))
-"       endw
-" 
-"       set timeout ttimeoutlen=50
+"let c='h'
+"exec "set <A-".c.">=\e".c
+"exec "imap \e".c." <A-".c.">"
+"let c='j'
+"exec "set <A-".c.">=\e".c
+"exec "imap \e".c." <A-".c.">"
+"let c='k'
+"exec "set <A-".c.">=\e".c
+"exec "imap \e".c." <A-".c.">"
+"let c='l'
+"exec "set <A-".c.">=\e".c
+"exec "imap \e".c." <A-".c.">"
 
 
 " Resize splits
@@ -93,9 +100,10 @@ endif
 " Use PlugUpdate to update Plugins
 call plug#begin('~/.vim/plugged')
 
-
 " vim-javascript : better javascript highlighting and stuff
 Plug 'pangloss/vim-javascript'
+" I want JSX too
+Plug 'mxw/vim-jsx'
 
 " Unite
 Plug 'Shougo/unite.vim'
@@ -125,12 +133,15 @@ Plug 'vim-airline/vim-airline-themes'
 " Fuzzy Finder
 Plug 'ctrlpvim/ctrlp.vim', { 'on': 'CtrlP' }
 
-" Sneak
+" Typescript highlighting
+Plug 'leafgarland/typescript-vim'
+
+" Sneak : use Sxy to move to xy
 Plug 'justinmk/vim-sneak'
 
 " clang_complete
 Plug 'Rip-Rip/clang_complete'
-let g:clang_library_path='/usr/lib/x86_64-linux-gnu/libclang-3.8.so.1'
+let g:clang_library_path='/usr/lib/x86_64-linux-gnu/libclang-8.so'
 
 " Cpp enhanced highlight
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -143,11 +154,11 @@ call plug#end()
 
 " Required: Enable filetype plugins
 filetype plugin indent on
-" show existing tab with 4 spaces width
-set tabstop=4
+" show existing tab with 2 spaces width
+set tabstop=2
 " when indenting with '>', use 4 spaces width
-set shiftwidth=4
-" On pressing tab, insert 4 spaces
+set shiftwidth=2
+" On pressing tab, insert spaces
 set expandtab
 
 
@@ -171,6 +182,9 @@ set laststatus=2
 nnoremap <Leader>p :CtrlP<CR>
 nnoremap <Leader>t :CtrlP<CR>
 
+" Load completion for command mode
+set runtimepath^=~/.vim.scripts/SearchComplete.vim
+
 " Sneak settings (same as f)
 " f <key> to jump to next <key>
 " F <key> to jump to previous <key>
@@ -187,7 +201,20 @@ xmap F <Plug>Sneak_F
 omap f <Plug>Sneak_f
 omap F <Plug>Sneak_F
 
-
+" Zoom / Restore window. " Map to 2xLeader
+function! s:ZoomToggle() abort
+    if exists('t:zoomed') && t:zoomed
+        execute t:zoom_winrestcmd
+        let t:zoomed = 0
+    else
+        let t:zoom_winrestcmd = winrestcmd()
+        resize
+        vertical resize
+        let t:zoomed = 1
+    endif
+endfunction
+command! ZoomToggle call s:ZoomToggle()
+nnoremap <Leader><Leader> :ZoomToggle<CR> 
 
 
 " move vertically by visual line
@@ -203,4 +230,5 @@ nnoremap $ <nop>
 nnoremap ^ <nop>
 
 " Colorscheme
+" colorscheme DevC++
 colorscheme dracula 

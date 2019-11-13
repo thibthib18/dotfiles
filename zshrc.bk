@@ -1,5 +1,5 @@
 
-#POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/bhilburn/powerlevel9k
+POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/bhilburn/powerlevel9k
 
 
 source /usr/share/zsh-antigen/antigen.zsh
@@ -25,14 +25,13 @@ antigen bundle docker
 
 # POWERLEVEL10k theme
 #POWERLEVEL9K_MODE=awesome-fontconfig
-#POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vi_mode status time ram)
-#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir_writable dir vcs)
-#POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-#POWERLEVEL9K_MODE="nerdfont-complete"
-#antigen theme romkatv/powerlevel10k powerlevel10k
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vi_mode status time ram)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir_writable dir vcs)
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_MODE="nerdfont-complete"
+antigen theme romkatv/powerlevel10k powerlevel10k
 # Load the theme.
 #antigen theme bhilburn/powerlevel9k powerlevel9k
-antigen theme ys
 
 
 
@@ -95,7 +94,7 @@ autoload colors zsh/terminfo
 colors
 
 # Source ROS setup 
-source /opt/ros/melodic/setup.zsh
+source /opt/ros/kinetic/setup.zsh
 export ROSCONSOLE_FORMAT='[${severity}] [${node}] [${time}]: ${message}'
 alias rosvar="echo ROS_MASTER_URI=$ROS_MASTER_URI && echo ROS_IP=$ROS_IP && echo ROS_HOSTNAME=$ROS_HOSTNAME"
 
