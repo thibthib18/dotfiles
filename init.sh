@@ -4,6 +4,9 @@ sudo apt update
 
 sudo apt install zsh git curl guake vim tmux
 
+# For vim clipboard functionality
+sudo apt install vim-gtk
+
 # Vim-plug plug-in manager
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
