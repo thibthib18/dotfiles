@@ -11,10 +11,8 @@ sudo apt install vim-gtk
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-
 # Zsh and its antigen plug-in manager
 chsh -s $(which zsh)
-
 sudo apt-get install zsh-antigen # version from Ubuntu rep is broken
 sudo curl -o /usr/share/zsh-antigen/antigen.zsh -sL git.io/antigen
 
@@ -27,7 +25,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
 # Remove previous config files
 rm -rf ~/.vim ~/.vimrc ~/.zshrc ~/.tmux ~/.tmux.conf ~/.config/nvim 2> /dev/null
 
-# Link the config files with the dotfiles 
+# Link the config files with the dotfiles
 ln -s ~/dotfiles/zshrc ~/.zshrc
 ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/vimrc ~/.vimrc
@@ -51,6 +49,8 @@ wget -O ~/.bin/tmuxinator.zsh https://raw.githubusercontent.com/tmuxinator/tmuxi
 	sudo apt install silversearcher-ag
 
 
+pip install neovim
+pip3 install neovim
 
 
 

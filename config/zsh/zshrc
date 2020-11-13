@@ -1,0 +1,325 @@
+
+#POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/bhilburn/powerlevel9k
+
+
+# Google Cloud completion
+source /usr/share/google-cloud-sdk/completion.zsh.inc
+
+source /usr/share/zsh-antigen/antigen.zsh
+
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
+
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen bundle git
+antigen bundle command-not-found
+
+# Syntax highlighting bundle.
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# Auto suggestions
+antigen bundle zsh-users/zsh-autosuggestions
+
+# Docker aliases
+antigen bundle "akarzim/zsh-docker-aliases"
+
+# Docker completion
+antigen bundle docker
+
+# POWERLEVEL10k tweak
+ram(){
+
+}
+
+# POWERLEVEL10k theme
+POWERLEVEL9K_MODE=awesome-fontconfig
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vi_mode status time ram)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir_writable dir vcs)
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_MODE="nerdfont-complete"
+antigen theme romkatv/powerlevel10k powerlevel10k
+P9KGT_BACKGROUND='light'
+P9KGT_COLORS='light'
+# Load the theme.
+#antigen theme bhilburn/powerlevel9k powerlevel9k
+#antigen theme ys
+
+# Tell Antigen that you're done.
+antigen apply
+
+
+
+setopt auto_cd
+
+
+# Always use tmux
+if [ "$TMUX" = "" ]; then tmux attach; fi
+
+
+# Vi Mode
+bindkey -v
+
+# Kill The Lag
+export KEYTIMEOUT=1
+
+# Mode Indicator
+# Updates editor information when the keymap changes.
+function zle-keymap-select() {
+  zle reset-prompt
+  zle -R
+}
+
+zle -N zle-keymap-select
+
+function vi_mode_prompt_info() {
+  echo "${${KEYMAP/vicmd/[% NORMAL]%}/(main|viins)/[% INSERT]%}"
+}
+
+# Auto cd and ls
+function chpwd() {
+  emulate -L zsh
+  ls --almost-all
+}
+
+# define right prompt, regardless of whether the theme defined it
+RPS1='$(vi_mode_prompt_info)'
+RPS2=$RPS1
+
+
+# Better searching in command mode
+bindkey -M vicmd '?' history-incremental-search-backward
+bindkey -M vicmd '/' history-incremental-search-forward
+
+# Beginning search with arrow keys
+bindkey "^[OA" up-line-or-beginning-search
+bindkey "^[OB" down-line-or-beginning-search
+bindkey -M vicmd "k" up-line-or-beginning-search
+bindkey -M vicmd "j" down-line-or-beginning-search
+
+# Enable colors
+autoload colors zsh/terminfo
+colors
+
+
+setopt complete_aliases
+
+alias vim="nvim"
+alias vimbegood="docker run -it --rm brandoncc/vim-be-good:stable"
+# stand up meeting notes
+alias standup="vim ~/standup.txt"
+
+# Be nice to your computer
+alias please="sudo"
+alias svp="sudo"
+alias bitte="sudo"
+
+# JS lint / style
+alias lint="npm run lint-fix"
+alias style="npm run prettify-all"
+
+# Tired of ghostscript
+alias gs='git status'
+
+# Copy to clipboard cmd (to use with piping)   -> copy the ouput of `cmd` to clipboard with :$ cmd | copy
+alias copy="xclip -sel clip"
+
+# Colorful ls
+alias ls="colorls --sd -A"
+
+export EDITOR='vim'
+
+# I never write docker correctly
+alias dokcer="docker"
+alias dkcoer="docker"
+alias gcp="google-chrome https://console.cloud.google.com/home/dashboard?project=rapid-airship-231511"
+alias gcpvm="google-chrome https://console.cloud.google.com/compute/instances?project=rapid-airship-231511&instancessize=50"
+
+alias dop="./main/sv_dop/run_containers/run_dop.sh"
+alias sim="./main/sv_sim/docker_run_sv_sim_standalone.sh"
+
+
+# Issue finding tensorflow without this
+export PYTHONPATH=/usr/local:$PYTHONPATH
+export PYTHONPATH=$PYTHONPATH:/home/ubuntu/caffe2/build
+export PYTHONPATH=$PYTHONPATH:/home/thib/catkin_ws/devel/lib/python3/dist-packages
+export PYTHONPATH=$PYTHONPATH:/home/thib/catkin_ws/src/svpy:/home/thib/catkin_ws/src/backend/host/bash
+export PATH=/home/thib/QtCreator/latest/bin:$PATH
+export PATH=/home/thib/QtCreator/latest/bin:$PATH
+export PATH=~/.npm-global/bin:$PATH
+export PATH=/home/thib/hdd/UE4/UnrealEngine-4.18.3-release/Engine/Binaries/Linux:$PATH
+
+# Nvim
+export PATH=/opt/nvim-linux64/bin:$PATH
+# Snap
+export PATH=/snap/bin:$PATH
+
+# Source ROS setup
+source /opt/ros/melodic/setup.zsh
+export ROSCONSOLE_FORMAT='[${severity}] [${node}] [${time}]: ${message}'
+alias rosvar="echo ROS_MASTER_URI=$ROS_MASTER_URI && echo ROS_IP=$ROS_IP && echo ROS_HOSTNAME=$ROS_HOSTNAME"
+export ROS_MASTER_URI='http://129.132.28.163:11311'
+
+# tmuxinator
+#source ~/.bin/tmuxinator.zsh
+
+# i3 switch Caps_Lock and Escape
+# xmodmap -e "clear lock"
+# xmodmap -e "keysym Caps_Lock = Escape"
+# OR
+# setxkbdmap -layout us -option caps:escape
+
+
+
+# Navio
+#export PATH=/opt/UnrealEngine/Engine/Binaries/Linux:/opt/node-v10.15.1-linux-x64/bin:/home/thib/hdd/UE4.21/UnrealEngine/Engine/Binaries/Linux:/home/thib/hdd/UE4/UnrealEngine-4.18.3-release/Engine/Binaries/Linux:/home/thib/QtCreator/latest/bin:/opt/ros/kinetic/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/thib/.local/bin
+
+# Fzf file search with Ctrl+T
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+export TERM="xterm-256color"
+
+
+
+############# POWERLEVEL 9K THEME P9KGT ################
+
+
+# Set username to consider a default context, which by default will not be shown.
+# https://github.com/bhilburn/powerlevel9k/blob/next/segments/context/README.md
+DEFAULT_USER='luca'
+
+# Set P9KGT background color, either 'light' or 'dark' (this should match the GNOME Terminal's theme).
+P9KGT_BACKGROUND='dark'
+if [[ $P9KGT_BACKGROUND != 'light' ]] && [[ $P9KGT_BACKGROUND != 'dark' ]]
+then
+  P9KGT_ERROR=true
+  echo "P9KGT error: variable 'P9KGT_BACKGROUND' should be either 'light' or 'dark'"
+fi
+
+# Set P9KGT color scheme, either 'light', 'dark' or 'bright' (choose by preference).
+P9KGT_COLORS='bright'
+if [[ $P9KGT_COLORS != 'light' ]] && [[ $P9KGT_COLORS != 'dark' ]] && [[ $P9KGT_COLORS != 'bright' ]]
+then
+  P9KGT_ERROR=true
+  echo "P9KGT error: variable 'P9KGT_COLORS' should be either 'light', 'dark' or 'bright'"
+fi
+
+# Set P9KGT fonts mode, either 'default', 'awesome-fontconfig', 'awesome-mapped-fontconfig', 'awesome-patched', 'nerdfont-complete' or 'nerdfont-fontconfig'.
+# https://github.com/bhilburn/powerlevel9k/wiki/About-Fonts
+P9KGT_FONTS='awesome-fontconfig'
+if [[ $P9KGT_FONTS != 'default' ]] && [[ $P9KGT_FONTS != 'awesome-fontconfig' ]] && [[ $P9KGT_FONTS != 'awesome-mapped-fontconfig' ]] &&
+  [[ $P9KGT_FONTS != 'awesome-patched' ]] && [[ $P9KGT_FONTS != 'nerdfont-complete' ]] && [[ $P9KGT_FONTS != 'nerdfont-fontconfig' ]]
+then
+  P9KGT_ERROR=true
+  echo "P9KGT error: variable 'P9KGT_FONTS' should be either 'default', 'awesome-fontconfig', 'awesome-mapped-fontconfig', 'awesome-patched', 'nerdfont-complete' or 'nerdfont-fontconfig'"
+else
+  P9K_MODE=$P9KGT_FONTS
+fi
+
+if [[ $P9KGT_ERROR != true ]]
+then
+
+  # Set P9KGT background color
+  if [[ $P9KGT_BACKGROUND == 'light' ]]
+  then
+    # https://github.com/bhilburn/powerlevel9k/wiki/Stylizing-Your-Prompt#light-color-theme
+    P9K_COLOR_SCHEME='light'
+    P9KGT_TERMINAL_BACKGROUND=231
+  elif [[ $P9KGT_BACKGROUND == 'dark' ]]
+  then
+    P9K_COLOR_SCHEME='dark'
+    P9KGT_TERMINAL_BACKGROUND=236
+  fi
+
+  # Set P9KGT foreground colors
+  if [[ $P9KGT_COLORS == 'light' ]]
+  then
+    P9KGT_RED=009
+    P9KGT_GREEN=010
+    P9KGT_YELLOW=011
+    P9KGT_BLUE=012
+  elif [[ $P9KGT_COLORS == 'dark' ]]
+  then
+    P9KGT_RED=001
+    P9KGT_GREEN=002
+    P9KGT_YELLOW=003
+    P9KGT_BLUE=004
+  elif [[ $P9KGT_COLORS == 'bright' ]]
+  then
+    P9KGT_RED=196
+    #P9KGT_GREEN=148
+    P9KGT_GREEN=154
+    P9KGT_YELLOW=220
+    P9KGT_BLUE=075
+  fi
+
+  # Customize prompt
+  # https://github.com/bhilburn/powerlevel9k/wiki/Stylizing-Your-Prompt#adding-newline-before-each-prompt
+  P9K_PROMPT_ADD_NEWLINE=true
+  # https://github.com/bhilburn/powerlevel9k/tree/next#customizing-prompt-segments
+  P9K_LEFT_PROMPT_ELEMENTS=(context dir_writable dir vcs)
+  P9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs)
+
+  # Set 'context' segment colors
+  # https://github.com/bhilburn/powerlevel9k/blob/next/segments/context/README.md
+  P9K_CONTEXT_DEFAULT_FOREGROUND=$P9KGT_YELLOW
+  P9K_CONTEXT_ROOT_FOREGROUND=$P9KGT_YELLOW
+  P9K_CONTEXT_SUDO_FOREGROUND=$P9KGT_YELLOW
+  P9K_CONTEXT_REMOTE_FOREGROUND=$P9KGT_YELLOW
+  P9K_CONTEXT_REMOTE_SUDO_FOREGROUND=$P9KGT_YELLOW
+  P9K_CONTEXT_DEFAULT_BACKGROUND=$P9KGT_TERMINAL_BACKGROUND
+  P9K_CONTEXT_ROOT_BACKGROUND=$P9KGT_TERMINAL_BACKGROUND
+  P9K_CONTEXT_SUDO_BACKGROUND=$P9KGT_TERMINAL_BACKGROUND
+  P9K_CONTEXT_REMOTE_BACKGROUND=$P9KGT_TERMINAL_BACKGROUND
+  P9K_CONTEXT_REMOTE_SUDO_BACKGROUND=$P9KGT_TERMINAL_BACKGROUND
+
+  # Set 'dir_writable' segment colors
+  # https://github.com/bhilburn/powerlevel9k/blob/next/segments/dir_writable/README.md
+  P9K_DIR_WRITABLE_FORBIDDEN_FOREGROUND=$P9KGT_YELLOW
+  P9K_DIR_WRITABLE_FORBIDDEN_BACKGROUND=$P9KGT_RED
+
+  # Set 'dir' segment colors
+  # https://github.com/bhilburn/powerlevel9k/blob/next/segments/dir/README.md
+  P9K_DIR_DEFAULT_FOREGROUND=$P9KGT_TERMINAL_BACKGROUND
+  P9K_DIR_HOME_FOREGROUND=$P9KGT_TERMINAL_BACKGROUND
+  P9K_DIR_HOME_SUBFOLDER_FOREGROUND=$P9KGT_TERMINAL_BACKGROUND
+  P9K_DIR_ETC_FOREGROUND=$P9KGT_TERMINAL_BACKGROUND
+  P9K_DIR_DEFAULT_BACKGROUND=$P9KGT_BLUE
+  P9K_DIR_HOME_BACKGROUND=$P9KGT_BLUE
+  P9K_DIR_HOME_SUBFOLDER_BACKGROUND=$P9KGT_BLUE
+  P9K_DIR_ETC_BACKGROUND=$P9KGT_BLUE
+
+  # Set 'vcs' segment colors
+  # https://github.com/bhilburn/powerlevel9k/blob/next/segments/vcs/README.md
+  P9K_VCS_CLEAN_FOREGROUND=$P9KGT_TERMINAL_BACKGROUND
+  P9K_VCS_MODIFIED_FOREGROUND=$P9KGT_TERMINAL_BACKGROUND
+  P9K_VCS_CLOBBERED_FOREGROUND=$P9KGT_TERMINAL_BACKGROUND
+  P9K_VCS_UNTRACKED_FOREGROUND=$P9KGT_TERMINAL_BACKGROUND
+  P9K_VCS_CLEAN_BACKGROUND=$P9KGT_GREEN
+  P9K_VCS_MODIFIED_BACKGROUND=$P9KGT_YELLOW
+  P9K_VCS_CLOBBERED_BACKGROUND=$P9KGT_RED
+  P9K_VCS_UNTRACKED_BACKGROUND=$P9KGT_GREEN
+
+  # Set 'status' segment colors
+  # https://github.com/bhilburn/powerlevel9k/blob/next/segments/status/README.md
+  P9K_STATUS_CROSS=true
+  P9K_STATUS_OK_FOREGROUND=$P9KGT_GREEN
+  P9K_STATUS_ERROR_FOREGROUND=$P9KGT_RED
+  P9K_STATUS_OK_BACKGROUND=$P9KGT_TERMINAL_BACKGROUND
+  P9K_STATUS_ERROR_BACKGROUND=$P9KGT_TERMINAL_BACKGROUND
+
+  # Set 'root_indicator' segment colors
+  # https://github.com/bhilburn/powerlevel9k/blob/next/segments/root_indicator/README.md
+  P9K_ROOT_INDICATOR_FOREGROUND=$P9KGT_YELLOW
+  P9K_ROOT_INDICATOR_BACKGROUND=$P9KGT_TERMINAL_BACKGROUND
+
+  # Set 'background_jobs' segment colors
+  # https://github.com/bhilburn/powerlevel9k/blob/next/segments/background_jobs/README.md
+  P9K_BACKGROUND_JOBS_FOREGROUND=$P9KGT_TERMINAL_BACKGROUND
+  P9K_BACKGROUND_JOBS_BACKGROUND=$P9KGT_YELLOW
+
+fi
+
+
+
+
