@@ -124,7 +124,7 @@ alias gs='git status'
 alias copy="xclip -sel clip"
 
 # Colorful ls
-alias ls="colorls --sd -A"
+#alias ls="colorls --sd -A"
 
 export EDITOR='vim'
 
