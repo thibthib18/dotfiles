@@ -103,6 +103,8 @@ colors
 
 setopt complete_aliases
 
+# Tmux with utf8 support for nice icons
+alias tmux="tmux -u"
 alias vim="nvim"
 alias vimbegood="docker run -it --rm brandoncc/vim-be-good:stable"
 # stand up meeting notes

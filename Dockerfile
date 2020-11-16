@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:18.04
 
 USER root
 WORKDIR /
@@ -9,9 +9,10 @@ RUN apt-get update && \
       apt-get -y install sudo
 
 RUN apt-get -y install wget curl git\
-                      python3 \
-                       zsh \
-                       python3-pip ipython3
+                        python3 \
+                        zsh \
+                        python3-pip ipython3 \
+                        silversearcher-ag
 
 # Needed to build tmux
 RUN apt-get -y install wget tar libevent-dev libncurses-dev
@@ -27,7 +28,21 @@ RUN cd && rm -rf ${src_path}
 
 
 # Needed for C++ completion
-RUN apt-get -y install llvm cmake ccls
+RUN apt-get -y install llvm cmake
+# Install ccls
+WORKDIR /
+RUN apt -y install zlib1g-dev libncurses-dev rapidjson-dev clang libclang-dev
+RUN git clone --depth=1 --recursive https://github.com/MaskRay/ccls
+WORKDIR /ccls
+RUN wget -c http://releases.llvm.org/8.0.0/clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz
+RUN tar xf clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz
+RUN cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=$PWD/clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04
+RUN cmake --build Release
+WORKDIR /ccls/Release
+RUN make install
+WORKDIR /
+RUN rm -rf /ccls
+
 
 # Create thib user
 ARG user_name=thib
@@ -45,6 +60,7 @@ RUN wget install-node.now.sh/lts
 RUN chmod u+x lts
 RUN sudo ./lts --yes
 RUN rm ./lts
+RUN mkdir -p ~/.config
 
 # Install yarn
 RUN sudo npm install -g yarn
@@ -66,10 +82,10 @@ RUN ./scripts/nvim/setup.sh
 
 # Install tpm tmux plugin manager
 RUN git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+RUN ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 
 # Install antigen zsh plugin manager
 RUN sudo apt-get install zsh-antigen # version from Ubuntu rep is broken
 RUN sudo curl -o /usr/share/zsh-antigen/antigen.zsh -sL git.io/antigen
-# Simply run zsh once to finalize the setup
-RUN zsh -c "ls"
+RUN zsh -c "source ~/.zshrc"
 
