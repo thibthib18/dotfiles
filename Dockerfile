@@ -12,7 +12,7 @@ RUN apt-get -y install wget curl git\
                         python3 \
                         zsh \
                         python3-pip ipython3 \
-                        silversearcher-ag
+                        silversearcher-ag xclip xsel
 
 # Needed to build tmux
 RUN apt-get -y install wget tar libevent-dev libncurses-dev
@@ -89,3 +89,4 @@ RUN sudo apt-get install zsh-antigen # version from Ubuntu rep is broken
 RUN sudo curl -o /usr/share/zsh-antigen/antigen.zsh -sL git.io/antigen
 RUN zsh -c "source ~/.zshrc"
 
+ADD ./main /home/thib/main
