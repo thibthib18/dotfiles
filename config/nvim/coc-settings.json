@@ -7,12 +7,13 @@
     "json",
     "javascriptreact",
     "typescript.tsx",
-    "graphql"
+    "graphql",
+    "python"
   ],
   "languageserver": {
     "ccls": {
       "command": "ccls",
-      "filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
+      "filetypes": ["c", "cpp", "h", "cuda", "objc", "objcpp"],
       "rootPatterns": [".ccls-root", "compile_commands.json"],
       "initializationOptions": {
         "cache": {
@@ -24,11 +25,27 @@
       }
     }
   },
+  "python.formatting.provider": "yapf",
+  "python.formatting.yapfPath": "/home/thib/.local/bin/yapf",
+  "python.formatting.yapfArgs": [
+    "-i",
+    "-vv",
+    "--style",
+    "${workspaceFolder}/.style.yapf"
+  ],
   "python.linting.mypyEnabled": true,
   "python.autoComplete.extraPaths": [
     "~/catkin_ws/devel/lib/python3/dist-packages",
     "~/main/svpy",
     "~/main/backend/host/bash",
     "~/main/libs/pylib/src/"
-  ]
+  ],
+  "python.linting.pytypeEnabled": true,
+  "python.analysis.extraPaths": [
+    "/home/thib/catkin_ws/devel/lib/python3/dist-packages",
+    "/home/thib/main/svpy",
+    "/home/thib/main/backend/host/bash",
+    "/home/thib/main/libs/pylib/src/"
+  ],
+  "python.analysis.autoImportCompletions": true
 }
