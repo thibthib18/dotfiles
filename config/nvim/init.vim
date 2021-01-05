@@ -22,6 +22,10 @@ set termguicolors
 set undodir=~/.vim/undodir
 set undofile
 set wrap
+
+set clipboard=unnamedplus
+" Show commands effects in real time
+set inccommand=nosplit
 " Maybe set this only for Python: _ counts as a vim word delimiter
 " set iskeyword=_
 " For those who do not know the keys
@@ -77,6 +81,11 @@ Plug 'voldikss/vim-floaterm'
 
 " Add some good looks (:AirlineToggle to toggle it)
 Plug 'vim-airline/vim-airline'
+"Plug 'bling/vim-bufferline'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = '🙉 '
+let g:airline#extensions#tabline#left_alt_sep = '🙈 '
+
 
 " Seamless navigation between vim buffers and tmux panes (must have with Tmux)
 Plug 'christoomey/vim-tmux-navigator'
@@ -99,6 +108,12 @@ Plug 'tpope/vim-abolish'
 " camel/snake_case motions
 Plug 'bkad/CamelCaseMotion'
 
+" Maximize windows
+Plug 'szw/vim-maximizer'
+
+" cheat.sh
+Plug 'dbeniamine/cheat.sh-vim'
+" Use :HowIn
 
 " Next updates:
 " vim maximizer: Maximize the current buffer
@@ -120,6 +135,7 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep --ignore-dir={~/main/tools/third_party}'
 endif
 " :Ag search only files content
+" --nogroup --column --color  --
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
 nnoremap <C-f> :Ag<CR>
 "nnoremap <C-f> :Ack<SPACE>
@@ -146,6 +162,7 @@ omap <silent> ie <Plug>CamelCaseMotion_ie
 xmap <silent> ie <Plug>CamelCaseMotion_ie
 
 
+nnoremap <leader>m :MaximizerToggle!<CR>
 " ******* COC SETUP *******
 " Python: install python + enable mypy + pip3 install -U jedi
 " This should mostly work out of the box, apart for one detail, outside the
@@ -220,8 +237,24 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 
+" ########### SNIPPETS
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
 " Automatically trim whitespace at EOL when saving
-fun! TrimWhitespace()
+function! TrimWhitespace()
     let l:save = winsaveview()
     keeppatterns %s/\s\+$//e
     call winrestview(l:save)
@@ -229,8 +262,30 @@ endfun
 
 autocmd BufWritePre * :call TrimWhitespace()
 
+function! Vimrc()
+  edit ~/.config/nvim/init.vim
+endfun
+command! Vimrc :call Vimrc()
 
+function! ListPlug()
+  CocList marketplace
+endfun
+command! ListPlug :call ListPlug()
 
+function! SourceVimrc()
+  source ~/.config/nvim/init.vim
+endfun
+command! SourceVimrc :call SourceVimrc()
+
+function! RelativeNumberToggle()
+  if(&rnu == 1)
+    set nornu
+  else
+    set rnu
+  endif
+endfunc
+
+nnoremap <leader>r :call RelativeNumberToggle()<cr>
 " Run command within container
 " Build entire catkin ws
 "let build_command='catkin_make'
