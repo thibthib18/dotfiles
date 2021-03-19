@@ -115,8 +115,12 @@ Plug 'szw/vim-maximizer'
 Plug 'dbeniamine/cheat.sh-vim'
 " Use :HowIn
 
+" Telescope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
 " Next updates:
-" vim maximizer: Maximize the current buffer
 " vimspector: debugger in vim
 
 " Initialize plugin system
