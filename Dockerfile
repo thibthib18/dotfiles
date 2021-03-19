@@ -89,4 +89,3 @@ RUN sudo apt-get install zsh-antigen # version from Ubuntu rep is broken
 RUN sudo curl -o /usr/share/zsh-antigen/antigen.zsh -sL git.io/antigen
 RUN zsh -c "source ~/.zshrc"
 
-ADD ./main /home/thib/main
