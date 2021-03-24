@@ -32,8 +32,9 @@ RUN apt-get -y install llvm cmake
 # Install ccls
 WORKDIR /
 RUN apt -y install zlib1g-dev libncurses-dev rapidjson-dev clang libclang-dev
-RUN git clone --depth=1 --recursive https://github.com/MaskRay/ccls
+RUN git clone --recursive https://github.com/MaskRay/ccls
 WORKDIR /ccls
+RUN git checkout 0.20201025
 RUN wget -c http://releases.llvm.org/8.0.0/clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz
 RUN tar xf clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz
 RUN cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=$PWD/clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04
