@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM seervision/development:latest
 
 USER root
 WORKDIR /
@@ -44,16 +44,8 @@ WORKDIR /
 RUN rm -rf /ccls
 
 
-# Create thib user
-ARG user_name=thib
-ENV USER=${user_name}
-RUN useradd -u 1000 -s /usr/bin/zsh -m ${user_name} \
-  && usermod -aG sudo,video,dialout ${user_name} \
-  && echo "${user_name} ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/${user_name} \
-  && chmod 0440 /etc/sudoers.d/${user_name}
-
-USER thib
-WORKDIR /home/thib
+USER sv
+WORKDIR /home/sv
 
 # Install node.js
 RUN wget install-node.now.sh/lts
@@ -66,14 +58,16 @@ RUN mkdir -p ~/.config
 RUN sudo npm install -g yarn
 
 # Add dotfiles repo
-ADD . /home/thib/dotfiles
-RUN sudo chown -R thib:thib ~/dotfiles
-WORKDIR /home/thib/dotfiles
+ADD . /home/sv/dotfiles
+RUN sudo chown -R sv:sv ~/dotfiles
+WORKDIR /home/sv/dotfiles
 
 # Copy config files
 RUN mkdir -p ~/.config/nvim
 RUN ln -s ~/dotfiles/config/nvim/init.vim ~/.config/nvim
+RUN ln -s ~/dotfiles/config/nvim/coc-settings.json ~/.config/nvim
 RUN ln -s ~/dotfiles/config/zsh/zshrc ~/.zshrc
+RUN rm ~/.tmux.conf
 RUN ln -s ~/dotfiles/config/tmux/tmux.conf ~/.tmux.conf
 
 # Install and setup nvim
@@ -88,4 +82,14 @@ RUN ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 RUN sudo apt-get install zsh-antigen # version from Ubuntu rep is broken
 RUN sudo curl -o /usr/share/zsh-antigen/antigen.zsh -sL git.io/antigen
 RUN zsh -c "source ~/.zshrc"
+
+# Install Powerline fonts
+RUN wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
+RUN wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
+RUN mkdir ~/.local/share/fonts/
+RUN mv PowerlineSymbols.otf ~/.local/share/fonts/
+RUN fc-cache -vf ~/.local/share/fonts/
+
+# Set default shell
+RUN sudo chsh -s $(which zsh)
 

@@ -26,7 +26,7 @@
     }
   },
   "python.formatting.provider": "yapf",
-  "python.formatting.yapfPath": "/home/thib/.local/bin/yapf",
+  "python.formatting.yapfPath": "/home/sv/.local/bin/yapf",
   "python.formatting.yapfArgs": [
     "-i",
     "-vv",
@@ -42,10 +42,10 @@
   ],
   "python.linting.pytypeEnabled": true,
   "python.analysis.extraPaths": [
-    "/home/thib/catkin_ws/devel/lib/python3/dist-packages",
-    "/home/thib/main/svpy",
-    "/home/thib/main/backend/host/bash",
-    "/home/thib/main/libs/pylib/src/"
+    "/home/sv/catkin_ws/devel/lib/python3/dist-packages",
+    "/home/sv/main/svpy",
+    "/home/sv/main/backend/host/bash",
+    "/home/sv/main/libs/pylib/src/"
   ],
   "python.analysis.autoImportCompletions": true
 }
