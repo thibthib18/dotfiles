@@ -51,6 +51,9 @@ nnoremap <SPACE> <Nop>
 " let mapleader = "\<SPACE>"
 let mapleader = " "
 
+" Lets stop using Escape switch
+inoremap jk <Esc>
+
 
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
@@ -116,9 +119,9 @@ Plug 'dbeniamine/cheat.sh-vim'
 " Use :HowIn
 
 " Telescope
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+"Plug 'nvim-lua/popup.nvim'
+"Plug 'nvim-lua/plenary.nvim'
+"Plug 'nvim-telescope/telescope.nvim'
 
 " Next updates:
 " vimspector: debugger in vim
