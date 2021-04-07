@@ -58,9 +58,10 @@ if [ "$TMUX" = "" ]; then tmux attach; fi
 
 # Vi Mode
 bindkey -v
+bindkey -M viins 'jk' vi-cmd-mode
 
 # Kill The Lag
-export KEYTIMEOUT=1
+export KEYTIMEOUT=20
 
 # Mode Indicator
 # Updates editor information when the keymap changes.
