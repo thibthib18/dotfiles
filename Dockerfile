@@ -29,21 +29,7 @@ RUN cd && rm -rf ${src_path}
 
 # Needed for C++ completion
 RUN apt-get -y install llvm cmake
-# Install ccls
-WORKDIR /
 RUN apt -y install zlib1g-dev libncurses-dev rapidjson-dev clang libclang-dev
-RUN git clone --recursive https://github.com/MaskRay/ccls
-WORKDIR /ccls
-RUN git checkout 0.20201025
-RUN wget -c http://releases.llvm.org/8.0.0/clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz
-RUN tar xf clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz
-RUN cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=$PWD/clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04
-RUN cmake --build Release
-WORKDIR /ccls/Release
-RUN make install
-WORKDIR /
-RUN rm -rf /ccls
-
 
 USER sv
 WORKDIR /home/sv
@@ -92,5 +78,5 @@ RUN mv PowerlineSymbols.otf ~/.local/share/fonts/
 RUN fc-cache -vf ~/.local/share/fonts/
 
 # Set default shell
-RUN sudo chsh -s $(which zsh)
+RUN sudo chsh -s $(which zsh) sv
 
