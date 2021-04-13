@@ -51,6 +51,9 @@ nnoremap <SPACE> <Nop>
 " let mapleader = "\<SPACE>"
 let mapleader = " "
 
+" Lets stop using Escape switch
+inoremap jk <Esc>
+
 
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
@@ -99,8 +102,8 @@ Plug 'mileszs/ack.vim'
 " Different colors for intricated [[(({}))]]
 Plug 'luochen1990/rainbow'
 
-" Hard to use for now, will check it out later
-Plug 'tpope/vim-surround'
+" Hard to use for now, will check it out later --> lets try the cousin plugin
+Plug 'machakann/vim-sandwich'
 
 " camel/snake_case conversions (crs and crc), and more features I should try
 Plug 'tpope/vim-abolish'
@@ -132,6 +135,7 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
+set pyxversion=3
 
 colorscheme gruvbox
 set background=dark
