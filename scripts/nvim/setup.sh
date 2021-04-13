@@ -9,15 +9,6 @@ do
     echo "$cocPlugin installed"
 done
 
-##### Ccls Setup
-## Create a .ccls file
-#echo '%compile_commands.json' >> ~/main/.ccls
-## For ccls C++ completion: generate the compile_commands.json
-#cd /home/sv/catkin_ws
-#catkin_make -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=YES
-## Place it in the top level folder
-#mv ~/catkin_ws/build/compile_commands.json ~/main
-
 # For Jedi's python completion: install jedi package
 pip3 install -U jedi
 
