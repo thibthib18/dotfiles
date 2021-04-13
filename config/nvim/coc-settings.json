@@ -26,7 +26,7 @@
     }
   },
   "python.formatting.provider": "yapf",
-  "python.formatting.yapfPath": "/home/sv/.local/bin/yapf",
+  "python.formatting.yapfPath": "/usr/local/bin/yapf",
   "python.formatting.yapfArgs": [
     "-i",
     "-vv",
