@@ -15,10 +15,3 @@ done
 # For Jedi's python completion: install jedi package
 pip3 install -U jedi
 
-# Fix a bug a coc-ccls:
-cd ~/.config/coc/extensions/node_modules/coc-ccls
-ln -s node_modules/ws/lib lib
-
-
-
-
