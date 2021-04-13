@@ -10,21 +10,6 @@
     "graphql",
     "python"
   ],
-  "languageserver": {
-    "ccls": {
-      "command": "ccls",
-      "filetypes": ["c", "cpp", "h", "cuda", "objc", "objcpp"],
-      "rootPatterns": [".ccls-root", "compile_commands.json"],
-      "initializationOptions": {
-        "cache": {
-          "directory": ".ccls-cache"
-        },
-        "client": {
-          "snippetSupport": true
-        }
-      }
-    }
-  },
   "python.formatting.provider": "yapf",
   "python.formatting.yapfPath": "/usr/local/bin/yapf",
   "python.formatting.yapfArgs": [
