@@ -28,7 +28,7 @@ RUN cd && rm -rf ${src_path}
 
 
 # Needed for C++ completion
-RUN apt-get -y install llvm cmake
+RUN apt-get -y install llvm cmake clang-10
 RUN apt -y install zlib1g-dev libncurses-dev rapidjson-dev clang libclang-dev
 
 USER sv
