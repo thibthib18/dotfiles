@@ -82,5 +82,5 @@ RUN sudo chsh -s $(which zsh) sv
 
 # Make your entry
 ENTRYPOINT ["/bin/bash","/usr/local/bin/entrypoint.sh"]
-WORKDIR /home/sv
-CMD ["/bin/bash"]
+WORKDIR /home/sv/main
+CMD ["/usr/bin/zsh"]
