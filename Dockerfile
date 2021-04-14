@@ -80,3 +80,7 @@ RUN fc-cache -vf ~/.local/share/fonts/
 # Set default shell
 RUN sudo chsh -s $(which zsh) sv
 
+# Make your entry
+ENTRYPOINT ["/bin/bash","/usr/local/bin/entrypoint.sh"]
+WORKDIR /home/sv
+CMD ["/bin/bash"]
