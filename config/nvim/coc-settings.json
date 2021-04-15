@@ -32,5 +32,6 @@
     "/home/sv/main/backend/host/bash",
     "/home/sv/main/libs/pylib/src/"
   ],
-  "python.analysis.autoImportCompletions": true
+  "python.analysis.autoImportCompletions": true,
+  "clangd.path": "/usr/bin/clangd-10"
 }
