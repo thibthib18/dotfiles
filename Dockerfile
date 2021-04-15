@@ -34,6 +34,8 @@ RUN apt -y install zlib1g-dev libncurses-dev rapidjson-dev clang libclang-dev
 USER sv
 WORKDIR /home/sv
 
+# Install Jedi LS
+RUN pip install -U jedi-language-server
 # Install node.js
 RUN wget install-node.now.sh/lts
 RUN chmod u+x lts
@@ -43,6 +45,9 @@ RUN mkdir -p ~/.config
 
 # Install yarn
 RUN sudo npm install -g yarn
+
+# Install Typescript LS
+RUN sudo npm install -g typescript typescript-language-server
 
 # Add dotfiles repo
 ADD . /home/sv/dotfiles
