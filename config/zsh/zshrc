@@ -148,6 +148,8 @@ export PYTHONPATH=$PYTHONPATH:/home/sv/catkin_ws/devel/lib/python3/dist-packages
 export PYTHONPATH=$PYTHONPATH:/home/sv/catkin_ws/src/svpy:/home/sv/catkin_ws/src/backend/host/bash
 export PATH=~/.npm-global/bin:$PATH
 
+export PATH=~/.local/bin:$PATH
+
 # Nvim
 export PATH=/opt/nvim-linux64/bin:$PATH
 # Snap
