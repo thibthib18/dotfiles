@@ -1,60 +1,14 @@
 
-#POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/bhilburn/powerlevel9k
 
-
-# Google Cloud completion
-source /usr/share/google-cloud-sdk/completion.zsh.inc
-
-source /usr/share/zsh-antigen/antigen.zsh
-
-# Load the oh-my-zsh's library.
-antigen use oh-my-zsh
-
-# Bundles from the default repo (robbyrussell's oh-my-zsh).
-antigen bundle git
-antigen bundle command-not-found
-
-# Syntax highlighting bundle.
-antigen bundle zsh-users/zsh-syntax-highlighting
-
-# Auto suggestions
-antigen bundle zsh-users/zsh-autosuggestions
-
-# Docker aliases
-antigen bundle "akarzim/zsh-docker-aliases"
-
-# Docker completion
-antigen bundle docker
-
-# POWERLEVEL10k tweak
-ram(){
-
-}
-
-# POWERLEVEL10k theme
-POWERLEVEL9K_MODE=awesome-fontconfig
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vi_mode status time ram)
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir_writable dir vcs)
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_MODE="nerdfont-complete"
-antigen theme romkatv/powerlevel10k powerlevel10k
-P9KGT_BACKGROUND='light'
-P9KGT_COLORS='light'
-# Load the theme.
-#antigen theme bhilburn/powerlevel9k powerlevel9k
-#antigen theme ys
-
-# Tell Antigen that you're done.
-antigen apply
-
-
+zsh_files_path=/home/sv/dotfiles/config/zsh
+source "${zsh_files_path}/antigen.zsh"
+source "${zsh_files_path}/benice.zsh"
+source "${zsh_files_path}/gcloud.zsh"
+source "${zsh_files_path}/nvim.zsh"
+source "${zsh_files_path}/ros.zsh"
+source "${zsh_files_path}/sv.zsh"
 
 setopt auto_cd
-
-
-# Always use tmux (or not)
-#if [ "$TMUX" = "" ]; then tmux attach; fi
-
 
 # Vi Mode
 bindkey -v
@@ -108,17 +62,6 @@ setopt complete_aliases
 alias tmux="tmux -u"
 alias vim="nvim"
 alias vimbegood="docker run -it --rm brandoncc/vim-be-good:stable"
-# stand up meeting notes
-alias standup="vim ~/standup.txt"
-
-# Be nice to your computer
-alias please="sudo"
-alias svp="sudo"
-alias bitte="sudo"
-
-# JS lint / style
-alias lint="npm run lint-fix"
-alias style="npm run prettify-all"
 
 # Tired of ghostscript
 alias gs='git status'
@@ -126,52 +69,17 @@ alias gs='git status'
 # Copy to clipboard cmd (to use with piping)   -> copy the ouput of `cmd` to clipboard with :$ cmd | copy
 alias copy="xclip -sel clip"
 
-# Colorful ls
-#alias ls="colorls --sd -A"
 
 export EDITOR='vim'
 
 # I never write docker correctly
 alias dokcer="docker"
 alias dkcoer="docker"
-alias gcp="google-chrome https://console.cloud.google.com/home/dashboard?project=rapid-airship-231511"
-alias gcpvm="google-chrome https://console.cloud.google.com/compute/instances?project=rapid-airship-231511&instancessize=50"
-
-alias dop="./main/sv_dop/run_containers/run_dop.sh"
-alias sim="./main/sv_sim/docker_run_sv_sim_standalone.sh"
-
 
 # Issue finding tensorflow without this
 export PYTHONPATH=/usr/local:$PYTHONPATH
-export PYTHONPATH=$PYTHONPATH:/home/ubuntu/caffe2/build
 export PYTHONPATH=$PYTHONPATH:/home/sv/catkin_ws/devel/lib/python3/dist-packages
 export PYTHONPATH=$PYTHONPATH:/home/sv/catkin_ws/src/svpy:/home/sv/catkin_ws/src/backend/host/bash
 export PATH=~/.npm-global/bin:$PATH
-
-# Nvim
-export PATH=/opt/nvim-linux64/bin:$PATH
-# Snap
-export PATH=/snap/bin:$PATH
-
-# Source ROS setup
-source /opt/ros/melodic/setup.zsh
-export ROSCONSOLE_FORMAT='[${severity}] [${node}] [${time}]: ${message}'
-alias rosvar="echo ROS_MASTER_URI=$ROS_MASTER_URI && echo ROS_IP=$ROS_IP && echo ROS_HOSTNAME=$ROS_HOSTNAME"
-export ROS_MASTER_URI='http://129.132.28.163:11311'
-
-# tmuxinator
-#source ~/.bin/tmuxinator.zsh
-
-# i3 switch Caps_Lock and Escape
-# xmodmap -e "clear lock"
-# xmodmap -e "keysym Caps_Lock = Escape"
-# OR
-# setxkbdmap -layout us -option caps:escape
-
-
-
-# Fzf file search with Ctrl+T
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 
 export TERM="xterm-256color"
