@@ -94,7 +94,7 @@ let g:airline#extensions#tabline#left_alt_sep = '🙈 '
 Plug 'christoomey/vim-tmux-navigator'
 
 " File manager: explore, move, copy, delete files and folders
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
 
 " Fast search keywords
 Plug 'mileszs/ack.vim'
@@ -123,8 +123,12 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
+" File explorer
+Plug 'kyazdani42/nvim-web-devicons' " for file icons <- require a nerd font installed (on your machine)
+Plug 'kyazdani42/nvim-tree.lua'
 " Next updates:
 " vimspector: debugger in vim
+
 
 " Initialize plugin system
 call plug#end()
@@ -161,7 +165,9 @@ let g:floaterm_keymap_new = '<Leader>fn'
 let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
 
 
-map <F2> :NERDTreeToggle<CR>
+" map <F2> :NERDTreeToggle<CR>
+nnoremap <F2> :NvimTreeToggle<CR>
+
 
 map <silent> W <Plug>CamelCaseMotion_w
 map <silent> B <Plug>CamelCaseMotion_b
@@ -247,7 +253,7 @@ au CursorHold * checktime
 
 " Open NERDTree automatically when vim starts up if no files were specified
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 
 " ########### SNIPPETS
