@@ -52,8 +52,8 @@ antigen apply
 setopt auto_cd
 
 
-# Always use tmux
-if [ "$TMUX" = "" ]; then tmux attach; fi
+# Always use tmux (or not)
+#if [ "$TMUX" = "" ]; then tmux attach; fi
 
 
 # Vi Mode
