@@ -31,6 +31,7 @@ Plug 'tpope/vim-abolish'
 Plug 'morhetz/gruvbox'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'chriskempson/base16-vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 " camel/snake_case motions
 Plug 'bkad/CamelCaseMotion'
