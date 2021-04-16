@@ -70,13 +70,6 @@ RUN sudo apt-get install zsh-antigen # version from Ubuntu rep is broken
 RUN sudo curl -o /usr/share/zsh-antigen/antigen.zsh -sL git.io/antigen
 RUN zsh -c "source ~/.zshrc"
 
-# Install Powerline fonts
-RUN wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
-RUN wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
-RUN mkdir ~/.local/share/fonts/
-RUN mv PowerlineSymbols.otf ~/.local/share/fonts/
-RUN fc-cache -vf ~/.local/share/fonts/
-
 # Set default shell
 RUN sudo chsh -s $(which zsh) sv
 
