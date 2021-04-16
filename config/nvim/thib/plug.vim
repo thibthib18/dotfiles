@@ -53,8 +53,11 @@ Plug 'kyazdani42/nvim-web-devicons'
 " File explorer
 Plug 'kyazdani42/nvim-tree.lua'
 
-" Status line
+" top buffer line
 Plug 'akinsho/nvim-bufferline.lua'
+" Status line
+Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
+
 
 " Next updates:
 " vimspector: debugger in vim
