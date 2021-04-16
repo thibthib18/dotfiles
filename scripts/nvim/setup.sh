@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Install Coc extensions
-plugins=( coc-eslint coc-json coc-marketplace coc-pairs coc-prettier coc-python coc-prettier coc-snippets coc-tsserver coc-clangd)
+plugins=( coc-eslint coc-json coc-marketplace coc-pairs coc-python coc-prettier coc-snippets coc-tsserver coc-clangd)
 for cocPlugin in "${plugins[@]}"
 do
     echo "Installing $cocPlugin...."
