@@ -1,6 +1,6 @@
 
 
-zsh_files_path=/home/sv/dotfiles/config/zsh
+zsh_files_path=~/.config/zsh
 source "${zsh_files_path}/antigen.zsh"
 source "${zsh_files_path}/benice.zsh"
 source "${zsh_files_path}/gcloud.zsh"
