@@ -82,14 +82,6 @@ Plug 'sheerun/vim-polyglot'
 " Terminal in vim (a bit useless with a good Tmux)
 Plug 'voldikss/vim-floaterm'
 
-" Add some good looks (:AirlineToggle to toggle it)
-Plug 'vim-airline/vim-airline'
-"Plug 'bling/vim-bufferline'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = '🙉 '
-let g:airline#extensions#tabline#left_alt_sep = '🙈 '
-
-
 " Seamless navigation between vim buffers and tmux panes (must have with Tmux)
 Plug 'christoomey/vim-tmux-navigator'
 
@@ -123,15 +115,24 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
+Plug 'kyazdani42/nvim-web-devicons' " for nice icons <- require a nerd font installed (on your machine)
+
 " File explorer
-Plug 'kyazdani42/nvim-web-devicons' " for file icons <- require a nerd font installed (on your machine)
 Plug 'kyazdani42/nvim-tree.lua'
+
+" Status line
+Plug 'akinsho/nvim-bufferline.lua'
+
 " Next updates:
 " vimspector: debugger in vim
 
 
 " Initialize plugin system
 call plug#end()
+
+set termguicolors
+lua require'bufferline'.setup{}
+
 
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -183,27 +184,6 @@ xmap <silent> ie <Plug>CamelCaseMotion_ie
 
 nnoremap <leader>m :MaximizerToggle!<CR>
 " ******* COC SETUP *******
-" Python: install python + enable mypy + pip3 install -U jedi
-" This should mostly work out of the box, apart for one detail, outside the
-" container:
-" our own python libs(backend/host/bash and svpy) needs to be added to the Python path for Jedi to find them.
-" python.autoComplete.extraPaths
-"
-" Typescript: instal typescript and typescriptreact plugins w/ CocInstall
-" works pretty much out of the box (maybe eslint needs to be installed too)
-"
-" Cpp: install ccls, then set it up,
-" ccls setup is less straight forward:
-" https://github.com/MaskRay/ccls/wiki/Project-Setup
-" At root of directory create a .ccls file containing:
-" %compile_commands.json
-" Now, to generate the compile_commands.json: (https://github.com/MaskRay/ccls/wiki/Project-Setup#cmake)
-" c(atkin_)make -H. -BDebug -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=YES
-" The path used in the compile_commands are from the container, so they might
-" not work on the host. To fix it, replace all /home/sv by /home/${user}
-"
-
-"let g:coc_global_extensions = ['coc-json', 'coc-git']
 
 " GoTo code navigation.
 nmap <leader>gd <Plug>(coc-definition)
