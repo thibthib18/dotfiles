@@ -50,10 +50,14 @@ RUN sudo chown -R sv:sv ~/dotfiles
 WORKDIR /home/sv/dotfiles
 
 # Copy config files
-RUN mkdir -p ~/.config/nvim
-RUN ln -s ~/dotfiles/config/nvim/init.vim ~/.config/nvim
-RUN ln -s ~/dotfiles/config/nvim/coc-settings.json ~/.config/nvim
+RUN mkdir -p ~/.config
+
+RUN ln -s ~/dotfiles/config/nvim ~/.config/nvim
+RUN ln -s ~/dotfiles/config/tmux ~/.config/tmux
+RUN ln -s ~/dotfiles/config/zsh ~/.config/zsh
+
 RUN ln -s ~/dotfiles/config/zsh/zshrc ~/.zshrc
+
 RUN rm ~/.tmux.conf
 RUN ln -s ~/dotfiles/config/tmux/tmux.conf ~/.tmux.conf
 

@@ -11,18 +11,18 @@ map <leader>l :bnext<cr>
 map <leader>h :bprevious<cr>
 
 " Load some nice defaults
-source /home/sv/dotfiles/config/nvim/thib/goodDefaults.vim
+source ~/.config/nvim/thib/goodDefaults.vim
 
 " Plug plugins
-source /home/sv/dotfiles/config/nvim/thib/plug.vim
+source ~/.config/nvim/thib/plug.vim
 
 " Set up plugins
-source /home/sv/dotfiles/config/nvim/thib/plugins/telescope.vim
-source /home/sv/dotfiles/config/nvim/thib/plugins/bufferline.vim
-source /home/sv/dotfiles/config/nvim/thib/plugins/nvim-tree.vim
-source /home/sv/dotfiles/config/nvim/thib/plugins/abolish.vim
-source /home/sv/dotfiles/config/nvim/thib/plugins/coc.vim
-source /home/sv/dotfiles/config/nvim/thib/plugins/utils.vim
+source ~/.config/nvim/thib/plugins/telescope.vim
+source ~/.config/nvim/thib/plugins/bufferline.vim
+source ~/.config/nvim/thib/plugins/nvim-tree.vim
+source ~/.config/nvim/thib/plugins/abolish.vim
+source ~/.config/nvim/thib/plugins/coc.vim
+source ~/.config/nvim/thib/plugins/utils.vim
 
 set pyxversion=3
 colorscheme onehalfdark
