@@ -59,6 +59,9 @@ Plug 'akinsho/nvim-bufferline.lua'
 " Status line
 Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 
+" Nice search highlight
+Plug 'kevinhwang91/nvim-hlslens'
+
 
 " Next updates:
 " vimspector: debugger in vim

@@ -7,7 +7,6 @@ set hidden
 set incsearch
 set nobackup
 set noerrorbells
-set nohlsearch
 set noshowmatch
 set noshowmode
 set noswapfile
