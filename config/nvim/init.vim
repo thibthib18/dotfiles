@@ -7,8 +7,8 @@ let mapleader = " "
 inoremap jk <Esc>
 
 " Switch betweeen buffered files
-map <leader>l :bnext<cr>
-map <leader>h :bprevious<cr>
+nnoremap J :bprevious<cr>
+nnoremap K :bnext<cr>
 
 " Load some nice defaults
 source ~/.config/nvim/thib/goodDefaults.vim
