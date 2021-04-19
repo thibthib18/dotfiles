@@ -12,6 +12,7 @@ RUN apt-get -y install wget curl git\
                         python3 \
                         zsh \
                         python3-pip ipython3 \
+                        python3-venv \
                         silversearcher-ag xclip xsel
 
 # Needed to build tmux
