@@ -2,6 +2,8 @@
 " Specify a directory for plugins
 call plug#begin(stdpath('data') . '/plugged')
 
+Plug 'skywind3000/vim-quickui'
+
 " Git interface
 Plug 'tpope/vim-fugitive'
 
