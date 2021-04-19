@@ -9,6 +9,7 @@ inoremap jk <Esc>
 " Switch betweeen buffered files
 nnoremap J :bprevious<cr>
 nnoremap K :bnext<cr>
+nnoremap X :bdelete<cr>
 
 " Load some nice defaults
 source ~/.config/nvim/thib/goodDefaults.vim
