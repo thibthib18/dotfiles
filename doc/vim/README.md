@@ -119,6 +119,10 @@ and it has Tmux integration to seamlessly navigate Tmux and vim panes.
 `<space>fb`: open a popup menu to search opened files
 `C-f`: open live search in all files by word
 
+# Buffer navigation
+`J`: previous buffer (left in the tab list)
+`K`: next buffer (left in the tab list)
+
 # Git
 TODO
 
