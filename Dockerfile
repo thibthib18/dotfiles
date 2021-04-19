@@ -61,6 +61,8 @@ RUN ln -s ~/dotfiles/config/zsh/zshrc ~/.zshrc
 RUN rm ~/.tmux.conf
 RUN ln -s ~/dotfiles/config/tmux/tmux.conf ~/.tmux.conf
 
+RUN mkdir -p ~/.local/share/nvim/plugged
+RUN ln -s ~/.local/share/nvim/plugged ~/plugged
 # Install and setup nvim
 RUN ./scripts/nvim/install_nvim.sh
 RUN ./scripts/nvim/setup.sh
