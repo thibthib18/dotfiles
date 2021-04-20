@@ -70,6 +70,8 @@ RUN ln -s ~/.local/share/nvim/plugged ~/plugged
 # Install and setup nvim
 RUN ./scripts/nvim/install_nvim.sh
 RUN ./scripts/nvim/setup.sh
+# For python2 support
+RUN python2 -m pip install --user --upgrade pynvim
 
 # Install tpm tmux plugin manager
 RUN git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
