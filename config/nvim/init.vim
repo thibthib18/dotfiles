@@ -30,6 +30,7 @@ source ~/.config/nvim/thib/plugins/nvim-hlslens.vim
 source ~/.config/nvim/thib/plugins/fugitive.vim
 source ~/.config/nvim/thib/plugins/ros.vim
 lua require("galaxylinePlugin")
+lua require("thib.lspconfig")
 
 set pyxversion=3
 colorscheme onehalfdark

@@ -5,7 +5,17 @@ call plug#begin(stdpath('data') . '/plugged')
 " Ros
 Plug 'taketwo/vim-ros'
 
+" vim UI libs, might use later
 Plug 'skywind3000/vim-quickui'
+
+" Builtin LSP config helpers
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
+
+" Lua dev
+Plug 'tjdevries/nlua.nvim'
+Plug 'euclidianAce/BetterLua.vim'
+Plug 'tjdevries/manillua.nvim'
 
 " Git interface
 Plug 'tpope/vim-fugitive'
