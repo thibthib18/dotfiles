@@ -1,0 +1,5 @@
+set CocCommand eslint.showOutputChannel
+
+
+
+run catkin_make in a new terminal window/tab
