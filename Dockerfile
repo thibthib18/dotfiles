@@ -62,7 +62,9 @@ RUN ln -s ~/dotfiles/config/zsh/zshrc ~/.zshrc
 RUN rm ~/.tmux.conf
 RUN ln -s ~/dotfiles/config/tmux/tmux.conf ~/.tmux.conf
 
+RUN mkdir -p ~/.ipython/profile_default
 RUN ln -s ~/dotfiles/config/ipython/ipython_config.py ~/.ipython/profile_default/ipython_config.py
+
 RUN mkdir -p ~/.local/share/nvim/plugged
 RUN ln -s ~/.local/share/nvim/plugged ~/plugged
 # Install and setup nvim
