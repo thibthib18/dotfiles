@@ -28,6 +28,7 @@ source ~/.config/nvim/thib/plugins/coc.vim
 source ~/.config/nvim/thib/plugins/utils.vim
 source ~/.config/nvim/thib/plugins/nvim-hlslens.vim
 source ~/.config/nvim/thib/plugins/fugitive.vim
+source ~/.config/nvim/thib/plugins/ros.vim
 lua require("galaxylinePlugin")
 
 set pyxversion=3

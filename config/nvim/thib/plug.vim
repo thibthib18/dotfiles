@@ -2,6 +2,9 @@
 " Specify a directory for plugins
 call plug#begin(stdpath('data') . '/plugged')
 
+" Ros
+Plug 'taketwo/vim-ros'
+
 Plug 'skywind3000/vim-quickui'
 
 " Git interface
