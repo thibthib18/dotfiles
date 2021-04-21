@@ -1,5 +1,13 @@
 
-autocmd BufEnter * lua require'completion'.on_attach()
+function! LspCompletionOnAttach()
+  try
+     lua require'completion'.on_attach()
+  catch
+    echo "Completion package missing"
+  endtry
+endfunction
+autocmd BufWritePre * :call LspCompletionOnAttach()
+
 " Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
