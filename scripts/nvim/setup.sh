@@ -15,3 +15,6 @@ done
 # For Jedi's python completion: install jedi package
 pip3 install -U jedi
 
+# Lua lsp
+./lua-language-server/install.sh
+
