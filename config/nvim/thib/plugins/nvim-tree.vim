@@ -29,7 +29,7 @@ lua <<EOF
       ["p"]              = tree_cb("paste"),
       ["[c"]             = tree_cb("prev_git_item"),
       ["]c"]             = tree_cb("next_git_item"),
-      ["-"]              = tree_cb("dir_up"),
+      ["u"]              = tree_cb("dir_up"),
       ["q"]              = tree_cb("close"),
     }
 EOF
