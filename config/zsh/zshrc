@@ -8,7 +8,7 @@ source "${zsh_files_path}/nvim.zsh"
 source "${zsh_files_path}/ros.zsh"
 
 # Load sv.zsh only if catkin_ws is present
-if [ -d "~/catkin_ws" ]
+if [ -d "/home/sv/catkin_ws" ]
 then
     source "${zsh_files_path}/sv.zsh"
 fi
