@@ -13,7 +13,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 
 " Lua dev
-Plug 'tjdevries/nlua.nvim'
+Plug 'thibthib18/nlua.nvim'
 Plug 'euclidianAce/BetterLua.vim'
 Plug 'tjdevries/manillua.nvim'
 Plug '~/dotfiles/config/nvim/plugins/nvim-whid'
