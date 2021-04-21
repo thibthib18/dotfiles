@@ -16,6 +16,7 @@ Plug 'nvim-lua/completion-nvim'
 Plug 'tjdevries/nlua.nvim'
 Plug 'euclidianAce/BetterLua.vim'
 Plug 'tjdevries/manillua.nvim'
+Plug '~/dotfiles/config/nvim/plugins/nvim-whid'
 
 " Git interface
 Plug 'tpope/vim-fugitive'
