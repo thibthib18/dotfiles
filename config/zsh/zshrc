@@ -6,7 +6,12 @@ source "${zsh_files_path}/benice.zsh"
 source "${zsh_files_path}/gcloud.zsh"
 source "${zsh_files_path}/nvim.zsh"
 source "${zsh_files_path}/ros.zsh"
-source "${zsh_files_path}/sv.zsh"
+
+# Load sv.zsh only if catkin_ws is present
+if [ -d "~/catkin_ws" ]
+then
+    source "${zsh_files_path}/sv.zsh"
+fi
 
 setopt auto_cd
 
