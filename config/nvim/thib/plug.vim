@@ -3,7 +3,7 @@
 call plug#begin(stdpath('data') . '/plugged')
 
 " Ros
-Plug 'taketwo/vim-ros'
+Plug 'thibthib18/vim-ros'
 
 " vim UI libs, might use later
 Plug 'skywind3000/vim-quickui'
