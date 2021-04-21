@@ -1,5 +1,9 @@
 #!/bin/bash
 
+
+# Add python2 support
+python2 -m pip install --user --upgrade pynvim
+
 # Install Coc extensions
 plugins=( coc-eslint coc-json coc-marketplace coc-pairs coc-jedi coc-pyright coc-prettier coc-snippets coc-tsserver coc-clangd)
 for cocPlugin in "${plugins[@]}"
