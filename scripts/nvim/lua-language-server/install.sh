@@ -23,5 +23,11 @@ compile/install.sh
 cd ../..
 ./3rd/luamake/luamake rebuild
 
-./bin/Linux/lua-language-server -E ./main.lua
+# Install
+cd ..
+mkdir -p ~/.cache/nvim/nlua/sumneko_lua/
+mv lua-language-server ~/.cache/nvim/nlua/sumneko_lua/
+
+# Run
+ # ./bin/Linux/lua-language-server -E ./main.lua
 
