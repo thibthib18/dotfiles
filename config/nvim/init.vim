@@ -11,6 +11,9 @@ nnoremap J :bprevious<cr>
 nnoremap K :bnext<cr>
 nnoremap <leader>x :bp\|bd #<cr>
 
+" Exit terminal mode with C-o
+tnoremap <C-o> <C-\><C-n>
+
 
 
 " Load some nice defaults
