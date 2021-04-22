@@ -32,5 +32,7 @@ mv lua-language-server ~/.cache/nvim/nlua/sumneko_lua/
  # ./bin/Linux/lua-language-server -E ./main.lua
 
 # Clean up: set gcc/g++ version back to 7
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 100
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 100
 sudo update-alternatives --set g++ /usr/bin/g++-7
 sudo update-alternatives --set gcc /usr/bin/gcc-7
