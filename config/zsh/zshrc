@@ -1,5 +1,7 @@
 
 
+HISTFILE=~/.zsh_history
+
 zsh_files_path=~/.config/zsh
 source "${zsh_files_path}/antigen.zsh"
 source "${zsh_files_path}/benice.zsh"
