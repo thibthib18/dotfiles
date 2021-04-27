@@ -11,6 +11,7 @@ Plug 'skywind3000/vim-quickui'
 " Builtin LSP config helpers
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
+Plug 'kabouzeid/nvim-lspinstall'
 
 " Lua dev
 Plug 'thibthib18/nlua.nvim'
