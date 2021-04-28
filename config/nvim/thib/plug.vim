@@ -13,6 +13,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'kabouzeid/nvim-lspinstall'
 
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Lua dev
 Plug 'thibthib18/nlua.nvim'
 Plug 'euclidianAce/BetterLua.vim'
