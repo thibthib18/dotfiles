@@ -83,6 +83,9 @@ RUN sudo apt-get install zsh-antigen # version from Ubuntu rep is broken
 RUN sudo curl -o /usr/share/zsh-antigen/antigen.zsh -sL git.io/antigen
 RUN zsh -c "source ~/.zshrc"
 
+# Install docker
+RUN ./scripts/install_docker.sh
+
 # Set default shell
 RUN sudo chsh -s $(which zsh) ${user}
 
