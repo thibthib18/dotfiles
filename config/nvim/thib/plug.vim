@@ -8,6 +8,9 @@ Plug 'thibthib18/vim-ros'
 " vim UI libs, might use later
 Plug 'skywind3000/vim-quickui'
 
+" Terminal utils wrapper
+Plug 'kassio/neoterm'
+
 " Builtin LSP config helpers
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
