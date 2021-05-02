@@ -51,7 +51,7 @@ RUN sudo npm install -g yarn
 # Add dotfiles repo
 ADD . /home/$user/dotfiles
 RUN sudo chown -R ${user}:${user} ~/dotfiles
-WORKDIR /home/$user/dotfiles
+WORKDIR /home/${user}/dotfiles
 
 # Copy config files
 RUN mkdir -p ~/.config
@@ -70,6 +70,7 @@ RUN ln -s ~/dotfiles/config/ipython/ipython_config.py ~/.ipython/profile_default
 
 RUN mkdir -p ~/.local/share/nvim/plugged
 RUN ln -s ~/.local/share/nvim/plugged ~/plugged
+
 # Install and setup nvim
 RUN ./scripts/nvim/install_nvim.sh
 RUN ./scripts/nvim/setup.sh
