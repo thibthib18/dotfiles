@@ -62,7 +62,7 @@ RUN ln -s ~/dotfiles/config/zsh ~/.config/zsh
 
 RUN ln -s ~/dotfiles/config/zsh/zshrc ~/.zshrc
 
-RUN rm ~/.tmux.conf
+RUN rm -f ~/.tmux.conf
 RUN ln -s ~/dotfiles/config/tmux/tmux.conf ~/.tmux.conf
 
 RUN mkdir -p ~/.ipython/profile_default
