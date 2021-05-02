@@ -1,4 +1,5 @@
-FROM seervision/development:latest
+ARG BASE_IMAGE=seervision/development:latest
+FROM $BASE_IMAGE
 
 USER root
 WORKDIR /
@@ -32,8 +33,10 @@ RUN cd && rm -rf ${src_path}
 RUN apt-get -y install llvm cmake clangd-10
 RUN apt -y install zlib1g-dev libncurses-dev rapidjson-dev clang libclang-dev
 
-USER sv
-WORKDIR /home/sv
+ARG user=sv
+USER $user
+ENV USER=${user_name}
+WORKDIR /home/$user
 
 # Install node.js
 RUN wget install-node.now.sh/lts
@@ -46,9 +49,9 @@ RUN mkdir -p ~/.config
 RUN sudo npm install -g yarn
 
 # Add dotfiles repo
-ADD . /home/sv/dotfiles
-RUN sudo chown -R sv:sv ~/dotfiles
-WORKDIR /home/sv/dotfiles
+ADD . /home/$user/dotfiles
+RUN sudo chown -R ${user}:${user} ~/dotfiles
+WORKDIR /home/$user/dotfiles
 
 # Copy config files
 RUN mkdir -p ~/.config
@@ -81,11 +84,11 @@ RUN sudo curl -o /usr/share/zsh-antigen/antigen.zsh -sL git.io/antigen
 RUN zsh -c "source ~/.zshrc"
 
 # Set default shell
-RUN sudo chsh -s $(which zsh) sv
+RUN sudo chsh -s $(which zsh) ${user}
 
 # Source once
 RUN zsh -c "source ~/.zshrc"
 
 USER root
-WORKDIR /home/sv/main
+WORKDIR /home/$user/main
 CMD ["/usr/bin/zsh"]
