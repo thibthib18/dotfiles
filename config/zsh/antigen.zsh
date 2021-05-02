@@ -21,6 +21,6 @@ antigen bundle "akarzim/zsh-docker-aliases"
 antigen bundle docker
 
 # POWERLEVEL10k
-source /home/sv/dotfiles/config/zsh/powerline.zsh
+source ~/dotfiles/config/zsh/powerline.zsh
 # Tell Antigen that you're done.
 antigen apply
