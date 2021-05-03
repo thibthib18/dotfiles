@@ -72,8 +72,8 @@ RUN mkdir -p ~/.local/share/nvim/plugged
 RUN ln -s ~/.local/share/nvim/plugged ~/plugged
 
 # Install and setup nvim
-RUN ./scripts/nvim/install_nvim.sh
-RUN ./scripts/nvim/setup.sh
+RUN ./docker/dev/scripts/nvim/install_nvim.sh
+RUN ./docker/dev/scripts/nvim/setup.sh
 
 # Install tpm tmux plugin manager
 RUN git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -85,7 +85,7 @@ RUN sudo curl -o /usr/share/zsh-antigen/antigen.zsh -sL git.io/antigen
 RUN zsh -c "source ~/.zshrc"
 
 # Install docker
-RUN ./scripts/install_docker.sh
+RUN ./docker/dev/scripts/install_docker.sh
 
 # Set default shell
 RUN sudo chsh -s $(which zsh) ${user}
