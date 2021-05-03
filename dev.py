@@ -2,6 +2,10 @@
 import fire
 import subprocess
 
+base_image_tag='thib_base'
+dev_image_tag='dev_thib'
+dev_container_name='thib_dev'
+
 class Build(object):
 
     def build_image(self, tag, path, build_args):
@@ -14,44 +18,43 @@ class Build(object):
             ])
 
     def base(self):
-        tag = 'thib_base'
         path = './docker/base/Dockerfile'
         subprocess.run(['docker', 'build',
-            '-t', tag,
+            '-t', base_image_tag,
             '-f', path,
             '.'
             ])
 
     def thib(self):
-        tag = 'dev_thib'
         dockerfile_path = './docker/dev/Dockerfile'
         build_args=[
                 'user=thib',
-                'BASE_IMAGE=thib_base:latest'
+                f'BASE_IMAGE={base_image_tag}:latest'
         ]
-        self.build_image(tag, dockerfile_path, build_args)
+        self.build_image(dev_container_name, dockerfile_path, build_args)
 
     def sv(self):
-        tag = 'dev_thib'
         dockerfile_path = './docker/dev/Dockerfile'
         build_args=[
                 'user=sv',
                 'BASE_IMAGE=seervision/development:latest'
         ]
-        self.build_image(tag, dockerfile_path, build_args)
+        self.build_image(dev_container_name, dockerfile_path, build_args)
 
 class Start(object):
 
     def thib(self):
+        subprocess.run(['docker', 'rm','-f',dev_container_name])
         subprocess.run(['docker', 'run',
             '--dti',
             '--privileged',
-            '--name', 'thib_dev',
-            '--net', 'host'])
+            '--name', dev_container_name,
+            '--net', 'host',
+            dev_image_tag])
         subprocess.run(['docker', 'exec',
             '-ti',
             '-u', 'thib',
-            'thib_dev',
+            dev_container_name,
             'zsh'])
 
     def sv(self):
