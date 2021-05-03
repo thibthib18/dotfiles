@@ -59,8 +59,7 @@ class Start(object):
 
     def sv(self):
         subprocess.run(['git', 'checkout',
-            'thib_dev_image',
-            '--',
+            'thib_dev_image', '--',
             'docker/run_containers/run_dev.sh'])
         subprocess.run(['bash', '~/main/docker/run_containers/run_dev.sh'])
         return 'start dev sv image'
