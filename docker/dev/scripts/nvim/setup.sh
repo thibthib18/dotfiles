@@ -20,5 +20,5 @@ done
 pip3 install -U jedi
 
 # Lua lsp
-~/dotfiles/scripts/nvim/lua-language-server/install.sh
+~/dotfiles/docker/dev/scripts/nvim/lua-language-server/install.sh
 
