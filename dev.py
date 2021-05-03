@@ -1,54 +1,65 @@
 #!/usr/bin/python3
 import fire
-import docker
+import subprocess
 
-api = docker.from_env()
 class Build(object):
+
+    def build_image(self, tag, path, build_args):
+        subprocess.run(['docker', 'build',
+            '-t', tag,
+            '--build-arg', build_args[0],
+            '--build-arg', build_args[1],
+            '-f', path,
+            '.'
+            ])
 
     def base(self):
         tag = 'thib_base'
-        path = './docker/base'
-        api.images.build(path=path,tag=tag)
-        return 'build dev base image'
+        path = './docker/base/Dockerfile'
+        subprocess.run(['docker', 'build',
+            '-t', tag,
+            '-f', path,
+            '.'
+            ])
 
     def thib(self):
         tag = 'dev_thib'
-        path = './docker/dev'
-        build_args={
-                "user": "thib",
-                "BASE_IMAGE": "thib_base:latest"
-        }
-        api.images.build(path=path,tag=tag, buildargs=build_args)
-        return 'build dev thib image'
+        dockerfile_path = './docker/dev/Dockerfile'
+        build_args=[
+                'user=thib',
+                'BASE_IMAGE=thib_base:latest'
+        ]
+        self.build_image(tag, dockerfile_path, build_args)
 
     def sv(self):
         tag = 'dev_thib'
-        path = './docker/dev/Dockerfile'
-        build_args={
-                "user": "sv",
-                "BASE_IMAGE": "seervision/development:latest"
-        }
-        api.images.build(path=path,tag=tag, buildargs=build_args)
-        return 'build dev sv image'
+        dockerfile_path = './docker/dev/Dockerfile'
+        build_args=[
+                'user=sv',
+                'BASE_IMAGE=seervision/development:latest'
+        ]
+        self.build_image(tag, dockerfile_path, build_args)
 
 class Start(object):
 
     def thib(self):
-        api.containers.run(
-                image='dev_thib:latest',
-                name='thib_dev',
-                command='zsh',
-                user='thib',
-                tty=True,
-                detach=True,
-                privileged=True,
-                network_mode='host',
-                )
-        return 'start dev thib image'
+        subprocess.run(['docker', 'run',
+            '--dti',
+            '--privileged',
+            '--name', 'thib_dev',
+            '--net', 'host'])
+        subprocess.run(['docker', 'exec',
+            '-ti',
+            '-u', 'thib',
+            'thib_dev',
+            'zsh'])
 
     def sv(self):
-        #  checkout run_dev file from my branch
-        #  call it
+        subprocess.run(['git', 'checkout',
+            'thib_dev_image',
+            '--',
+            'docker/run_containers/run_dev.sh'])
+        subprocess.run(['bash', '~/main/docker/run_containers/run_dev.sh'])
         return 'start dev sv image'
 
 class Dev(object):
