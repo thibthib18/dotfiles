@@ -43,14 +43,19 @@ class Build(object):
 
 class Start(object):
 
-    def thib(self):
+    def thib(self, mount_dotfiles = False):
         subprocess.run(['docker', 'rm','-f',dev_container_name])
-        subprocess.run(['docker', 'run',
+        run_args = ['docker', 'run',
             '--dti',
             '--privileged',
             '--name', dev_container_name,
             '--net', 'host',
-            dev_image_tag])
+            '--volume', '/var/run/docker.sock:/var/run/docker.sock']
+        if mount_dotfiles:
+            dotfiles_src='~/dotfiles'
+            dotfiles_dest='~/dotfiles'
+            run_args+=['--mount', f'type=bind,source={dotfiles_src},target={dotfiles_dest}']
+        subprocess.run(run_args + [dev_image_tag])
         subprocess.run(['docker', 'exec',
             '-ti',
             '-u', 'thib',
