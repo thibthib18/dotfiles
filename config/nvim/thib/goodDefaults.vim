@@ -22,6 +22,12 @@ set undodir=~/.vim/undodir
 set undofile
 set wrap
 
+" Folds
+" use syntax or indent
+set foldmethod=indent
+set foldlevel=1
+set foldclose=all
+
 set clipboard=unnamedplus
 
 " Show commands effects in real time
