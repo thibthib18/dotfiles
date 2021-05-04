@@ -48,8 +48,10 @@ def attach():
         dev_container_name,
         'zsh'])
 class Start(object):
+    def _add_mount_args(self, src, dest):
+        return ['--mount', f'type=bind,source={src},target={dest}']
 
-    def thib(self, mount_dotfiles = False):
+    def thib(self, mount_dotfiles = False, mount_ssh = True):
         subprocess.run(['docker', 'rm','-f',dev_container_name])
         run_args = ['docker', 'run',
             '--dti',
@@ -58,9 +60,11 @@ class Start(object):
             '--net', 'host',
             '--volume', '/var/run/docker.sock:/var/run/docker.sock']
         if mount_dotfiles:
-            dotfiles_src='~/dotfiles'
-            dotfiles_dest='~/dotfiles'
-            run_args+=['--mount', f'type=bind,source={dotfiles_src},target={dotfiles_dest}']
+            dotfiles_path='~/dotfiles'
+            run_args+=self._add_mount_args(dotfiles_path,dotfiles_path)
+        if mount_ssh:
+            ssh_path='~/.ssh'
+            run_args+=self._add_mount_args(ssh_path,ssh_path)
         subprocess.run(run_args + [dev_image_tag])
         attach()
 
