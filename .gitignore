@@ -5,3 +5,4 @@
 *.swo
 config/zsh/antigen.zsh.zwc
 config/tmux/plugins/*
+config/configstore
