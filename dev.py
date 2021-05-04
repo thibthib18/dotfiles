@@ -41,6 +41,12 @@ class Build(object):
         ]
         self.build_image(dev_container_name, dockerfile_path, build_args)
 
+def attach():
+    subprocess.run(['docker', 'exec',
+        '-ti',
+        '-u', 'thib',
+        dev_container_name,
+        'zsh'])
 class Start(object):
 
     def thib(self, mount_dotfiles = False):
@@ -56,11 +62,7 @@ class Start(object):
             dotfiles_dest='~/dotfiles'
             run_args+=['--mount', f'type=bind,source={dotfiles_src},target={dotfiles_dest}']
         subprocess.run(run_args + [dev_image_tag])
-        subprocess.run(['docker', 'exec',
-            '-ti',
-            '-u', 'thib',
-            dev_container_name,
-            'zsh'])
+        attach()
 
     def sv(self):
         subprocess.run(['git', 'checkout',
@@ -74,6 +76,9 @@ class Dev(object):
     def __init__(self):
         self.build = Build()
         self.start = Start()
+
+    def attach(self):
+        attach()
 
 if __name__ == '__main__':
     fire.Fire(Dev)
