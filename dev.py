@@ -54,7 +54,7 @@ class Start(object):
     def thib(self, mount_dotfiles = False, mount_ssh = True):
         subprocess.run(['docker', 'rm','-f',dev_container_name])
         run_args = ['docker', 'run',
-            '--dti',
+            '-dti',
             '--privileged',
             '--name', dev_container_name,
             '--net', 'host',
