@@ -2,6 +2,10 @@
 " Specify a directory for plugins
 call plug#begin(stdpath('data') . '/plugged')
 
+" WISHLIST
+" normal commands
+" https://github.com/JRasmusBm/vim-peculiar
+
 " Ros
 Plug 'thibthib18/vim-ros'
 
