@@ -1,10 +1,14 @@
 #!/usr/bin/python3
 import fire
 import subprocess
+import os
 
 base_image_tag='thib_base'
 dev_image_tag='dev_thib'
 dev_container_name='thib_dev'
+dev_user=os.getenv('DEV_USER','thib')
+host_homedir=os.path.expanduser('~')
+container_homedir=f'/home/{dev_user}'
 
 class Build(object):
 
@@ -51,7 +55,7 @@ class Start(object):
     def _add_mount_args(self, src, dest):
         return ['--mount', f'type=bind,source={src},target={dest}']
 
-    def thib(self, mount_dotfiles = False, mount_ssh = True):
+    def thib(self, mount_dotfiles = True, mount_ssh = True):
         subprocess.run(['docker', 'rm','-f',dev_container_name])
         run_args = ['docker', 'run',
             '-dti',
@@ -60,11 +64,13 @@ class Start(object):
             '--net', 'host',
             '--volume', '/var/run/docker.sock:/var/run/docker.sock']
         if mount_dotfiles:
-            dotfiles_path='~/dotfiles'
-            run_args+=self._add_mount_args(dotfiles_path,dotfiles_path)
+            dotfiles_src=f'{host_homedir}/dotfiles'
+            dotfiles_dest=f'{container_homedir}/dotfiles'
+            run_args+=self._add_mount_args(dotfiles_src,dotfiles_dest)
         if mount_ssh:
-            ssh_path='~/.ssh'
-            run_args+=self._add_mount_args(ssh_path,ssh_path)
+            ssh_src=f'{host_homedir}/.ssh'
+            ssh_dest=f'{container_homedir}/.ssh'
+            run_args+=self._add_mount_args(ssh_src,ssh_dest)
         subprocess.run(run_args + [dev_image_tag])
         attach()
 
