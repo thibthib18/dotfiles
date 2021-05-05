@@ -35,7 +35,7 @@ class Build(object):
                 'user=thib',
                 f'BASE_IMAGE={base_image_tag}:latest'
         ]
-        self.build_image(dev_container_name, dockerfile_path, build_args)
+        self.build_image(dev_image_tag, dockerfile_path, build_args)
 
     def sv(self):
         dockerfile_path = './docker/dev/Dockerfile'
@@ -43,7 +43,7 @@ class Build(object):
                 'user=sv',
                 'BASE_IMAGE=seervision/development:latest'
         ]
-        self.build_image(dev_container_name, dockerfile_path, build_args)
+        self.build_image(dev_image_tag, dockerfile_path, build_args)
 
 def attach():
     subprocess.run(['docker', 'exec',
