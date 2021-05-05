@@ -12,6 +12,7 @@ RUN apt-get update && \
 RUN apt-get -y install wget curl git\
                         python3 \
                         zsh \
+                        httpie \
                         python3-pip ipython3 \
                         python3-venv \
                         silversearcher-ag xclip xsel
