@@ -1,8 +1,7 @@
 
 # POWERLEVEL10k theme
 is_docker(){
-  local inside_container=$(~/dotfiles/scripts/docker/is_docker.sh)
-  local icon=$(echo $inside_container | grep 'inside' >/dev/null && echo '' || echo '')
+  local icon=$(grep -q docker /proc/1/cgroup && echo '' || echo '')
   local color='%F{blue}'
   echo -n "%{$color%}$icon%{%f%}"
 }
