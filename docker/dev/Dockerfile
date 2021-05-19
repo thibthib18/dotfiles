@@ -29,6 +29,9 @@ RUN ls
 RUN ./configure && make -j"$(nproc)" && sudo make install
 RUN cd && rm -rf ${src_path}
 
+# Ripgrep
+RUN add-apt-repository ppa:x4121/ripgrep -y
+RUN apt update && apt install ripgrep
 
 # Needed for C++ completion
 RUN apt-get -y install llvm cmake clangd-10
