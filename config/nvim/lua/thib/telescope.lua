@@ -4,6 +4,7 @@ require('telescope').setup{
     file_ignore_patterns = { "tmux/plugins/*", "node_modules/*", "third_party"},
   }
 }
+require('telescope').load_extension('fzy_native')
 
 local M = {}
 M.search_ui_components = function()

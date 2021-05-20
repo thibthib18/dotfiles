@@ -6,6 +6,7 @@ call plug#begin(stdpath('data') . '/plugged')
 " normal commands
 " https://github.com/JRasmusBm/vim-peculiar
 
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 " Ros
 Plug 'thibthib18/vim-ros'
 
