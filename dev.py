@@ -75,6 +75,7 @@ class Start(object):
         attach()
 
     def sv(self):
+        os.chdir(f'{host_homedir}/main')
         subprocess.run(['git', 'checkout',
             'thib_dev_image', '--',
             'docker/run_containers/run_dev.sh'])
