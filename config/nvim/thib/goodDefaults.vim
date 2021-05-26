@@ -25,8 +25,8 @@ set wrap
 " Folds
 " use syntax or indent
 set foldmethod=indent
-set foldlevel=1
-set foldclose=all
+set foldlevel=20
+"set foldclose=all
 
 set clipboard=unnamedplus
 
