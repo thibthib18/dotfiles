@@ -22,6 +22,7 @@
   "python.linting.mypyEnabled": true,
   "python.autoComplete.extraPaths": [
     "~/catkin_ws/devel/lib/python3/dist-packages",
+    "~/catkin_ws/devel/lib/python2.7/dist-packages",
     "~/main/svpy",
     "~/main/backend/host/bash",
     "~/main/libs/pylib/src/"
@@ -29,6 +30,7 @@
   "python.linting.pytypeEnabled": true,
   "python.analysis.extraPaths": [
     "/home/sv/catkin_ws/devel/lib/python3/dist-packages",
+    "/home/sv/catkin_ws/devel/lib/python2.7/dist-packages",
     "/home/sv/main/svpy",
     "/home/sv/main/backend/host/bash",
     "/home/sv/main/libs/pylib/src/"
