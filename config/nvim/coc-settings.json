@@ -33,6 +33,7 @@
     "/home/sv/catkin_ws/devel/lib/python2.7/dist-packages",
     "/home/sv/main/svpy",
     "/home/sv/main/backend/host/bash",
+    "/home/sv/main/computer_vision/reid/src",
     "/home/sv/main/libs/pylib/src/"
   ],
   "python.analysis.autoImportCompletions": true,
