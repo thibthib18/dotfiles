@@ -1,4 +1,20 @@
 
+let g:coc_global_extensions = [
+  'coc-json',
+  'coc-eslint',
+  'coc-json',
+  'coc-marketplace',
+  'coc-pairs',
+  'coc-jedi',
+  'coc-pyright',
+  'coc-css',
+  'coc-git',
+  'coc-prettier',
+  'coc-snippets',
+  'coc-tsserver',
+  'coc-clangd'
+]
+
 " GoTo code navigation.
 nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>gy <Plug>(coc-type-definition)
