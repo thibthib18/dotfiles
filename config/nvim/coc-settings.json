@@ -11,6 +11,7 @@
     "python"
   ],
   "Lua.completion.enable": true,
+  "git.addGBlameToVirtualText": true,
   "python.formatting.provider": "yapf",
   "python.formatting.yapfPath": "/usr/local/bin/yapf",
   "python.formatting.yapfArgs": [
