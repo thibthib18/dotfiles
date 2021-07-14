@@ -14,6 +14,11 @@ nnoremap <leader>x :bp\|bd #<cr>
 " Exit terminal mode with C-o
 tnoremap <C-o> <C-\><C-n>
 
+" Highlight yanked text for 1 second
+augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=1000 }
+augroup END
 
 
 " Load some nice defaults
