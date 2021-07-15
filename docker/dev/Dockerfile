@@ -25,7 +25,6 @@ RUN VERSION=${tmux_version} && \
     mkdir ${src_path} && \
     wget -qO- https://github.com/tmux/tmux/releases/download/${VERSION}/tmux-${VERSION}.tar.gz | tar xvz -C ${src_path}
 WORKDIR ${src_path}/tmux-${tmux_version}
-RUN ls
 RUN ./configure && make -j"$(nproc)" && sudo make install
 RUN cd && rm -rf ${src_path}
 
@@ -57,23 +56,8 @@ ADD . /home/$user/dotfiles
 RUN sudo chown -R ${user}:${user} ~/dotfiles
 WORKDIR /home/${user}/dotfiles
 
-# Copy config files
-RUN mkdir -p ~/.config
-
-RUN ln -s ~/dotfiles/config/nvim ~/.config/nvim
-RUN ln -s ~/dotfiles/config/tmux ~/.config/tmux
-RUN ln -s ~/dotfiles/config/zsh ~/.config/zsh
-
-RUN ln -s ~/dotfiles/config/zsh/zshrc ~/.zshrc
-
-RUN rm -f ~/.tmux.conf
-RUN ln -s ~/dotfiles/config/tmux/tmux.conf ~/.tmux.conf
-
-RUN mkdir -p ~/.ipython/profile_default
-RUN ln -s ~/dotfiles/config/ipython/ipython_config.py ~/.ipython/profile_default/ipython_config.py
-
-RUN mkdir -p ~/.local/share/nvim/plugged
-RUN ln -s ~/.local/share/nvim/plugged ~/plugged
+# Setup symlinks
+RUN ./docker/dev/scripts/setup_symlinks.sh
 
 # Install and setup nvim
 RUN ./docker/dev/scripts/nvim/install_nvim.sh
