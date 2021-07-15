@@ -1,4 +1,5 @@
 
+export USER=sv
 source ~/catkin_ws/devel/setup.zsh
 
 # Get the interesting part of bashrc
