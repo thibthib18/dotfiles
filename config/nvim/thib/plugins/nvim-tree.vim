@@ -31,5 +31,5 @@ lua <<EOF
     }
 EOF
 
-nnoremap <F2> :NvimTreeToggle<CR>
+nnoremap <leader>ft :NvimTreeToggle<CR>
 
