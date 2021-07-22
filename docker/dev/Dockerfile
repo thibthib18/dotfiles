@@ -20,7 +20,7 @@ RUN apt-get -y install wget curl git\
 # Needed to build tmux
 RUN apt-get -y install wget tar libevent-dev libncurses-dev
 ARG src_path=/tmux-src
-ARG tmux_version=2.6
+ARG tmux_version=3.2a
 RUN VERSION=${tmux_version} && \
     mkdir ${src_path} && \
     wget -qO- https://github.com/tmux/tmux/releases/download/${VERSION}/tmux-${VERSION}.tar.gz | tar xvz -C ${src_path}
