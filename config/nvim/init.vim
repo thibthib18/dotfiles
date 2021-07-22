@@ -38,6 +38,7 @@ source ~/.config/nvim/thib/plugins/nvim-hlslens.vim
 source ~/.config/nvim/thib/plugins/fugitive.vim
 source ~/.config/nvim/thib/plugins/ros.vim
 source ~/.config/nvim/thib/plugins/completion.vim
+source ~/.config/nvim/thib/plugins/vimtest.vim
 lua require("galaxylinePlugin")
 lua require("thib.lspconfig")
 lua require("thib.nvim-treesitter")
