@@ -1,7 +1,7 @@
 
 require('telescope').setup{
   defaults = {
-    file_ignore_patterns = { "tmux/plugins/*", "node_modules/*", "third_party"},
+    file_ignore_patterns = { "venv/*", "tmux/plugins/*", "node_modules/*", "third_party"},
   }
 }
 require('telescope').load_extension('fzy_native')
