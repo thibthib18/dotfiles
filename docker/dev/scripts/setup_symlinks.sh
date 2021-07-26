@@ -11,6 +11,9 @@ ln -s ~/dotfiles/config/zsh/zshrc ~/.zshrc
 rm -f ~/.tmux.conf
 ln -s ~/dotfiles/config/tmux/tmux.conf ~/.tmux.conf
 
+mkdir -p ~/.ipython/profile_default
+ln -svf ~/dotfiles/config/ipython/ipython_config.py ~/.ipython/profile_default/ipython_config.py
+
 mkdir -p ~/.local/share/nvim/plugged
 ln -s ~/.local/share/nvim/plugged ~/plugged
 
