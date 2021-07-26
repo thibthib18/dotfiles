@@ -5,6 +5,9 @@ call plug#begin(stdpath('data') . '/plugged')
 " WISHLIST
 " normal commands
 " https://github.com/JRasmusBm/vim-peculiar
+
+Plug 'junegunn/vim-peekaboo'
+
 Plug 'vim-test/vim-test'
 
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
