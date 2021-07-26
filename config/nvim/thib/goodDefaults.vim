@@ -21,6 +21,7 @@ set termguicolors
 set undodir=~/.vim/undodir
 set undofile
 set wrap
+set splitbelow
 
 " Folds
 " use syntax or indent
