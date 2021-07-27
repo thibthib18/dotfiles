@@ -6,6 +6,8 @@ call plug#begin(stdpath('data') . '/plugged')
 " normal commands
 " https://github.com/JRasmusBm/vim-peculiar
 
+Plug 'michaeljsmith/vim-indent-object'
+
 Plug 'junegunn/vim-peekaboo'
 
 Plug 'vim-test/vim-test'
