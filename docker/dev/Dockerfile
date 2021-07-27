@@ -63,6 +63,9 @@ RUN ./docker/dev/scripts/setup_symlinks.sh
 RUN ./docker/dev/scripts/nvim/install_nvim.sh
 RUN ./docker/dev/scripts/nvim/setup.sh
 
+# Install latest git
+RUN ./docker/dev/scripts/install_git.sh
+
 # Install tpm tmux plugin manager
 RUN git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 RUN ~/.tmux/plugins/tpm/scripts/install_plugins.sh
