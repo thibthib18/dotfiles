@@ -9,16 +9,22 @@ local function open_split()
   resize_split()
 end
 
-local function send_command_to_current_term(command)
+local function send_command_to_current_term(command, autoscroll)
   local send_to_term = ':call jobsend(b:terminal_job_id, "' .. command .. '\\n")'
+  vim.cmd(':file ' .. command)
   vim.cmd(send_to_term)
+  if autoscroll ~= false then
+    vim.cmd('startinsert')
+    vim.cmd(':normal! G')
+    vim.cmd('stopinsert')
+  end
 end
 
 local function catkin_make(suffix)
   local make_command = 'catkin_make' .. (suffix or "")
   open_split()
   local catkin_ws_path = '~/catkin_ws'
-  send_command_to_current_term('cd ' .. catkin_ws_path)
+  send_command_to_current_term('cd ' .. catkin_ws_path, false)
   send_command_to_current_term(make_command)
 end
 
