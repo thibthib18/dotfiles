@@ -6,7 +6,18 @@ require('telescope').setup{
 }
 require('telescope').load_extension('fzy_native')
 
+
 local M = {}
+
+M.git_branches = function()
+  local actions = require('telescope.actions')
+  require'telescope.builtin'.git_branches({ attach_mappings = function(_, map)
+    map('i', '<cr>', actions.git_switch_branch)
+    map('n', '<cr>', actions.git_switch_branch)
+    return true
+  end})
+end
+
 M.search_ui_components = function()
   require("telescope.builtin").find_files({
     prompt_title = "< UI components >",
