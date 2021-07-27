@@ -31,6 +31,7 @@
   ],
   "python.linting.pytypeEnabled": true,
   "python.analysis.extraPaths": [
+    "/usr/local/lib/python3.6/dist-packages/",
     "/home/sv/main/backend/operations_server",
     "/home/sv/catkin_ws/devel/lib/python3/dist-packages",
     "/home/sv/catkin_ws/devel/lib/python2.7/dist-packages",
