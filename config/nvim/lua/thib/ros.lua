@@ -14,9 +14,7 @@ local function send_command_to_current_term(command, autoscroll)
   vim.cmd(':file ' .. command)
   vim.cmd(send_to_term)
   if autoscroll ~= false then
-    vim.cmd('startinsert')
     vim.cmd(':normal! G')
-    vim.cmd('stopinsert')
   end
 end
 
