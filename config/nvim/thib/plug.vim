@@ -37,6 +37,8 @@ Plug '~/dotfiles/config/nvim/plugins/nvim-whid'
 " Git interface
 Plug 'tpope/vim-fugitive'
 
+Plug 'tpope/vim-surround'
+
 " LSP plugin
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
