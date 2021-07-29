@@ -9,7 +9,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
       apt-get -y install sudo
 
-RUN apt-get -y install wget curl git\
+RUN apt-get update && apt-get -y install \
+                        wget curl git \
                         python3 \
                         zsh \
                         httpie \
