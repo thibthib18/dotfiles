@@ -18,6 +18,13 @@ M.git_branches = function()
   end})
 end
 
+M.search_dotfiles = function()
+  require("telescope.builtin").find_files({
+    prompt_title = "< Dotfiles >",
+    cwd = "~/dotfiles",
+  })
+end
+
 M.search_ui_components = function()
   require("telescope.builtin").find_files({
     prompt_title = "< UI components >",
