@@ -7,7 +7,7 @@ WORKDIR /
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
-      apt-get -y install sudo
+      apt-get -y install sudo software-properties-common
 
 RUN apt-get update && apt-get -y install \
                         wget curl git \
