@@ -16,6 +16,9 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 " Ros
 Plug 'thibthib18/vim-ros'
 
+" Gitlab
+Plug 'thibthib18/octo.nvim'
+
 " vim UI libs, might use later
 Plug 'skywind3000/vim-quickui'
 
