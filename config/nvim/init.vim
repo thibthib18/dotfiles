@@ -42,6 +42,7 @@ source ~/.config/nvim/thib/plugins/vimtest.vim
 lua require("galaxylinePlugin")
 lua require("thib.lspconfig")
 lua require("thib.nvim-treesitter")
+lua require("octo").setup()
 
 set pyxversion=3
 colorscheme onehalfdark
