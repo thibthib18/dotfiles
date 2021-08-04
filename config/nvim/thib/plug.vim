@@ -83,6 +83,7 @@ Plug 'dbeniamine/cheat.sh-vim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-symbols.nvim'
 
 " for nice icons <- require a nerd font installed (on your machine)
 Plug 'kyazdani42/nvim-web-devicons'
