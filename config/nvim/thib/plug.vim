@@ -5,6 +5,9 @@ call plug#begin(stdpath('data') . '/plugged')
 " WISHLIST
 " normal commands
 " https://github.com/JRasmusBm/vim-peculiar
+" TO CHECK OUT
+" https://github.com/rcarriga/vim-ultest
+
 " Debug
 Plug 'mfussenegger/nvim-dap'
 Plug 'jbyuki/one-small-step-for-vimkind'
