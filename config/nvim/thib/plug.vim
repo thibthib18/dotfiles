@@ -5,6 +5,11 @@ call plug#begin(stdpath('data') . '/plugged')
 " WISHLIST
 " normal commands
 " https://github.com/JRasmusBm/vim-peculiar
+" Debug
+Plug 'mfussenegger/nvim-dap'
+Plug 'jbyuki/one-small-step-for-vimkind'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'theHamsta/nvim-dap-virtual-text'
 
 Plug 'michaeljsmith/vim-indent-object'
 
