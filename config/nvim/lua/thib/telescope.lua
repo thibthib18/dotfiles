@@ -33,4 +33,13 @@ M.search_ui_components = function()
   })
 end
 
+
+M.search_frontend = function()
+  require("telescope.builtin").find_files({
+    prompt_title = "< Frontend >",
+    cwd = "~/main/frontend/interface/npm/src",
+  })
+end
+
+
 return M
