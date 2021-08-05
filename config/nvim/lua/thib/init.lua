@@ -8,3 +8,6 @@ require("thib.dbg.dapui")
 require("thib.dbg.dap-virtual-text")
 require("thib.dbg.dbg-config")
 require("thib.dbg.lua-dap")
+
+-- TODO add to its own file
+vim.notify = require("notify")

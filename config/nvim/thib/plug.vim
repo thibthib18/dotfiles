@@ -20,6 +20,9 @@ Plug 'junegunn/vim-peekaboo'
 
 Plug 'vim-test/vim-test'
 
+" Pretty notifications
+Plug 'rcarriga/nvim-notify'
+
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 " Ros
 Plug 'thibthib18/vim-ros'
