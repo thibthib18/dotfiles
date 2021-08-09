@@ -9,3 +9,4 @@ nnoremap <leader>sd <cmd>lua require('thib.telescope').search_dotfiles()<cr>
 nnoremap <leader>/ <cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>
 nnoremap <leader>ee <cmd>lua require('telescope.builtin').symbols{ sources = {'emoji'} }<cr>
 nnoremap <leader>gb <cmd>lua require('thib.telescope').git_branches()<cr>
+nnoremap ' <cmd>lua require('telescope.builtin').marks()<cr>
