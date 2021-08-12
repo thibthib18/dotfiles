@@ -44,6 +44,12 @@ lua require("galaxylinePlugin")
 lua require("thib")
 lua require("octo").setup()
 
+" TODO: move to lua
+augroup Format
+    autocmd!
+    autocmd BufWritePost * FormatWrite
+augroup END
+
 set pyxversion=3
 colorscheme onehalfdark
 set background=dark
