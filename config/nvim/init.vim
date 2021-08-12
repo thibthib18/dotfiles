@@ -51,6 +51,8 @@ set signcolumn=yes:1
 let g:rainbow_active = 1
 nnoremap <leader>m :MaximizerToggle!<CR>
 
+nnoremap n nzzzv
+nnoremap N Nzzzv
 " I forgot what's this for
 "autocmd StdinReadPre * let s:std_in=1
 
