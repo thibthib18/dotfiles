@@ -14,6 +14,9 @@ Plug 'jbyuki/one-small-step-for-vimkind'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'theHamsta/nvim-dap-virtual-text'
 
+" Formatting
+Plug 'lukas-reineke/format.nvim'
+
 Plug 'michaeljsmith/vim-indent-object'
 
 Plug 'junegunn/vim-peekaboo'
