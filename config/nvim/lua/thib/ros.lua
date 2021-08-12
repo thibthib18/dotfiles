@@ -1,11 +1,25 @@
 
+local Modes = {
+  TERM = 0,
+  JOB = 1,
+}
+
+local mode = Modes.TERM
 
 local function resize_split(height)
   vim.cmd('resize ' .. (height or vim.g.make_split_height))
 end
 
-local function open_split()
-  vim.cmd('split | terminal')
+local function open_terminal()
+  vim.cmd('terminal')
+end
+
+local function open_split(with_terminal)
+  with_terminal = with_terminal == nil and true or with_terminal
+  vim.cmd('split')
+  if with_terminal then
+    open_terminal()
+  end
   resize_split()
 end
 
@@ -28,6 +42,21 @@ end
 
 local function catkin_make_all_debug()
   catkin_make('_all_debug')
+end
+
+local function testF()
+  vim.cmd('new')
+  vim.cmd(':file ' .. 'testF')
+  resize_split()
+  vim.fn.termopen('ls && zsh', {on_exit = function (job_id, code, event)
+    print('ok')
+    print(job_id)
+    print(code)
+    if code == 0 then
+      vim.notify('all good')
+    end
+  end
+  })
 end
 
 local function get_current_package_name(path)
@@ -66,4 +95,5 @@ return {
   catkin_make_pkg = catkin_make_pkg,
   rostest = rostest,
   open_split = open_split,
+  testF = testF,
 }
