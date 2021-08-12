@@ -53,6 +53,8 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'tpope/vim-surround'
 
+Plug 'tpope/vim-repeat'
+
 " LSP plugin
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
