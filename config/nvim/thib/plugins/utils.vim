@@ -48,11 +48,3 @@ function! RelativeNumberToggle()
 endfunc
 
 nnoremap <leader>r :call RelativeNumberToggle()<cr>
-" Run command within container
-" Build entire catkin ws
-"let build_command='catkin_make'
-" Build one catkin package
-"let pkg =
-"let build_command='catkin_make --pkg' + pkg
-
-
