@@ -10,13 +10,7 @@ require "format".setup {
         }
     },
     lua = {
-        {
-            cmd = {
-                function(file)
-                    return string.format("luafmt -l %s -w replace %s", vim.bo.textwidth, file)
-                end
-            }
-        }
+        {cmd = {"luafmt -w replace"}}
     },
     cpp = {
         {cmd = {"clang-format-10 --style=file --i"}}
