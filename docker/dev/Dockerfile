@@ -52,6 +52,9 @@ RUN mkdir -p ~/.config
 # Install yarn
 RUN sudo npm install -g yarn
 
+# Install lua formatter
+RUN sudo npm install -g lua-format
+
 # Add dotfiles repo
 ADD . /home/$user/dotfiles
 RUN sudo chown -R ${user}:${user} ~/dotfiles
