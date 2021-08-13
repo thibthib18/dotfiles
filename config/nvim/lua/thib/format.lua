@@ -18,7 +18,7 @@ require "format".setup {
             }
         }
     },
-    cxx = {
+    cpp = {
         {cmd = {"clang-format-10 --style=file --i"}}
     },
     python = {
@@ -43,5 +43,5 @@ augroup Format
     autocmd!
     autocmd BufWritePost * FormatWrite
 augroup END
-]])
+]]
 --]]
