@@ -1,15 +1,15 @@
-local dap = require"dap"
+local dap = require "dap"
 local port = 33982
 dap.configurations.lua = {
-  {
-    type = 'nlua',
-    request = 'attach',
-    name = "Attach to running Neovim instance",
-  }
+    {
+        type = "nlua",
+        request = "attach",
+        name = "Attach to running Neovim instance"
+    }
 }
 
 dap.adapters.nlua = function(callback, config)
-  callback({ type = 'server', host = config.host or "127.0.0.1", port = port or config.port })
+    callback({type = "server", host = config.host or "127.0.0.1", port = port or config.port})
 end
 
 return port
