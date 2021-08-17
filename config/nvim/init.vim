@@ -10,6 +10,7 @@ inoremap jk <Esc>
 nnoremap J :bprevious<cr>
 nnoremap K :bnext<cr>
 nnoremap <leader>x :bp\|bd #<cr>
+nnoremap <leader>X :bp\|bd! #<cr>
 
 nnoremap <leader>mrl :Octo mr list #<cr>
 " Exit terminal mode with C-o
