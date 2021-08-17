@@ -5,6 +5,7 @@ USER root
 WORKDIR /
 
 ENV DEBIAN_FRONTEND=noninteractive
+ENV IS_DOCKER_BUILD=1
 
 RUN apt-get update && \
       apt-get -y install sudo software-properties-common
@@ -87,6 +88,8 @@ RUN sudo chsh -s $(which zsh) ${user}
 
 # Source once
 RUN zsh -c "source ~/.zshrc"
+
+ENV IS_DOCKER_BUILD=0
 
 USER root
 WORKDIR /home/$user/main
