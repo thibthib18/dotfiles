@@ -75,12 +75,12 @@ class Start(object):
         attach()
 
     def sv(self):
-        os.chdir(f'{host_homedir}/main')
-        subprocess.run(['git', 'checkout',
-            'origin/thib_dev_image', '--',
-            'docker/run_containers/run_dev.sh'])
-        subprocess.run(['bash', f'{host_homedir}/main/docker/run_containers/run_dev.sh'])
-        return 'start dev sv image'
+        subprocess.run(['bash', f'{host_homedir}/main/docker/run_containers/run_dev.sh',
+            '--image', 'dev_thib',
+            '--mount-zsh-history',
+            '--wait-for-entrypoint',
+            '--restart-tmux-session',
+        ])
 
 class Dev(object):
 
