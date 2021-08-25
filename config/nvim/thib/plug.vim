@@ -45,6 +45,9 @@ Plug 'nvim-lua/completion-nvim'
 Plug 'kabouzeid/nvim-lspinstall'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+Plug 'nvim-treesitter/playground'
+
 " Lua dev
 Plug 'thibthib18/nlua.nvim'
 Plug 'euclidianAce/BetterLua.vim'
