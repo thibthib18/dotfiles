@@ -44,6 +44,11 @@ local function catkin_make_all_debug()
     catkin_make("_all_debug")
 end
 
+local function generate_compile_commands()
+    catkin_make("_all_debug", "-DCMAKE_EXPORT_COMPILE_COMMANDS=YES")
+    send_command_to_current_term("mv ~/catkin_ws/build/compile_commands.json ~/main")
+end
+
 local function testF()
     vim.cmd("new")
     vim.cmd(":file " .. "testF")
@@ -99,5 +104,6 @@ return {
     catkin_make_pkg = catkin_make_pkg,
     rostest = rostest,
     open_split = open_split,
-    testF = testF
+    testF = testF,
+    generate_compile_commands = generate_compile_commands
 }
