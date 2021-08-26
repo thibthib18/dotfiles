@@ -44,7 +44,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'kabouzeid/nvim-lspinstall'
 
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSInstall lua cpp python typescript css bash dockerfile graphql tsx'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'nvim-treesitter/playground'
 
@@ -63,7 +63,8 @@ Plug 'tpope/vim-repeat'
 
 Plug 'tpope/vim-commentary'
 " LSP plugin
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': ':CocInstall coc-json coc-eslint coc-json coc-marketplace coc-pairs coc-jedi coc-pyright coc-css coc-git coc-prettier coc-snippets coc-tsserver coc-clang'}
 
 " Fuzzy file finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
