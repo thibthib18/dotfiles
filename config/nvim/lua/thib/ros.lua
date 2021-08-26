@@ -22,9 +22,10 @@ local function open_split(with_terminal)
     resize_split()
 end
 
-local function send_command_to_current_term(command, autoscroll)
+local function send_command_to_current_term(command, autoscroll, name)
     local send_to_term = ':call jobsend(b:terminal_job_id, "' .. command .. '\\n")'
-    vim.cmd(":file " .. command)
+    name = name or command
+    vim.cmd(":file " .. name)
     vim.cmd(send_to_term)
     if autoscroll ~= false then
         vim.cmd(":normal! G")
@@ -33,8 +34,9 @@ end
 
 local function execute_current_file()
     path = path or vim.fn.expand("%:p")
+    filename = vim.fn.expand("%:t")
     open_split()
-    send_command_to_current_term(path)
+    send_command_to_current_term(path, true, "exec " .. filename)
 end
 
 local function catkin_make(suffix, flags)
