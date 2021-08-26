@@ -31,6 +31,12 @@ local function send_command_to_current_term(command, autoscroll)
     end
 end
 
+local function execute_current_file()
+    open_split()
+    path = path or vim.fn.expand("%:p")
+    send_command_to_current_term(path)
+end
+
 local function catkin_make(suffix, flags)
     flags = flags or ""
     local make_command = "catkin_make" .. (suffix or "") .. " " .. flags
@@ -105,5 +111,6 @@ return {
     rostest = rostest,
     open_split = open_split,
     testF = testF,
-    generate_compile_commands = generate_compile_commands
+    generate_compile_commands = generate_compile_commands,
+    execute_current_file = execute_current_file
 }
