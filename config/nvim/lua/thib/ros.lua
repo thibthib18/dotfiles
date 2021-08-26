@@ -32,8 +32,8 @@ local function send_command_to_current_term(command, autoscroll)
 end
 
 local function execute_current_file()
-    open_split()
     path = path or vim.fn.expand("%:p")
+    open_split()
     send_command_to_current_term(path)
 end
 
