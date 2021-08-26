@@ -31,8 +31,9 @@ local function send_command_to_current_term(command, autoscroll)
     end
 end
 
-local function catkin_make(suffix)
-    local make_command = "catkin_make" .. (suffix or "")
+local function catkin_make(suffix, flags)
+    flags = flags or ""
+    local make_command = "catkin_make" .. (suffix or "") .. " " .. flags
     open_split()
     local catkin_ws_path = "~/catkin_ws"
     send_command_to_current_term("cd " .. catkin_ws_path, false)
