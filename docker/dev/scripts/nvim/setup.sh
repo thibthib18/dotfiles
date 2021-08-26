@@ -10,6 +10,6 @@ pip3 install -U jedi
 # Lua lsp
 ~/dotfiles/docker/dev/scripts/nvim/lua-language-server/install.sh
 
-nvim --headless +"CocUpdateSync" +qa #
-nvim --headless +"TSInstall lua cpp python typescript css bash dockerfile graphql tsx" +qa #
-nvim --headless +"PlugInstall" +qa #
+/opt/nvim-linux64/bin/nvim --headless +"CocUpdateSync" +qa #
+/opt/nvim-linux64/bin/nvim --headless +"TSInstall lua cpp python typescript css bash dockerfile graphql tsx" +qa #
+/opt/nvim-linux64/bin/nvim --headless +"PlugInstall" +qa #
