@@ -12,6 +12,7 @@ nnoremap K :bnext<cr>
 nnoremap <leader>x :bp\|bd #<cr>
 nnoremap <leader>X :bp\|bd! #<cr>
 
+nnoremap V v$
 nnoremap <leader>mrl :Octo mr list #<cr>
 " Exit terminal mode with C-o
 tnoremap <C-o> <C-\><C-n>
