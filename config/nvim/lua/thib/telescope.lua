@@ -1,3 +1,5 @@
+local tros = require("thib.ros")
+
 require("telescope").setup {
     defaults = {
         file_ignore_patterns = {"venv/*", "tmux/plugins/*", "node_modules/*", "third_party"}
@@ -44,6 +46,17 @@ M.search_frontend = function()
         {
             prompt_title = "< Frontend >",
             cwd = "~/main/frontend/interface/npm/src"
+        }
+    )
+end
+
+M.search_package = function()
+    local package_path = tros.get_current_package_path()
+    local package_name = tros.get_current_package_name()
+    require("telescope.builtin").find_files(
+        {
+            prompt_title = "< " .. package_name .. " >",
+            cwd = package_path
         }
     )
 end
