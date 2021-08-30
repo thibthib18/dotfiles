@@ -82,11 +82,17 @@ local function get_current_package_name(path)
     -- clean up output
     pkg_name, _ = string.gsub(pkg_name, "\r", "")
     pkg_name, _ = string.gsub(pkg_name, "\n", "")
+    if pkg_name == "None" then
+        return
+    end
     return pkg_name
 end
 
 local function get_current_package_path()
     local pkg_name = get_current_package_name()
+    if pkg_name == nil then
+        return
+    end
     local pkg_path = vim.fn.system("rospack find " .. pkg_name)
     -- clean up output
     pkg_path, _ = string.gsub(pkg_path, "\r", "")
