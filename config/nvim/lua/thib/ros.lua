@@ -87,7 +87,11 @@ end
 
 local function get_current_package_path()
     local pkg_name = get_current_package_name()
-    return vim.fn.system("rospack find " .. pkg_name)
+    local pkg_path = vim.fn.system("rospack find " .. pkg_name)
+    -- clean up output
+    pkg_path, _ = string.gsub(pkg_path, "\r", "")
+    pkg_path, _ = string.gsub(pkg_path, "\n", "")
+    return pkg_path
 end
 
 local function catkin_make_pkg()
