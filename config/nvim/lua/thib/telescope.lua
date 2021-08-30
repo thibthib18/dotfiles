@@ -53,6 +53,7 @@ end
 M.search_package = function()
     local package_path = tros.get_current_package_path()
     local package_name = tros.get_current_package_name()
+    package_path, _ = string.gsub(package_path, "/home/sv/catkin_ws/src", "~/main")
     if package_path ~= nil then
         require("telescope.builtin").find_files(
             {
