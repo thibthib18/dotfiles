@@ -7,15 +7,15 @@ local set_cwd_main = function()
 end
 
 local set_cwd_current_file = function()
-    path = path or vim.fn.expand("%:p:h")
+    local path = path or vim.fn.expand("%:p:h")
     set_cwd(path)
 end
 
 local tros = require("thib.ros")
 
 local set_cwd_current_package = function()
-    pkg_name = tros.get_current_package_name()
-    pkg_path = vim.fn.system("rospack find " .. pkg_name)
+    local pkg_name = tros.get_current_package_name()
+    local pkg_path = vim.fn.system("rospack find " .. pkg_name)
     set_cwd(pkg_path)
 end
 
