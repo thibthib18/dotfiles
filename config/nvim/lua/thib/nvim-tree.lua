@@ -1,5 +1,10 @@
-local set_cwd = function(folder_name)
+local set_cwd = function(folder_name, update_vim_cwd)
+    update_vim_cwd = update_vim_cwd == nil and false or update_vim_cwd
+    local pwd = vim.api.nvim_eval('getcwd()')
     require("nvim-tree.lib").change_dir(folder_name)
+    if not update_vim_cwd then
+      vim.cmd('lcd '.. pwd)
+    end
 end
 
 local set_cwd_main = function()
