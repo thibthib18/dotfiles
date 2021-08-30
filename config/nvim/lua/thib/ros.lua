@@ -114,5 +114,6 @@ return {
     open_split = open_split,
     testF = testF,
     generate_compile_commands = generate_compile_commands,
-    execute_current_file = execute_current_file
+    execute_current_file = execute_current_file,
+    get_current_package_name = get_current_package_name
 }
