@@ -104,7 +104,7 @@ local function catkin_make_pkg()
     local pkg_name = get_current_package_name()
     if pkg_name == nil then
         local path = vim.fn.expand("%:p")
-        print(path .. " is not part of a ROS package")
+        vim.notify(path .. " is not part of a ROS package", "error", {title = "catkin_make"})
         return
     end
     local suffix = " --pkg " .. pkg_name
