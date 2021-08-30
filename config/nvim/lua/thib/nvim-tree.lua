@@ -1,3 +1,5 @@
+local tros = require("thib.ros")
+
 local set_cwd = function(folder_name, update_vim_cwd)
     update_vim_cwd = update_vim_cwd == nil and false or update_vim_cwd
     local pwd = vim.api.nvim_eval("getcwd()")
@@ -16,12 +18,8 @@ local set_cwd_current_file = function()
     set_cwd(path)
 end
 
-local tros = require("thib.ros")
-
 local set_cwd_current_package = function()
-    local pkg_name = tros.get_current_package_name()
-    local pkg_path = vim.fn.system("rospack find " .. pkg_name)
-    set_cwd(pkg_path)
+    set_cwd(tros.get_current_package_path())
 end
 
 return {
