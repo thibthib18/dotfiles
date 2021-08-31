@@ -1,6 +1,7 @@
 {
   "suggest.noselect": false,
   "diagnostic.virtualText": true,
+  "diagnostic.virtualTextCurrentLineOnly": false,
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "typescript",
