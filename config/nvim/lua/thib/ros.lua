@@ -42,7 +42,15 @@ end
 local function catkin_make(suffix, flags)
     flags = flags or ""
     local make_command = "catkin_make" .. (suffix or "") .. " " .. flags
-    open_split()
+    local term_buf_name = make_command
+    local bufnr = vim.fn.bufnr("catkin_make")
+    if bufnr ~= -1 then
+        local winnr = vim.fn.bufwinnr(bufnr)
+        local winid = vim.fn.win_getid(winnr)
+        vim.fn.win_gotoid(winid)
+    else
+        open_split()
+    end
     local catkin_ws_path = "~/catkin_ws"
     send_command_to_current_term("cd " .. catkin_ws_path, false)
     send_command_to_current_term(make_command)
