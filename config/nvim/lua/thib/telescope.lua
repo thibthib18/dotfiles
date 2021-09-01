@@ -66,4 +66,18 @@ M.search_package = function()
     )
 end
 
+M.grep_package = function()
+    local package_path = tros.get_current_package_path()
+    if package_path == nil then
+        vim.notify("Not in a ROS package", "error", {title = "Grep ROS package"})
+        return
+    end
+    package_path, _ = string.gsub(package_path, "/home/sv/catkin_ws/src", "~/main")
+    require("telescope.builtin").live_grep(
+        {
+            search_dirs = {package_path}
+        }
+    )
+end
+
 return M
