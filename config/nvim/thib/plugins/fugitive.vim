@@ -1,4 +1,4 @@
-nnoremap <leader>gs :tab Gstatus<cr>
+nnoremap <leader>gs :tab Git<cr>
 
 command! Gpush :Git -c push.default=current push
 command! Gpull :Git pull
