@@ -55,7 +55,7 @@ class Start(object):
     def _add_mount_args(self, src, dest):
         return ['--mount', f'type=bind,source={src},target={dest}']
 
-    def thib(self, mount_dotfiles = True, mount_ssh = True):
+    def thib(self, mount_dotfiles = True, mount_ssh = True, mount_gitconfig = True, mount_zsh_history = True):
         subprocess.run(['docker', 'rm','-f',dev_container_name])
         run_args = ['docker', 'run',
             '-dti',
@@ -68,9 +68,17 @@ class Start(object):
             dotfiles_dest=f'{container_homedir}/dotfiles'
             run_args+=self._add_mount_args(dotfiles_src,dotfiles_dest)
         if mount_ssh:
-            ssh_src=f'{host_homedir}/.ssh'
-            ssh_dest=f'{container_homedir}/.ssh'
-            run_args+=self._add_mount_args(ssh_src,ssh_dest)
+            src=f'{host_homedir}/.ssh'
+            dest=f'{container_homedir}/.ssh'
+            run_args+=self._add_mount_args(src,dest)
+        if mount_gitconfig:
+            src=f'{host_homedir}/.gitconfig'
+            dest=f'{container_homedir}/.gitconfig'
+            run_args+=self._add_mount_args(src,dest)
+        if mount_zsh_history:
+            src=f'{host_homedir}/.zsh_history'
+            dest=f'{container_homedir}/.zsh_history'
+            run_args+=self._add_mount_args(src,dest)
         subprocess.run(run_args + [dev_image_tag])
         attach()
 
