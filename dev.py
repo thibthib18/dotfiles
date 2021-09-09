@@ -46,6 +46,7 @@ class Build(object):
         self.build_image(dev_image_tag, dockerfile_path, build_args)
 
 def attach():
+    subprocess.run(['docker', 'start', dev_container_name])
     subprocess.run(['docker', 'exec',
         '-ti',
         '-u', 'thib',
