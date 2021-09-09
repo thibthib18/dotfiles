@@ -17,7 +17,7 @@ RUN apt-get update && apt-get -y install \
                         httpie \
                         python3-pip ipython3 \
                         python3-venv \
-                        silversearcher-ag xclip xsel
+                        silversearcher-ag xclip xsel unzip
 
 # Needed to build tmux
 RUN apt-get -y install wget tar libevent-dev libncurses-dev
