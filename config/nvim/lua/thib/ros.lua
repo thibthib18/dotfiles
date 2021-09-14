@@ -11,17 +11,17 @@ local function catkin_make(suffix, flags)
     flags = flags or ""
     local make_command = "catkin_make" .. (suffix or "") .. " " .. flags
     local term_buf_name = make_command
+    local current_bufnr = vim.fn.bufnr()
     local bufnr = vim.fn.bufnr("catkin_make")
     if bufnr ~= -1 then
-        local winnr = vim.fn.bufwinnr(bufnr)
-        local winid = vim.fn.win_getid(winnr)
-        vim.fn.win_gotoid(winid)
+        utils.go_to_buffer_id(bufnr)
     else
         open_split()
     end
     local catkin_ws_path = "~/catkin_ws"
     send_command_to_current_term("cd " .. catkin_ws_path, false)
     send_command_to_current_term(make_command)
+    utils.go_to_buffer_id(current_bufnr)
 end
 
 local function catkin_make_all_debug()
