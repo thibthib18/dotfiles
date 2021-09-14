@@ -1,43 +1,11 @@
+local utils = require("thib.utils")
+
 local Modes = {
     TERM = 0,
     JOB = 1
 }
 
 local mode = Modes.TERM
-
-local function resize_split(height)
-    vim.cmd("resize " .. (height or vim.g.make_split_height))
-end
-
-local function open_terminal()
-    vim.cmd("terminal")
-end
-
-local function open_split(with_terminal)
-    with_terminal = with_terminal == nil and true or with_terminal
-    vim.cmd("split")
-    if with_terminal then
-        open_terminal()
-    end
-    resize_split()
-end
-
-local function send_command_to_current_term(command, autoscroll, name)
-    local send_to_term = ':call jobsend(b:terminal_job_id, "' .. command .. '\\n")'
-    name = name or command
-    vim.cmd(":file " .. name)
-    vim.cmd(send_to_term)
-    if autoscroll ~= false then
-        vim.cmd(":normal! G")
-    end
-end
-
-local function execute_current_file()
-    path = path or vim.fn.expand("%:p")
-    filename = vim.fn.expand("%:t")
-    open_split()
-    send_command_to_current_term(path, true, "exec " .. filename)
-end
 
 local function catkin_make(suffix, flags)
     flags = flags or ""
@@ -134,10 +102,8 @@ return {
     catkin_make_all_debug = catkin_make_all_debug,
     catkin_make_pkg = catkin_make_pkg,
     rostest = rostest,
-    open_split = open_split,
     testF = testF,
     generate_compile_commands = generate_compile_commands,
-    execute_current_file = execute_current_file,
     get_current_package_name = get_current_package_name,
     get_current_package_path = get_current_package_path
 }
