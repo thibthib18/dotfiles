@@ -24,7 +24,13 @@ local function get_current_line_mr()
                 function(j_self, _, _)
                     local result = j_self:result()
                     if next(result) ~= nil then
-                        vim.api.nvim_buf_set_extmark(0, ns, line_number, 0, {virt_text = {{result[1], "Comment"}}})
+                        vim.api.nvim_buf_set_extmark(
+                            0,
+                            ns,
+                            line_number,
+                            0,
+                            {virt_text = {{" " .. result[1], "Comment"}}}
+                        )
                     end
                 end
             )
@@ -33,6 +39,25 @@ local function get_current_line_mr()
     job:start()
 end
 
+local function generate_commit_mr_table()
+    local job =
+        Job:new(
+        {
+            enable_recording = true,
+            command = "/home/sv/main/tools/development/dev_tool/glab/glab.py",
+            args = {"gen"},
+            on_exit = vim.schedule_wrap(
+                function(j_self, _, _)
+                    local result = j_self:result()
+                    vim.notify(result)
+                end
+            )
+        }
+    )
+    job:start()
+end
+
 return {
-    get_current_line_mr = get_current_line_mr
+    get_current_line_mr = get_current_line_mr,
+    generate_commit_mr_table = generate_commit_mr_table
 }
