@@ -10,17 +10,16 @@ local mode = Modes.TERM
 local function catkin_make(suffix, flags)
     flags = flags or ""
     local make_command = "catkin_make" .. (suffix or "") .. " " .. flags
-    local term_buf_name = make_command
     local current_bufnr = vim.fn.bufnr()
     local bufnr = vim.fn.bufnr("catkin_make")
     if bufnr ~= -1 then
         utils.go_to_buffer_id(bufnr)
     else
-        open_split()
+        utils.open_split()
     end
     local catkin_ws_path = "~/catkin_ws"
-    send_command_to_current_term("cd " .. catkin_ws_path, false)
-    send_command_to_current_term(make_command)
+    utils.send_command_to_current_term("cd " .. catkin_ws_path, false)
+    utils.send_command_to_current_term(make_command)
     utils.go_to_buffer_id(current_bufnr)
 end
 
@@ -30,7 +29,7 @@ end
 
 local function generate_compile_commands()
     catkin_make("_all_debug", "-DCMAKE_EXPORT_COMPILE_COMMANDS=YES")
-    send_command_to_current_term("mv ~/catkin_ws/build/compile_commands.json ~/main")
+    utils.send_command_to_current_term("mv ~/catkin_ws/build/compile_commands.json ~/main")
 end
 
 local function testF()
@@ -93,8 +92,8 @@ local function rostest()
     test_name, _ = string.gsub(test_name, "_test", "")
     local pkg_name = get_current_package_name()
     local test_command = "rostest " .. pkg_name .. " " .. test_name
-    open_split()
-    send_command_to_current_term(test_command)
+    utils.open_split()
+    utils.send_command_to_current_term(test_command)
 end
 
 return {
