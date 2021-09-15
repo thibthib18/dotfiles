@@ -58,7 +58,7 @@ colorscheme onehalfdark
 set background=dark
 set signcolumn=yes:1
 let g:rainbow_active = 1
-nnoremap <leader>m :MaximizerToggle!<CR>
+"nnoremap <leader>m :MaximizerToggle!<CR>
 
 nnoremap n nzzzv
 nnoremap N Nzzzv
