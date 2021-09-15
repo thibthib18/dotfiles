@@ -31,7 +31,7 @@ RUN ./configure && make -j"$(nproc)" && sudo make install
 RUN cd && rm -rf ${src_path}
 
 # Rust
-curl https://sh.rustup.rs -sSf | sh -s -- -y
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 
 # Ripgrep
 RUN add-apt-repository ppa:x4121/ripgrep -y
