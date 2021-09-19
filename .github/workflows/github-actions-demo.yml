@@ -21,3 +21,5 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Setup environment
+        run: ${{ github.workspace}}/setup.bash
