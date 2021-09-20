@@ -4,7 +4,7 @@ let g:ros_make="current"
 lua require("thib.ros")
 lua require("thib.nvim-tree")
 
-let g:make_split_height=12
+let g:make_split_height=8
 
 command! GenerateCompileCommands :lua require('thib.ros').generate_compile_commands()
 
