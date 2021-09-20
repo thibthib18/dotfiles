@@ -10,6 +10,10 @@ local function get_current_line_commit()
     return output:gmatch("([^\n]*)\n?")()
 end
 
+local function current_line_commit_log()
+    vim.cmd("Gedit " .. get_current_line_commit())
+end
+
 local function get_current_line_mr()
     local commit_id = get_current_line_commit()
     local line_number = vim.api.nvim_win_get_cursor(0)[1] - 1
@@ -59,5 +63,6 @@ end
 
 return {
     get_current_line_mr = get_current_line_mr,
-    generate_commit_mr_table = generate_commit_mr_table
+    generate_commit_mr_table = generate_commit_mr_table,
+    current_line_commit_log = current_line_commit_log
 }
