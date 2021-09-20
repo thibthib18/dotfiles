@@ -1,8 +1,8 @@
 local utils = require("thib.utils")
 local _, Job = pcall(require, "plenary.job")
 
-local function get_current_line_commit(path)
-    path = vim.fn.expand("%:p")
+local function get_current_line_commit()
+    local path = vim.fn.expand("%:p")
     local line_number = vim.api.nvim_win_get_cursor(0)[1]
     local command = "git --no-pager log -L" .. line_number .. ",+1:'" .. path .. "' --pretty=format:'%H'"
     local output = vim.fn.system(command)
