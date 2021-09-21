@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import fire
 import subprocess
+from typing import List
 import os
 
 base_image_tag = 'thib_base'
@@ -40,11 +41,15 @@ class Start(object):
     def _add_mount_args(self, src, dest):
         return ['--mount', f'type=bind,source={src},target={dest}']
 
+    def _add_mirror_mount(self, run_args: List[str], path: str) -> None:
+        run_args += self._add_mount_args(path, path)
+
     def thib(self,
              mount_dotfiles=True,
              mount_ssh=True,
              mount_gitconfig=True,
              mount_zsh_history=True,
+             mount_glab_cache=True,
              mount_projects_dir=True):
         subprocess.run(['docker', 'rm', '-f', dev_container_name])
         run_args = [
@@ -52,25 +57,15 @@ class Start(object):
             '/var/run/docker.sock:/var/run/docker.sock'
         ]
         if mount_dotfiles:
-            dotfiles_src = f'{host_homedir}/dotfiles'
-            dotfiles_dest = f'{container_homedir}/dotfiles'
-            run_args += self._add_mount_args(dotfiles_src, dotfiles_dest)
+            self._add_mirror_mount(run_args, f'{host_homedir}/dotfiles')
         if mount_ssh:
-            src = f'{host_homedir}/.ssh'
-            dest = f'{container_homedir}/.ssh'
-            run_args += self._add_mount_args(src, dest)
+            self._add_mirror_mount(run_args, f'{host_homedir}/.ssh')
         if mount_gitconfig:
-            src = f'{host_homedir}/.gitconfig'
-            dest = f'{container_homedir}/.gitconfig'
-            run_args += self._add_mount_args(src, dest)
+            self._add_mirror_mount(run_args, f'{host_homedir}/.gitconfig')
         if mount_zsh_history:
-            src = f'{host_homedir}/.zsh_history'
-            dest = f'{container_homedir}/.zsh_history'
-            run_args += self._add_mount_args(src, dest)
+            self._add_mirror_mount(run_args, f'{host_homedir}/.zsh_history')
         if mount_projects_dir:
-            src = f'{host_homedir}/Projects'
-            dest = f'{container_homedir}/Projects'
-            run_args += self._add_mount_args(src, dest)
+            self._add_mirror_mount(run_args, f'{host_homedir}/Projects')
         subprocess.run(run_args + [dev_image_tag])
         attach()
 
