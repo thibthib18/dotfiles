@@ -26,6 +26,8 @@ jobs:
       - name: Setup environment
         run: ${{ github.workspace}}/setup.bash
 
+      - name: Pull base image
+        run: docker pull ${{ secrets.DOCKERHUB_USERNAME }}/dev_tools:base
       - name: Build base image
         run: cd ${{ github.workspace}} && ./dev.py build base
       - name: Tagging the image
@@ -33,6 +35,8 @@ jobs:
       - name: Pushing the image to DockerHub
         run: docker push ${{secrets.DOCKERHUB_USERNAME}}/dev_tools:base
 
+      - name: Pull dev image
+        run: docker pull ${{ secrets.DOCKERHUB_USERNAME }}/dev_tools:latest
       - name: Build dev image
         run: cd ${{ github.workspace}} && ./dev.py build thib
       - name: Tagging the image
