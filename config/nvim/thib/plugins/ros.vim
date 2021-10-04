@@ -18,6 +18,13 @@ nnoremap <leader>os <cmd>lua require('thib.utils').open_split()<cr>
 nnoremap <C-x> <cmd>lua require('thib.utils').execute_current_file()<cr>
 nnoremap <leader>te <cmd>lua require('thib.ros').testF()<cr>
 
+" ROS-NVIM
+nnoremap <leader>rtl <cmd>lua require('thib.ros-nvim').topic_picker()<cr>
+nnoremap <leader>rnl <cmd>lua require('thib.ros-nvim').node_picker()<cr>
+nnoremap <leader>rsl <cmd>lua require('thib.ros-nvim').service_picker()<cr>
+nnoremap <leader>rds <cmd>lua require('thib.ros-nvim').srv_picker()<cr>
+nnoremap <leader>rdm <cmd>lua require('thib.ros-nvim').msg_picker()<cr>
+
 " change directory
 nnoremap <leader>cdp <cmd>lua require('thib.nvim-tree').set_cwd_current_package()<cr>
 nnoremap <leader>cdc <cmd>lua require('thib.nvim-tree').set_cwd_current_file()<cr>
