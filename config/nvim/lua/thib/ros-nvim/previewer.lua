@@ -1,9 +1,8 @@
 local _, Job = pcall(require, "plenary.job")
 local previewers = require "telescope.previewers"
 
-local function info_preview(title, command)
+local function info_preview(command)
     return previewers.new_buffer_previewer {
-        title = title,
         get_buffer_by_name = function(_, entry)
             return entry.name
         end,
@@ -30,20 +29,6 @@ local function info_preview(title, command)
     }
 end
 
-local function service_preview()
-    return info_preview("Service", "rosservice")
-end
-
-local function topic_preview()
-    return info_preview("Topic", "rostopic")
-end
-
-local function node_preview()
-    return info_preview("Node", "rosnode")
-end
-
 return {
-    service_preview = service_preview,
-    topic_preview = topic_preview,
-    node_preview = node_preview
+    info_preview = info_preview
 }

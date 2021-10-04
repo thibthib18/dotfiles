@@ -28,7 +28,7 @@ local function info_picker(opts)
                                 entry_maker = utils.gen_from_name()
                             },
                             sorter = conf.generic_sorter(picker_opts),
-                            previewer = opts.previewer(),
+                            previewer = ros_previewers.info_preview(opts.command),
                             attach_mappings = function(_, map)
                                 action_set.select:replace(
                                     function(prompt_bufnr, type)
@@ -51,8 +51,7 @@ local function node_picker()
         command = "rosnode",
         preview_title = "Node Info",
         prompt_title = "ROS Nodes",
-        results_title = "Nodes List",
-        previewer = ros_previewers.node_preview
+        results_title = "Nodes List"
     }
     info_picker(opts)
 end
@@ -62,8 +61,7 @@ local function topic_picker()
         command = "rostopic",
         preview_title = "Topic Info",
         prompt_title = "ROS Topics",
-        results_title = "Topics List",
-        previewer = ros_previewers.topic_preview
+        results_title = "Topics List"
     }
     info_picker(opts)
 end
@@ -73,8 +71,27 @@ local function service_picker()
         command = "rosservice",
         preview_title = "Service Info",
         prompt_title = "ROS Services",
-        results_title = "Services List",
-        previewer = ros_previewers.service_preview
+        results_title = "Services List"
+    }
+    info_picker(opts)
+end
+
+local function srv_picker()
+    local opts = {
+        command = "rossrv",
+        preview_title = "Service Info",
+        prompt_title = "ROS Services",
+        results_title = "Services List"
+    }
+    info_picker(opts)
+end
+
+local function msg_picker()
+    local opts = {
+        command = "rosmsg",
+        preview_title = "Message Info",
+        prompt_title = "ROS Messages",
+        results_title = "Messages List"
     }
     info_picker(opts)
 end
@@ -82,5 +99,7 @@ end
 return {
     node_picker = node_picker,
     topic_picker = topic_picker,
-    service_picker = service_picker
+    service_picker = service_picker,
+    msg_picker = msg_picker,
+    srv_picker = srv_picker
 }

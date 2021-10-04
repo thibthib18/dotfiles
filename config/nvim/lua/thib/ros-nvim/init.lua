@@ -11,5 +11,7 @@ require "telescope".register_extension {
 return {
     node_picker = pickers.node_picker,
     topic_picker = pickers.topic_picker,
-    service_picker = pickers.service_picker
+    service_picker = pickers.service_picker,
+    msg_picker = pickers.msg_picker,
+    srv_picker = pickers.srv_picker
 }
