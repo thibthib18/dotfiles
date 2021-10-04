@@ -6,8 +6,8 @@ nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 nnoremap <leader>ui <cmd>lua require('thib.telescope').search_ui_components()<cr>
 nnoremap <leader>fe <cmd>lua require('thib.telescope').search_frontend()<cr>
 
-nnoremap <leader>fp <cmd>lua require('ros.telescope.package').search_package()<cr>
-nnoremap <leader>fgp <cmd>lua require('ros.telescope.package').grep_package()<cr>
+nnoremap <leader>fp <cmd>lua require('ros-nvim.telescope.package').search_package()<cr>
+nnoremap <leader>fgp <cmd>lua require('ros-nvim.telescope.package').grep_package()<cr>
 
 nnoremap <leader>sd <cmd>lua require('thib.telescope').search_dotfiles()<cr>
 nnoremap <leader>/ <cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>

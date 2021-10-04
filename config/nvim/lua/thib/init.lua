@@ -1,4 +1,4 @@
-require("ros").setup {}
+require("ros-nvim").setup {}
 require("thib.notify")
 require("thib.telescope")
 require("thib.nvim-tree")
