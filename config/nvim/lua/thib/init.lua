@@ -4,6 +4,7 @@ require("thib.nvim-tree")
 require("thib.lspconfig")
 require("thib.nvim-treesitter")
 require("thib.ros")
+require("thib.ros-nvim")
 require("thib.format")
 -- dbg module init.lua somehow cant find the files
 require("thib.dbg.dapui")
