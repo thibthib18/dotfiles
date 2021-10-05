@@ -14,7 +14,7 @@ Plug 'jbyuki/one-small-step-for-vimkind'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'theHamsta/nvim-dap-virtual-text'
 
-Plug '~/Projects/ros-nvim'
+Plug 'thibthib18/ros-nvim'
 
 " Formatting
 Plug 'lukas-reineke/format.nvim'
