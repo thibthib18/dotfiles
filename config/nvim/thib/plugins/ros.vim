@@ -1,8 +1,4 @@
 command! GenerateCompileCommands :lua require('thib.ros').generate_compile_commands()
-lua << EOF
-require("ros-nvim.telescope.previewer")
-require("ros-nvim.telescope.pickers")
-EOF
 
 nnoremap <leader>os <cmd>lua require('thib.utils').open_split()<cr>
 nnoremap <C-x> <cmd>lua require('thib.utils').execute_current_file()<cr>
@@ -16,6 +12,8 @@ nnoremap <leader>rdm <cmd>lua require('ros-nvim.telescope.pickers').msg_picker()
 " Build
 nnoremap <leader>bb <cmd>lua require('ros-nvim.build').catkin_make()<cr>
 nnoremap <leader>bp <cmd>lua require('ros-nvim.build').catkin_make_pkg()<cr>
+nnoremap <leader>bd <cmd>lua require('ros-nvim.build').catkin_make("_all_debug")<cr>
+
 " Test
 nnoremap <leader>rt <cmd>lua require('ros-nvim.test').rostest()<cr>
 
