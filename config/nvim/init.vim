@@ -11,6 +11,7 @@ nnoremap J :bprevious<cr>
 nnoremap K :bnext<cr>
 nnoremap <leader>x :bp\|bd #<cr>
 nnoremap <leader>X :bp\|bd! #<cr>
+nnoremap <leader>e :Telescope emoji<cr>
 
 nnoremap V v$
 nnoremap <leader>mrl :Octo mr list #<cr>

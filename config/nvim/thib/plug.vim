@@ -16,6 +16,7 @@ Plug 'theHamsta/nvim-dap-virtual-text'
 
 Plug 'thibthib18/ros-nvim'
 
+Plug 'xiyaowong/telescope-emoji.nvim'
 " Formatting
 Plug 'lukas-reineke/format.nvim'
 
