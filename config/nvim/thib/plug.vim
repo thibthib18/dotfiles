@@ -15,6 +15,7 @@ Plug 'rcarriga/nvim-dap-ui'
 Plug 'theHamsta/nvim-dap-virtual-text'
 
 Plug 'thibthib18/ros-nvim'
+Plug '~/Projects/mongo-nvim'
 
 Plug 'xiyaowong/telescope-emoji.nvim'
 " Formatting
