@@ -16,4 +16,4 @@ make
 sudo make install
 
 # Install Mongo C driver
-luarocks install lua-mongo
+sudo luarocks install lua-mongo
