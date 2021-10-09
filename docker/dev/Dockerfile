@@ -70,6 +70,8 @@ RUN ./docker/dev/scripts/setup_symlinks.sh
 # Install and setup nvim
 RUN ./docker/dev/scripts/nvim/install_nvim.sh
 RUN ./docker/dev/scripts/nvim/setup.sh
+# Install lua-mongo
+RUN ./docker/dev/scripts/nvim/mongo-nvim/install.sh
 
 # Install latest git
 RUN ./docker/dev/scripts/install_git.sh
