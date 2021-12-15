@@ -2,8 +2,8 @@
 
 
 function install_neovim {
-    # Install Neovim > 0.5.0
-    wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
+    # Install Neovim 0.6.0
+    wget https://github.com/neovim/neovim/releases/download/v0.6.0/nvim-linux64.tar.gz
     sudo mv nvim-linux64.tar.gz /opt
     cd /opt/
     sudo tar -xf nvim-linux64.tar.gz
