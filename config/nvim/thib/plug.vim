@@ -19,6 +19,7 @@ Plug 'thibthib18/ros-nvim'
 Plug 'thibthib18/mongo-nvim'
 
 Plug 'xiyaowong/telescope-emoji.nvim'
+Plug 'LinArcX/telescope-env.nvim'
 " Formatting
 Plug 'lukas-reineke/format.nvim'
 
