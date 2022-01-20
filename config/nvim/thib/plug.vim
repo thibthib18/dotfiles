@@ -7,6 +7,9 @@ call plug#begin(stdpath('data') . '/plugged')
 " https://github.com/JRasmusBm/vim-peculiar
 " TO CHECK OUT
 " https://github.com/rcarriga/vim-ultest
+"
+" Refactoring
+Plug 'ThePrimeagen/refactoring.nvim'
 
 " Debug
 Plug 'mfussenegger/nvim-dap'
