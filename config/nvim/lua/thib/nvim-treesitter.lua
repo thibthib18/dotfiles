@@ -33,13 +33,7 @@ require "nvim-treesitter.configs".setup {
                 ["af"] = "@function.outer",
                 ["if"] = "@function.inner",
                 ["ac"] = "@class.outer",
-                ["ic"] = "@class.inner",
-                -- Or you can define your own textobjects like this
-                ["iF"] = {
-                    python = "(function_definition) @function",
-                    cpp = "(function_definition) @function",
-                    c = "(function_definition) @function"
-                }
+                ["ic"] = "@class.inner"
             }
         },
         swap = {
