@@ -28,7 +28,8 @@ augroup END
 source ~/.config/nvim/thib/goodDefaults.vim
 
 " Plug plugins
-source ~/.config/nvim/thib/plug.vim
+"source ~/.config/nvim/thib/plug.vim
+lua require("thib.packer")
 
 " Set up plugins
 source ~/.config/nvim/thib/plugins/telescope.vim
