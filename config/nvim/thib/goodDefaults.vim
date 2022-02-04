@@ -14,7 +14,10 @@ set nu
 set relativenumber
 set scrolloff=8
 set shiftwidth=2
+" case insensitive search only if no uppercase
+set ignorecase
 set smartcase
+
 set smartindent
 set tabstop=2 softtabstop=2
 set termguicolors
