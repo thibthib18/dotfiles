@@ -8,11 +8,6 @@ endfun
 
 autocmd BufWritePre * :call TrimWhitespace()
 
-function! Vimrc()
-  edit ~/.config/nvim/init.vim
-endfun
-command! Vimrc :call Vimrc()
-
 function! SourceVimrc()
   source ~/.config/nvim/init.vim
 endfun
