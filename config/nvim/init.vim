@@ -13,7 +13,7 @@ nnoremap <leader>x :bp\|bd #<cr>
 nnoremap <leader>X :bp\|bd! #<cr>
 nnoremap <leader>e :Telescope emoji<cr>
 
-nnoremap <leader>mrl :Octo mr list #<cr>
+"nnoremap <leader>mrl :Octo mr list #<cr>
 " Exit terminal mode with C-o
 tnoremap <C-o> <C-\><C-n>
 
@@ -28,25 +28,10 @@ augroup END
 source ~/.config/nvim/thib/goodDefaults.vim
 
 " Plug plugins
-source ~/.config/nvim/thib/plug.vim
-
-" Set up plugins
-source ~/.config/nvim/thib/plugins/telescope.vim
-source ~/.config/nvim/thib/plugins/bufferline.vim
-source ~/.config/nvim/thib/plugins/nvim-tree.vim
-source ~/.config/nvim/thib/plugins/abolish.vim
-source ~/.config/nvim/thib/plugins/coc.vim
+lua require("thib.packer")
 source ~/.config/nvim/thib/plugins/utils.vim
-source ~/.config/nvim/thib/plugins/nvim-hlslens.vim
-source ~/.config/nvim/thib/plugins/fugitive.vim
-source ~/.config/nvim/thib/plugins/ros.vim
-source ~/.config/nvim/thib/plugins/mongo.vim
-source ~/.config/nvim/thib/plugins/glab.vim
-source ~/.config/nvim/thib/plugins/completion.vim
-source ~/.config/nvim/thib/plugins/vimtest.vim
-lua require("galaxylinePlugin")
-lua require("thib")
-lua require("octo").setup()
+lua pcall(require,"thib")
+
 
 " TODO: move to lua
 augroup Format
@@ -55,7 +40,6 @@ augroup Format
 augroup END
 
 set pyxversion=3
-colorscheme onehalfdark
 set background=dark
 set signcolumn=yes:1
 let g:rainbow_active = 1

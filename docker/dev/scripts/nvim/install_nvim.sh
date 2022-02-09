@@ -10,16 +10,10 @@ function install_neovim {
     pip3 install neovim
 }
 
-function install_vim_plug {
-    # Install Vim-plug Plugin Manager
-    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-}
-
-function run_plug_install {
-    /opt/nvim-linux64/bin/nvim --headless -c "PlugInstall|qa"
+function run_packer_install {
+    /opt/nvim-linux64/bin/nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 }
 
 
 install_neovim
-install_vim_plug
-run_plug_install
+run_packer_install
