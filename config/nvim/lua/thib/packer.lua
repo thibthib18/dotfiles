@@ -134,7 +134,7 @@ return require("packer").startup(
         use {
             "neoclide/coc.nvim",
             branch = "release",
-            run = ":CocInstall -sync coc-json coc-eslint coc-json coc-marketplace coc-pairs coc-jedi coc-pyright coc-css coc-git coc-prettier coc-snippets coc-tsserver coc-clangd",
+            run = ":CocInstall -sync coc-sumneko-lua coc-json coc-eslint coc-json coc-marketplace coc-pairs coc-jedi coc-pyright coc-css coc-git coc-prettier coc-snippets coc-tsserver coc-clangd",
             config = function()
                 vim.cmd("source" .. CONFIG_PATH .. "coc.vim")
             end
