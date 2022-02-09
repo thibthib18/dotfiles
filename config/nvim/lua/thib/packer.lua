@@ -1,10 +1,36 @@
--- Bootstrap packer (install if not installed)
 local fn = vim.fn
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+
+-- Automatically install packer
+local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-    packer_bootstrap =
-        fn.system({"git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path})
+    PACKER_BOOTSTRAP =
+        fn.system {
+        "git",
+        "clone",
+        "--depth",
+        "1",
+        "https://github.com/wbthomason/packer.nvim",
+        install_path
+    }
+    print "Installing packer close and reopen Neovim..."
+    vim.cmd [[packadd packer.nvim]]
 end
+
+-- Autocommand that reloads neovim whenever you save the plugins.lua file
+vim.cmd [[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  augroup end
+]]
+
+-- Use a protected call so we don't error out on first use
+local status_ok, packer = pcall(require, "packer")
+if not status_ok then
+    return
+end
+
+CONFIG_PATH = "~/.config/nvim/thib/plugins/"
 
 return require("packer").startup(
     function(use)
@@ -20,8 +46,22 @@ return require("packer").startup(
         use "theHamsta/nvim-dap-virtual-text"
         use "sindrets/diffview.nvim"
 
-        use "thibthib18/ros-nvim"
-        use "thibthib18/mongo-nvim"
+        -- Ros
+        use "thibthib18/vim-ros"
+        use {
+            "thibthib18/ros-nvim",
+            config = function()
+                vim.cmd("source" .. CONFIG_PATH .. "ros.vim")
+            end
+        }
+
+        -- Mongo
+        use {
+            "thibthib18/mongo-nvim",
+            config = function()
+                vim.cmd("source" .. CONFIG_PATH .. "mongo.vim")
+            end
+        }
 
         use "xiyaowong/telescope-emoji.nvim"
         use "LinArcX/telescope-env.nvim"
@@ -32,14 +72,17 @@ return require("packer").startup(
 
         use "junegunn/vim-peekaboo"
 
-        use "vim-test/vim-test"
+        use {
+            "vim-test/vim-test",
+            config = function()
+                vim.cmd("source" .. CONFIG_PATH .. "vimtest.vim")
+            end
+        }
 
         -- Pretty notifications
         use "rcarriga/nvim-notify"
 
         use "nvim-telescope/telescope-fzy-native.nvim"
-        -- Ros
-        use "thibthib18/vim-ros"
 
         -- Gitlab
         use "thibthib18/octo.nvim"
@@ -52,7 +95,12 @@ return require("packer").startup(
 
         -- Builtin LSP config helpers
         use "neovim/nvim-lspconfig"
-        use "nvim-lua/completion-nvim"
+        use {
+            "nvim-lua/completion-nvim",
+            config = function()
+                vim.cmd("source" .. CONFIG_PATH .. "completion.vim")
+            end
+        }
         use "kabouzeid/nvim-lspinstall"
 
         use {
@@ -69,7 +117,12 @@ return require("packer").startup(
         use "~/dotfiles/config/nvim/plugins/nvim-whid"
 
         -- Git interface
-        use "tpope/vim-fugitive"
+        use {
+            "tpope/vim-fugitive",
+            config = function()
+                vim.cmd("source" .. CONFIG_PATH .. "fugitive.vim")
+            end
+        }
 
         use "tpope/vim-surround"
 
@@ -81,12 +134,11 @@ return require("packer").startup(
         use {
             "neoclide/coc.nvim",
             branch = "release",
-            run = ":CocInstall coc-json coc-eslint coc-json coc-marketplace coc-pairs coc-jedi coc-pyright coc-css coc-git coc-prettier coc-snippets coc-tsserver coc-clang"
+            run = ":CocInstall -sync coc-json coc-eslint coc-json coc-marketplace coc-pairs coc-jedi coc-pyright coc-css coc-git coc-prettier coc-snippets coc-tsserver coc-clangd",
+            config = function()
+                vim.cmd("source" .. CONFIG_PATH .. "coc.vim")
+            end
         }
-
-        -- Fuzzy file finder
-        use {"junegunn/fzf", run = "-> fzf#install()"}
-        use "junegunn/fzf.vim"
 
         -- Seamless navigation between vim buffers and tmux panes (must have with Tmux)
         use "christoomey/vim-tmux-navigator"
@@ -101,11 +153,22 @@ return require("packer").startup(
         use "machakann/vim-sandwich"
 
         -- camel/snake_case conversions (crs and crc), and more features I should try
-        use "tpope/vim-abolish"
+        use {
+            "tpope/vim-abolish",
+            config = function()
+                vim.cmd("source" .. CONFIG_PATH .. "abolish.vim")
+            end
+        }
 
         -- Nice colorscheme
         use "morhetz/gruvbox"
-        use {"sonph/onehalf", rtp = "vim"}
+        use {
+            "sonph/onehalf",
+            rtp = "vim",
+            config = function()
+                vim.cmd("colorscheme onehalfdark")
+            end
+        }
         use "chriskempson/base16-vim"
         use "shaunsingh/moonlight.nvim"
         use "shaunsingh/nord.nvim"
@@ -123,7 +186,12 @@ return require("packer").startup(
         -- Telescope
         use "nvim-lua/popup.nvim"
         use "nvim-lua/plenary.nvim"
-        use "nvim-telescope/telescope.nvim"
+        use {
+            "nvim-telescope/telescope.nvim",
+            config = function()
+                vim.cmd("source" .. CONFIG_PATH .. "telescope.vim")
+            end
+        }
         use "nvim-telescope/telescope-symbols.nvim"
         use "nvim-telescope/telescope-dap.nvim"
 
@@ -131,15 +199,36 @@ return require("packer").startup(
         use "kyazdani42/nvim-web-devicons"
 
         -- File explorer
-        use "kyazdani42/nvim-tree.lua"
+        use {
+            "kyazdani42/nvim-tree.lua",
+            config = function()
+                vim.cmd("source " .. CONFIG_PATH .. "nvim-tree.vim")
+            end
+        }
 
         -- top buffer line
-        use "akinsho/nvim-bufferline.lua"
+        use {
+            "akinsho/nvim-bufferline.lua",
+            config = function()
+                vim.cmd("source " .. CONFIG_PATH .. "bufferline.vim")
+            end
+        }
         -- Status line
-        use {"glepnir/galaxyline.nvim", branch = "main"}
+        use {
+            "glepnir/galaxyline.nvim",
+            branch = "main",
+            config = function()
+                require("galaxylinePlugin")
+            end
+        }
 
         -- Nice search highlight
-        use "kevinhwang91/nvim-hlslens"
+        use {
+            "kevinhwang91/nvim-hlslens",
+            config = function()
+                vim.cmd("source " .. CONFIG_PATH .. "nvim-hlslens.vim")
+            end
+        }
 
         -- Automatically set up your configuration after cloning packer.nvim
         -- Put this at the end after all plugins
