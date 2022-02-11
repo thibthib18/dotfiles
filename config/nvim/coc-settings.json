@@ -22,6 +22,8 @@
   "git.addGBlameToVirtualText": true,
   "python.formatting.provider": "yapf",
   "python.formatting.yapfPath": "/usr/local/bin/yapf",
+  "outline.showLineNumber": false,
+  "outline.sortBy": "position",
   "python.formatting.yapfArgs": [
     "-i",
     "-vv",
