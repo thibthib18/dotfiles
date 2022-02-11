@@ -15,6 +15,7 @@
   "tree.key.toggle": "za",
   "tree.key.collapseAll": "zM",
   "outline.keepWindow": true,
+  "outline.splitCommand": "botright 54vs",
   "tree.key.close": "",
   "Lua.completion.enable": true,
   "sumneko-lua.enableNvimLuaDev": true,
