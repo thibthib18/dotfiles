@@ -16,6 +16,7 @@ let g:coc_global_extensions = [
 \]
 
 " GoTo code navigation.
+nmap <silent> <leader>lo :CocOutline<cr>
 nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>gy <Plug>(coc-type-definition)
 nmap <leader>gi <Plug>(coc-implementation)
