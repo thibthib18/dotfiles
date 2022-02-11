@@ -39,6 +39,7 @@ return require("packer").startup(
         -- Refactoring
         use "ThePrimeagen/refactoring.nvim"
 
+        use "fannheyward/telescope-coc.nvim"
         -- Debug
         use "mfussenegger/nvim-dap"
         use "jbyuki/one-small-step-for-vimkind"
