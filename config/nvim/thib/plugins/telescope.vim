@@ -16,3 +16,4 @@ nnoremap <leader>/ <cmd>lua require('telescope.builtin').current_buffer_fuzzy_fi
 nnoremap <leader>ee <cmd>lua require('telescope.builtin').symbols{ sources = {'emoji'} }<cr>
 nnoremap <leader>gb <cmd>lua require('thib.telescope').git_branches()<cr>
 nnoremap <leader>' <cmd>lua require('telescope.builtin').marks()<cr>
+nnoremap <leader>th <cmd>lua require('telescope.builtin').colorscheme({enable_preview=true})<cr>
