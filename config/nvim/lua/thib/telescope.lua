@@ -52,4 +52,13 @@ M.search_frontend = function()
     )
 end
 
+M.search_operations = function()
+    require("telescope.builtin").find_files(
+        {
+            prompt_title = "< Operations Server >",
+            cwd = "~/main/backend/operations_server"
+        }
+    )
+end
+
 return M
