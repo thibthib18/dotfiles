@@ -20,7 +20,8 @@ nmap <silent> <leader>lo :CocOutline<cr>
 nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>gy <Plug>(coc-type-definition)
 nmap <leader>gi <Plug>(coc-implementation)
-nmap <leader>gr <Plug>(coc-references)
+nmap <silent><leader>gr :Telescope coc references<cr>
+nmap <silent><leader>lds :Telescope coc document_symbols<cr>
 nmap <leader>rr <Plug>(coc-rename)
 nmap <leader>g[ <Plug>(coc-diagnostic-prev)
 nmap <leader>g] <Plug>(coc-diagnostic-next)
@@ -28,6 +29,9 @@ nmap <silent> <leader>gp <Plug>(coc-diagnostic-prev-error)
 nmap <silent> <leader>gn <Plug>(coc-diagnostic-next-error)
 nnoremap <leader>aa :CocAction<cr>
 nnoremap <leader>cr :CocRestart<cr>
+
+nmap <silent><leader>lco :CocCommand document.showOutgoingCalls<cr>
+nmap <silent><leader>lci :CocCommand document.showIncomingCalls<cr>
 
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
