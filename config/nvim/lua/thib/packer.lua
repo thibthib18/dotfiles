@@ -162,12 +162,18 @@ return require("packer").startup(
         }
 
         -- Nice colorscheme
+        use {
+            "sainnhe/sonokai",
+            config = function()
+                vim.cmd("colorscheme sonokai")
+            end
+        }
         use "morhetz/gruvbox"
         use {
             "sonph/onehalf",
             rtp = "vim",
             config = function()
-                vim.cmd("colorscheme onehalfdark")
+                --vim.cmd("colorscheme onehalfdark")
             end
         }
         use "chriskempson/base16-vim"
