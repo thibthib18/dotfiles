@@ -32,5 +32,6 @@ require'nvim-tree'.setup({})
     }
 EOF
 
-nnoremap <leader>ft :NvimTreeToggle<CR>
+nnoremap <leader>ftt :NvimTreeToggle<CR>
+nnoremap <leader>ftf :NvimTreeFindFile<CR>
 
