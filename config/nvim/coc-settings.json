@@ -12,6 +12,10 @@
     "graphql",
     "python"
   ],
+  "tree.key.toggle": "za",
+  "tree.key.collapseAll": "zM",
+  "outline.keepWindow": true,
+  "tree.key.close": "",
   "Lua.completion.enable": true,
   "sumneko-lua.enableNvimLuaDev": true,
   "git.addGBlameToVirtualText": true,
