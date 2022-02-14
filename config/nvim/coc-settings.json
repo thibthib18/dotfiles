@@ -52,7 +52,6 @@
   "python.analysis.autoImportCompletions": true,
   "clangd.path": "/usr/bin/clangd-10",
   "suggest.completionItemKindLabels": {
-  }
     "keyword": "\uf1de Keyword",
     "variable": "\ue79b Variable",
     "value": "\uf89f Value",
@@ -78,4 +77,5 @@
     "snippet": "\ue60b Snippet",
     "typeParameter": "\uf728 TypeParameter",
     "default": "\uf29c Default"
+  }
 }
