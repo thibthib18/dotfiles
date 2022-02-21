@@ -1,6 +1,9 @@
 ARG BASE_IMAGE=seervision/development:latest
 FROM $BASE_IMAGE
 
+ARG USER_ID=1000
+ARG GROUP_ID=1000
+
 USER root
 WORKDIR /
 
@@ -63,6 +66,7 @@ RUN sudo npm install -g lua-fmt
 ADD . /home/$user/dotfiles
 RUN sudo chown -R ${user}:${user} ~/dotfiles
 WORKDIR /home/${user}/dotfiles
+RUN echo $USER_ID:$GROUP_ID
 
 # Setup symlinks
 RUN ./docker/dev/scripts/setup_symlinks.sh
@@ -97,5 +101,11 @@ RUN zsh -c "source ~/.zshrc"
 ENV IS_DOCKER_BUILD=0
 
 USER root
+RUN ls -la /home
+RUN ls -la /home/$user
+RUN chown -R $USER_ID:$GROUP_ID /home/$user 
+RUN ls -la /home
+RUN ls -la /home/$user
+RUN echo $USER_ID:$GROUP_ID
 WORKDIR /home/$user/main
 CMD ["/usr/bin/zsh"]

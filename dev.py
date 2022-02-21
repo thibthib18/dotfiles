@@ -14,8 +14,15 @@ container_homedir = f'/home/{dev_user}'
 
 class Build(object):
     def build_image(self, tag, path, build_args):
+        def _concat_build_args(build_args):
+            args = []
+            for arg in build_args:
+                args.append('--build-arg')
+                args.append(arg)
+            return args
+        print(_concat_build_args(build_args))
         subprocess.run(
-            ['docker', 'build', '-t', tag, '--build-arg', build_args[0], '--build-arg', build_args[1], '-f', path, '.'])
+            ['docker', 'build', '-t', tag, *_concat_build_args(build_args), '-f', path, '.'])
 
     def base(self):
         path = './docker/base/Dockerfile'
@@ -28,7 +35,7 @@ class Build(object):
 
     def sv(self):
         dockerfile_path = './docker/dev/Dockerfile'
-        build_args = ['user=sv', 'BASE_IMAGE=seervision/development:latest']
+        build_args = ['user=sv', 'BASE_IMAGE=seervision/development:latest', f'GROUP_ID={os.getegid()}', f'USER_ID={os.geteuid()}']
         self.build_image(dev_image_tag, dockerfile_path, build_args)
 
 
@@ -76,7 +83,7 @@ class Start(object):
             '--image',
             'dev_thib',
             '--mount-zsh-history',
-            '--wait-for-entrypoint',
+            #'--wait-for-entrypoint',
             '--restart-tmux-session',
         ])
 
