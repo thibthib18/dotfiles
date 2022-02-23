@@ -112,7 +112,6 @@ return require("packer").startup(
         use "nvim-treesitter/playground"
 
         -- Lua dev
-        use "thibthib18/nlua.nvim"
         use "euclidianAce/BetterLua.vim"
         use "tjdevries/manillua.nvim"
         use "~/dotfiles/config/nvim/plugins/nvim-whid"
