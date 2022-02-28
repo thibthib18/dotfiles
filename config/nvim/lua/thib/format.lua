@@ -31,11 +31,3 @@ require "format".setup {
         }
     }
 }
---[[ Somehow causing an error
-vim.api.nvim_command([[
-augroup Format
-    autocmd!
-    autocmd BufWritePost * FormatWrite
-augroup END
-]]
---]]
