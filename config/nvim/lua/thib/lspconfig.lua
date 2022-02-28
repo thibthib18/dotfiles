@@ -53,24 +53,3 @@ local on_attach = function(client, bufnr)
     end
 end
 
--- Use a loop to conveniently both setup defined servers
--- and map buffer local keybindings when the language server attaches
---local servers = { "pyright", "rust_analyzer", "tsserver" }
---for _, lsp in ipairs(servers) do
---nvim_lsp[lsp].setup { on_attach = on_attach }
---end
-require("nlua.lsp.nvim").setup(
-    require("lspconfig"),
-    {
-        on_attach = on_attach,
-        -- Include globals you want to tell the LSP are real :)
-        globals = {
-            -- Colorbuddy
-            "Color",
-            "c",
-            "Group",
-            "g",
-            "s"
-        }
-    }
-)
