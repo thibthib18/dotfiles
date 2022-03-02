@@ -67,7 +67,7 @@ return require("packer").startup(
         use "xiyaowong/telescope-emoji.nvim"
         use "LinArcX/telescope-env.nvim"
         -- Formatting
-        use "lukas-reineke/format.nvim"
+        use "thibthib18/format.nvim"
 
         use "michaeljsmith/vim-indent-object"
 
