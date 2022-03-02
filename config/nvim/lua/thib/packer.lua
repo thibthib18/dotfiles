@@ -114,7 +114,7 @@ return require("packer").startup(
         -- Lua dev
         use "euclidianAce/BetterLua.vim"
         use "tjdevries/manillua.nvim"
-        use "~/dotfiles/config/nvim/plugins/nvim-whid"
+        --use "~/dotfiles/config/nvim/plugins/nvim-whid"
 
         -- Git interface
         use {
