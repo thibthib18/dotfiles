@@ -29,6 +29,7 @@ nmap <silent> <leader>gp <Plug>(coc-diagnostic-prev-error)
 nmap <silent> <leader>gn <Plug>(coc-diagnostic-next-error)
 nnoremap <leader>aa :CocAction<cr>
 nnoremap <leader>cr :CocRestart<cr>
+nnoremap <leader>da :CocDiagnostics<cr>
 
 nmap <silent><leader>lco :CocCommand document.showOutgoingCalls<cr>
 nmap <silent><leader>lci :CocCommand document.showIncomingCalls<cr>
