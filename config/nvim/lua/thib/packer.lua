@@ -80,11 +80,6 @@ return require("packer").startup(
             end
         }
 
-        require("packer").startup(
-            function()
-                use "lukas-reineke/indent-blankline.nvim"
-            end
-        )
         -- Pretty notifications
         use "rcarriga/nvim-notify"
 
