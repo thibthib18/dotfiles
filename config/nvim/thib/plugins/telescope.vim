@@ -11,6 +11,7 @@ nnoremap <leader>fr :Telescope resume<cr>
 nnoremap <leader>fp <cmd>lua require('ros-nvim.telescope.package').search_package()<cr>
 nnoremap <leader>fgp <cmd>lua require('ros-nvim.telescope.package').grep_package()<cr>
 
+vnoremap <leader>g :lua require('thib.telescope').grep_current_selection()<cr>
 nnoremap <leader>sd <cmd>lua require('thib.telescope').search_dotfiles()<cr>
 nnoremap <leader>/ <cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>
 nnoremap <leader>ee <cmd>lua require('telescope.builtin').symbols{ sources = {'emoji'} }<cr>
