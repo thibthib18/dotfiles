@@ -13,8 +13,7 @@ require("mongo-nvim").setup(
                 ptus = "label",
                 analytics = "name"
             }
-        },
-        connection_string = "mongodb://10.99.5.10:27017"
+        }
     }
 )
 EOF
