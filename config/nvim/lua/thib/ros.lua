@@ -4,7 +4,10 @@ local utils = require("ros-nvim.vim-utils")
 require("ros-nvim").setup(
     {
         catkin_ws_link_from = "/home/sv/catkin_ws/src",
-        catkin_ws_link_to = "~/main"
+        catkin_ws_link_to = "~/main",
+        open_terminal_method = function()
+            require "ros-nvim.vim-utils".open_new_buffer()
+        end
     }
 )
 
