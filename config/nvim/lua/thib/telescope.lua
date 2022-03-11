@@ -34,6 +34,15 @@ M.search_dotfiles = function()
     )
 end
 
+M.search_workflow_automation = function()
+    require("telescope.builtin").find_files(
+        {
+            prompt_title = "< Workflow Automation >",
+            cwd = "~/main/backend/workflow_automation"
+        }
+    )
+end
+
 M.search_ui_components = function()
     require("telescope.builtin").find_files(
         {
