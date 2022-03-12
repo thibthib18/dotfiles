@@ -39,9 +39,9 @@ class Build(object):
         self.build_image(DEV_IMAGE_TAG, dockerfile_path, build_args)
 
 
-def attach():
-    subprocess.run(['docker', 'start', DEV_CONTAINER_NAME])
-    subprocess.run(['docker', 'exec', '-ti', '-u', 'thib', DEV_CONTAINER_NAME, 'zsh'])
+def attach(container_name=DEV_CONTAINER_NAME):
+    subprocess.run(['docker', 'start', container_name])
+    subprocess.run(['docker', 'exec', '-ti', '-u', 'thib', container_name, 'zsh'])
 
 
 class Start(object):
@@ -52,15 +52,17 @@ class Start(object):
         run_args += self._add_mount_args(path, path)
 
     def thib(self,
+             container_name=DEV_CONTAINER_NAME,
+             image_tag=DEV_IMAGE_TAG,
              mount_dotfiles=True,
              mount_ssh=True,
              mount_gitconfig=True,
              mount_zsh_history=True,
              mount_glab_cache=True,
              mount_projects_dir=True):
-        subprocess.run(['docker', 'rm', '-f', DEV_CONTAINER_NAME])
+        subprocess.run(['docker', 'rm', '-f', container_name])
         run_args = [
-            'docker', 'run', '-dti', '--privileged', '--name', DEV_CONTAINER_NAME, '--net', 'host', '--volume',
+            'docker', 'run', '-dti', '--privileged', '--name', container_name, '--net', 'host', '--volume',
             '/var/run/docker.sock:/var/run/docker.sock'
         ]
         if mount_dotfiles:
@@ -73,7 +75,7 @@ class Start(object):
             self._add_mirror_mount(run_args, f'{HOST_HOMEDIR}/.zsh_history')
         if mount_projects_dir:
             self._add_mirror_mount(run_args, f'{HOST_HOMEDIR}/Projects')
-        subprocess.run(run_args + [DEV_IMAGE_TAG])
+        subprocess.run(run_args + [image_tag])
         attach()
 
     def sv(self):
