@@ -4,12 +4,12 @@ import subprocess
 from typing import List
 import os
 
-base_image_tag = 'thib_base'
-dev_image_tag = 'dev_thib'
-dev_container_name = 'thib_dev'
-dev_user = os.getenv('DEV_USER', 'thib')
-host_homedir = os.path.expanduser('~')
-container_homedir = f'/home/{dev_user}'
+BASE_IMAGE_TAG = 'thib_base'
+DEV_IMAGE_TAG = 'dev_thib'
+DEV_CONTAINER_NAME = 'thib_dev'
+DEV_USER = os.getenv('DEV_USER', 'thib')
+HOST_HOMEDIR = os.path.expanduser('~')
+CONTAINER_HOMEDIR = f'/home/{DEV_USER}'
 
 
 class Build(object):
@@ -26,22 +26,22 @@ class Build(object):
 
     def base(self):
         path = './docker/base/Dockerfile'
-        subprocess.run(['docker', 'build', '-t', base_image_tag, '-f', path, '.'])
+        subprocess.run(['docker', 'build', '-t', BASE_IMAGE_TAG, '-f', path, '.'])
 
     def thib(self):
         dockerfile_path = './docker/dev/Dockerfile'
-        build_args = ['user=thib', f'BASE_IMAGE={base_image_tag}:latest']
-        self.build_image(dev_image_tag, dockerfile_path, build_args)
+        build_args = ['user=thib', f'BASE_IMAGE={BASE_IMAGE_TAG}:latest']
+        self.build_image(DEV_IMAGE_TAG, dockerfile_path, build_args)
 
     def sv(self):
         dockerfile_path = './docker/dev/Dockerfile'
         build_args = ['user=sv', 'BASE_IMAGE=seervision/development:latest', f'GROUP_ID={os.getegid()}', f'USER_ID={os.geteuid()}']
-        self.build_image(dev_image_tag, dockerfile_path, build_args)
+        self.build_image(DEV_IMAGE_TAG, dockerfile_path, build_args)
 
 
 def attach():
-    subprocess.run(['docker', 'start', dev_container_name])
-    subprocess.run(['docker', 'exec', '-ti', '-u', 'thib', dev_container_name, 'zsh'])
+    subprocess.run(['docker', 'start', DEV_CONTAINER_NAME])
+    subprocess.run(['docker', 'exec', '-ti', '-u', 'thib', DEV_CONTAINER_NAME, 'zsh'])
 
 
 class Start(object):
@@ -58,28 +58,28 @@ class Start(object):
              mount_zsh_history=True,
              mount_glab_cache=True,
              mount_projects_dir=True):
-        subprocess.run(['docker', 'rm', '-f', dev_container_name])
+        subprocess.run(['docker', 'rm', '-f', DEV_CONTAINER_NAME])
         run_args = [
-            'docker', 'run', '-dti', '--privileged', '--name', dev_container_name, '--net', 'host', '--volume',
+            'docker', 'run', '-dti', '--privileged', '--name', DEV_CONTAINER_NAME, '--net', 'host', '--volume',
             '/var/run/docker.sock:/var/run/docker.sock'
         ]
         if mount_dotfiles:
-            self._add_mirror_mount(run_args, f'{host_homedir}/dotfiles')
+            self._add_mirror_mount(run_args, f'{HOST_HOMEDIR}/dotfiles')
         if mount_ssh:
-            self._add_mirror_mount(run_args, f'{host_homedir}/.ssh')
+            self._add_mirror_mount(run_args, f'{HOST_HOMEDIR}/.ssh')
         if mount_gitconfig:
-            self._add_mirror_mount(run_args, f'{host_homedir}/.gitconfig')
+            self._add_mirror_mount(run_args, f'{HOST_HOMEDIR}/.gitconfig')
         if mount_zsh_history:
-            self._add_mirror_mount(run_args, f'{host_homedir}/.zsh_history')
+            self._add_mirror_mount(run_args, f'{HOST_HOMEDIR}/.zsh_history')
         if mount_projects_dir:
-            self._add_mirror_mount(run_args, f'{host_homedir}/Projects')
-        subprocess.run(run_args + [dev_image_tag])
+            self._add_mirror_mount(run_args, f'{HOST_HOMEDIR}/Projects')
+        subprocess.run(run_args + [DEV_IMAGE_TAG])
         attach()
 
     def sv(self):
         subprocess.run([
             'bash',
-            f'{host_homedir}/main/docker/run_containers/run_dev.sh',
+            f'{HOST_HOMEDIR}/main/docker/run_containers/run_dev.sh',
             '--image',
             'dev_thib',
             '--mount-zsh-history',
