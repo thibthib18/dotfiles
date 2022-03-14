@@ -32,7 +32,7 @@ function zle-keymap-select() {
 }
 
 zle -N zle-keymap-select
-#zle -N zle-line-init autosuggest_start
+zle -N zle-line-init
 
 
 function vi_mode_prompt_info() {
