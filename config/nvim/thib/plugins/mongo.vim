@@ -13,7 +13,6 @@ require("mongo-nvim").setup(
                 ptus = "label",
                 analytics = "name"
             }
-        }
         },
         delete_document_mapping = "<c-d>"
     }
