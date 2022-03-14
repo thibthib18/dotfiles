@@ -14,6 +14,8 @@ require("mongo-nvim").setup(
                 analytics = "name"
             }
         }
+        },
+        delete_document_mapping = "<c-d>"
     }
 )
 EOF
