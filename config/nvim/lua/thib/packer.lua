@@ -91,9 +91,6 @@ return require("packer").startup(
         -- vim UI libs, might use later
         use "skywind3000/vim-quickui"
 
-        -- Terminal utils wrapper
-        use "kassio/neoterm"
-
         -- Builtin LSP config helpers
         use "neovim/nvim-lspconfig"
         use {
