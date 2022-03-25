@@ -10,3 +10,6 @@ nnoremap <leader>mrg <cmd>lua require('thib.glab').generate_commit_mr_table()<cr
 
 " git line blame -> glb
 nnoremap <leader>glb <cmd>lua require('thib.glab').current_line_commit_log()<cr>
+nnoremap <Leader>mrl <cmd>lua require('glab-nvim').pick_merge_requests()<cr>
+nnoremap <Leader>mrd <cmd>lua require('glab-nvim.merge-request.merge_request_buffer').open_diff()<cr>
+
