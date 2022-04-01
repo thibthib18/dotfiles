@@ -88,7 +88,10 @@ return require("packer").startup(
         -- Gitlab
         use {
             "thibthib18/glab.nvim",
-            requires = {"pwntester/octo.nvim"}
+            requires = {"pwntester/octo.nvim"},
+            config = function()
+                vim.cmd("source" .. CONFIG_PATH .. "glab.vim")
+            end
         }
 
         -- vim UI libs, might use later
