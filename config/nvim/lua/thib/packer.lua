@@ -86,7 +86,10 @@ return require("packer").startup(
         use "nvim-telescope/telescope-fzy-native.nvim"
 
         -- Gitlab
-        use "thibthib18/glab.nvim"
+        use {
+            "thibthib18/glab.nvim",
+            requires = {"pwntester/octo.nvim"}
+        }
 
         -- vim UI libs, might use later
         use "skywind3000/vim-quickui"
