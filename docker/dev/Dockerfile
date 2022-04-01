@@ -67,6 +67,10 @@ ADD . /home/$user/dotfiles
 RUN sudo chown -R ${user}:${user} ~/dotfiles
 WORKDIR /home/${user}/dotfiles
 
+# Install glab CLI
+RUN curl -sL https://j.mp/glab-cli | sudo sh
+RUN glab auth login --stdin < ./personal/glab_pat.token
+
 # Setup symlinks
 RUN ./docker/dev/scripts/setup_symlinks.sh
 
