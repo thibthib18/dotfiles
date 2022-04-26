@@ -99,7 +99,7 @@ RUN ./docker/dev/scripts/install_docker.sh
 RUN sudo chsh -s $(which zsh) ${user}
 
 # Source once
-RUN zsh -c "source ~/.zshrc"
+#RUN zsh -c "source ~/.zshrc"
 
 ENV IS_DOCKER_BUILD=0
 
