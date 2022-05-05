@@ -8,7 +8,7 @@ is_docker(){
 POWERLEVEL9K_CUSTOM_IS_DOCKER="is_docker"
 
 POWERLEVEL9K_MODE=awesome-fontconfig
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vi_mode status time ram custom_is_docker)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vi_mode status virtualenv time ram custom_is_docker)
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir_writable dir vcs)
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_MODE="nerdfont-complete"
