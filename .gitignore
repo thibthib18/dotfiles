@@ -6,4 +6,4 @@
 config/zsh/antigen.zsh.zwc
 config/tmux/plugins/*
 config/configstore
-plugins/packer_compiled.lua
+config/nvim/plugin/packer_compiled.lua
