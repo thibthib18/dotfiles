@@ -7,7 +7,7 @@ nnoremap <leader>ui <cmd>lua require('thib.telescope').search_ui_components()<cr
 nnoremap <leader>fe <cmd>lua require('thib.telescope').search_frontend()<cr>
 nnoremap <leader>op <cmd>lua require('thib.telescope').search_operations()<cr>
 nnoremap <leader>wa <cmd>lua require('thib.telescope').search_workflow_automation()<cr>
-nnoremap <leader>fr :Telescope resume<cr>
+nnoremap <leader>fr :Telescope resume<cr><esc>
 
 nnoremap <leader>fp <cmd>lua require('ros-nvim.telescope.package').search_package()<cr>
 nnoremap <leader>fgp <cmd>lua require('ros-nvim.telescope.package').grep_package()<cr>
