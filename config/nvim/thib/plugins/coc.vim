@@ -15,6 +15,10 @@ let g:coc_global_extensions = [
       \'coc-clangd'
 \]
 
+" Completion
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm()
+      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 " GoTo code navigation.
 nmap <silent> <leader>lo :CocOutline<cr>
 nmap <leader>gd <Plug>(coc-definition)
