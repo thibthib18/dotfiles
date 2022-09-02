@@ -83,7 +83,8 @@ return require("packer").startup(
 
         use "michaeljsmith/vim-indent-object"
 
-        use "junegunn/vim-peekaboo"
+        -- A bit annoying when using registers in telescope inputs
+        -- use "junegunn/vim-peekaboo"
 
         use {
             "vim-test/vim-test",
