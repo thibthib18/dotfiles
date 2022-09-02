@@ -20,6 +20,7 @@ RUN apt-get update && apt-get -y install \
                         httpie \
                         python3-pip ipython3 \
                         python3-venv \
+                        mongodb-clients \
                         silversearcher-ag xclip xsel
 
 # Needed to build tmux
