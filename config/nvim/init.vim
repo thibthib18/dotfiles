@@ -13,6 +13,9 @@ nnoremap <leader>x :bp\|bd #<cr>
 nnoremap <leader>X :bp\|bd! #<cr>
 nnoremap <leader>e :Telescope emoji<cr>
 
+" Toggle folds more easily
+nnoremap zz za
+
 "nnoremap <leader>mrl :Octo mr list #<cr>
 " Exit terminal mode with C-o
 tnoremap <C-o> <C-\><C-n>
