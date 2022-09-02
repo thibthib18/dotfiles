@@ -25,6 +25,16 @@ M.git_branches = function()
     )
 end
 
+M.grep_cwd = function()
+    local cwd = vim.fn.expand("%:p:h")
+    require("telescope.builtin").find_files(
+        {
+            prompt_title = "< Current file directory >",
+            cwd = cwd
+        }
+    )
+end
+
 M.search_dotfiles = function()
     require("telescope.builtin").find_files(
         {
@@ -34,7 +44,25 @@ M.search_dotfiles = function()
     )
 end
 
+M.grep_dotfiles = function()
+    require("telescope.builtin").live_grep(
+        {
+            prompt_title = "< Dotfiles >",
+            cwd = "~/dotfiles"
+        }
+    )
+end
+
 M.search_workflow_automation = function()
+    require("telescope.builtin").find_files(
+        {
+            prompt_title = "< Workflow Automation >",
+            cwd = "~/main/backend/workflow_automation"
+        }
+    )
+end
+
+M.grep_workflow_automation = function()
     require("telescope.builtin").find_files(
         {
             prompt_title = "< Workflow Automation >",
@@ -52,6 +80,15 @@ M.search_ui_components = function()
     )
 end
 
+M.grep_ui_components = function()
+    require("telescope.builtin").live_grep(
+        {
+            prompt_title = "< UI components >",
+            cwd = "~/main/backend/ui_components"
+        }
+    )
+end
+
 M.search_frontend = function()
     require("telescope.builtin").find_files(
         {
@@ -61,8 +98,26 @@ M.search_frontend = function()
     )
 end
 
+M.grep_frontend = function()
+    require("telescope.builtin").live_grep(
+        {
+            prompt_title = "< Frontend >",
+            cwd = "~/main/frontend/interface/npm/src"
+        }
+    )
+end
+
 M.search_operations = function()
     require("telescope.builtin").find_files(
+        {
+            prompt_title = "< Operations Server >",
+            cwd = "~/main/backend/operations_server"
+        }
+    )
+end
+
+M.grep_operations = function()
+    require("telescope.builtin").live_grep(
         {
             prompt_title = "< Operations Server >",
             cwd = "~/main/backend/operations_server"
