@@ -1,0 +1,2 @@
+use seervision
+show collections
