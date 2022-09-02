@@ -63,6 +63,18 @@ return require("packer").startup(
                 vim.cmd("source" .. CONFIG_PATH .. "mongo.vim")
             end
         }
+        use {
+            "tpope/vim-dadbod",
+            opt = true,
+            requires = {
+                "kristijanhusak/vim-dadbod-ui",
+                "kristijanhusak/vim-dadbod-completion"
+            },
+            config = function()
+                require("thib.dadbod").setup()
+            end,
+            cmd = {"DBUIToggle", "DBUI", "DBUIAddConnection", "DBUIFindBuffer", "DBUIRenameBuffer", "DBUILastQueryInfo"}
+        }
 
         use "xiyaowong/telescope-emoji.nvim"
         use "LinArcX/telescope-env.nvim"
