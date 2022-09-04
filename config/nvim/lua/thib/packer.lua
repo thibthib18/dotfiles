@@ -120,16 +120,13 @@ return require("packer").startup(
         }
         use "kabouzeid/nvim-lspinstall"
 
+        -- TreeSitter
+        use "nvim-treesitter/nvim-treesitter"
         use {
             "nvim-treesitter/nvim-treesitter-textobjects",
             requires = {"nvim-treesitter/nvim-treesitter"}
-            -- run = ":TSInstall lua cpp python typescript css bash dockerfile graphql tsx"
         }
         use "nvim-treesitter/playground"
-        use {
-            "nvim-treesitter/nvim-treesitter",
-            run = ":TSInstall lua cpp python typescript css bash dockerfile graphql tsx"
-        }
 
         -- Lua dev
         use "euclidianAce/BetterLua.vim"
