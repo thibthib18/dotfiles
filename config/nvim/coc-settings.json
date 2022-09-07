@@ -31,14 +31,8 @@
     "${workspaceFolder}/.style.yapf"
   ],
   "python.linting.mypyEnabled": true,
-  "python.autoComplete.extraPaths": [
-    "~/catkin_ws/devel/lib/python3/dist-packages",
-    "~/catkin_ws/devel/lib/python2.7/dist-packages",
-    "~/main/svpy",
-    "~/main/backend/host/bash",
-    "~/main/libs/pylib/src/"
-  ],
   "python.linting.pytypeEnabled": true,
+  "pyright.completion.importSupport": true,
   "python.analysis.extraPaths": [
     "/usr/local/lib/python3.6/dist-packages/",
     "/home/sv/main/backend/operations_server",
@@ -47,7 +41,9 @@
     "/home/sv/main/svpy",
     "/home/sv/main/backend/host/bash",
     "/home/sv/main/computer_vision/reid/src",
-    "/home/sv/main/libs/pylib/src/"
+    "/home/sv/main/libs/pylib/src/",
+    "/home/sv/main/ui_components/src",
+    "/home/sv/main/workflow_automation/src"
   ],
   "python.analysis.autoImportCompletions": true,
   "clangd.path": "/usr/bin/clangd-10",
