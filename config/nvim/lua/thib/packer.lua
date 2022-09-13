@@ -250,6 +250,14 @@ return require("packer").startup(
         -- for nice icons <- require a nerd font installed (on your machine)
         use "kyazdani42/nvim-web-devicons"
 
+        -- Docker
+        use {
+            "DevonMorris/telescope-docker.nvim",
+            config = function()
+                require "telescope".load_extension("docker")
+            end
+        }
+
         -- File explorer
         use {
             "kyazdani42/nvim-tree.lua",
