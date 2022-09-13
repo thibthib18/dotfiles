@@ -6,7 +6,7 @@ function! LspCompletionOnAttach()
     echo "Completion package missing"
   endtry
 endfunction
-autocmd BufEnter *.lua :call LspCompletionOnAttach()
+" autocmd BufEnter *.lua :call LspCompletionOnAttach()
 
 " Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
