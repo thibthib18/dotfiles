@@ -11,6 +11,7 @@ nnoremap <leader>op <cmd>lua require('thib.telescope').search_operations()<cr>
 nnoremap <leader>fgop <cmd>lua require('thib.telescope').grep_operations()<cr>
 nnoremap <leader>wa <cmd>lua require('thib.telescope').search_workflow_automation()<cr>
 nnoremap <leader>fgwa <cmd>lua require('thib.telescope').grep_workflow_automation()<cr>
+nnoremap <leader>e2e <cmd>lua require('thib.telescope').search_e2e()<cr>
 nnoremap <leader>fgc <cmd>lua require('thib.telescope').grep_cwd()<cr>
 nnoremap <leader>fr :Telescope resume<cr><esc>
 

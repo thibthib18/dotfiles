@@ -125,6 +125,15 @@ M.grep_operations = function()
     )
 end
 
+M.search_e2e = function()
+    require("telescope.builtin").find_files(
+        {
+            prompt_title = "< E2E Tests >",
+            cwd = "~/main/frontend/interface/e2e"
+        }
+    )
+end
+
 local function visual_selection_range()
     local _, csrow, cscol, _ = unpack(vim.fn.getpos("'<"))
     local _, cerow, cecol, _ = unpack(vim.fn.getpos("'>"))
