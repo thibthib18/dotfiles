@@ -37,9 +37,14 @@ RUN cd && rm -rf ${src_path}
 # Rust
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 
+# Fix some python version issues atm
+RUN ln -s /usr/lib/python3/dist-packages/apt_pkg.cpython-36m-x86_64-linux-gnu.so /usr/lib/python3/dist-packages/apt_pkg.so && \
+    update-alternatives --config python3 && \
+    mv /usr/bin/python3 /usr/bin/python3.bk && \
+    ln -s /usr/bin/python3.6 /usr/bin/python3
+
 # Ripgrep
-RUN add-apt-repository ppa:x4121/ripgrep -y
-RUN apt update && apt install ripgrep
+RUN add-apt-repository ppa:x4121/ripgrep -y && apt update && apt install ripgrep
 
 # Needed for C++ completion
 RUN apt-get -y install llvm cmake clangd-10
@@ -50,12 +55,15 @@ USER $user
 ENV USER=${user_name}
 WORKDIR /home/$user
 
+# Temp fix for python3
+RUN python3 -m pip install --user --upgrade pip
+
 # Install node.js
-RUN wget install-node.now.sh/lts
-RUN chmod u+x lts
-RUN sudo ./lts --yes
-RUN rm ./lts
-RUN mkdir -p ~/.config
+RUN wget install-node.now.sh/lts && \
+    chmod u+x lts && \
+    sudo ./lts --yes && \
+    rm ./lts && \
+    mkdir -p ~/.config
 
 # Install yarn
 RUN sudo npm install -g yarn
@@ -76,8 +84,8 @@ RUN glab auth login --stdin < ./personal/glab_pat.token
 RUN ./docker/dev/scripts/setup_symlinks.sh
 
 # Install and setup nvim
-RUN ./docker/dev/scripts/nvim/install_nvim.sh
-RUN ./docker/dev/scripts/nvim/setup.sh
+RUN ./docker/dev/scripts/nvim/install_nvim.sh && ./docker/dev/scripts/nvim/setup.sh
+
 # Install lua-mongo
 RUN ./docker/dev/scripts/nvim/mongo-nvim/install.sh
 
@@ -85,8 +93,7 @@ RUN ./docker/dev/scripts/nvim/mongo-nvim/install.sh
 RUN ./docker/dev/scripts/install_git.sh
 
 # Install tpm tmux plugin manager
-RUN git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-RUN ~/.tmux/plugins/tpm/scripts/install_plugins.sh
+RUN git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 
 # Install antigen zsh plugin manager
 RUN sudo apt-get install zsh-antigen # version from Ubuntu rep is broken
@@ -95,6 +102,9 @@ RUN zsh -c "source ~/.zshrc"
 
 # Install docker
 RUN ./docker/dev/scripts/install_docker.sh
+
+# Revert python version hack
+RUN sudo rm /usr/bin/python3 && sudo mv /usr/bin/python3.bk /usr/bin/python3
 
 # Set default shell
 RUN sudo chsh -s $(which zsh) ${user}
