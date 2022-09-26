@@ -127,6 +127,7 @@ return require("packer").startup(
             requires = {"nvim-treesitter/nvim-treesitter"}
         }
         use "nvim-treesitter/playground"
+        use "nvim-treesitter/nvim-treesitter-context"
 
         -- Lua dev
         use "euclidianAce/BetterLua.vim"
