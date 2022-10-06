@@ -42,8 +42,8 @@
     "/home/sv/main/backend/host/bash",
     "/home/sv/main/computer_vision/reid/src",
     "/home/sv/main/libs/pylib/src/",
-    "/home/sv/main/ui_components/src",
-    "/home/sv/main/workflow_automation/src"
+    "/home/sv/main/backend/workflow_automation/src",
+    "/home/sv/main/backend/ui_components/src"
   ],
   "python.analysis.autoImportCompletions": true,
   "clangd.path": "/usr/bin/clangd-10",
