@@ -63,6 +63,7 @@ class Start(object):
              mount_ssh=True,
              mount_gitconfig=True,
              mount_zsh_history=True,
+             mount_nvim_history=True,
              mount_glab_cache=True,
              mount_projects_dir=True):
         subprocess.run(['docker', 'rm', '-f', container_name])
@@ -78,6 +79,8 @@ class Start(object):
             self._add_mirror_mount(run_args, f'{HOST_HOMEDIR}/.gitconfig')
         if mount_zsh_history:
             self._add_mirror_mount(run_args, f'{HOST_HOMEDIR}/.zsh_history')
+        if mount_nvim_history:
+            self._add_mirror_mount(run_args, f'{HOST_HOMEDIR}/.local/share/nvim/shada')
         if mount_projects_dir:
             self._add_mirror_mount(run_args, f'{HOST_HOMEDIR}/Projects')
         subprocess.run(run_args + [image_tag])
