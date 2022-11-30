@@ -2,7 +2,9 @@
 import fire
 import subprocess
 from typing import List
+import time
 import os
+import json
 
 BASE_IMAGE_TAG = 'thib_base'
 DEV_IMAGE_TAG = 'dev_thib'
@@ -10,6 +12,9 @@ DEV_CONTAINER_NAME = 'thib_dev'
 DEV_USER = os.getenv('DEV_USER', 'thib')
 HOST_HOMEDIR = os.path.expanduser('~')
 CONTAINER_HOMEDIR = f'/home/{DEV_USER}'
+
+with open('./personal/ips.json') as f:
+    IPS = json.load(f)
 
 
 class Build(object):
@@ -89,15 +94,47 @@ class Start(object):
             '--restart-tmux-session',
         ])
 
+def ping(host: str) -> bool:
+    timeout_ms = 500
+    is_reachable = subprocess.call(['fping', '-c', '1', '-t', str(timeout_ms), host], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL) == 0
+    return is_reachable
+
+def sv_notify(title: str, text: str) -> None:
+    subprocess.run(['notify-send',title, text,
+        '--icon', '/home/thib/main/frontend/interface/npm/src/assets/logo.svg'])
+
+def wake_on_lan(host: str) -> None:
+    with open('./personal/dops_mac.json') as f:
+        macs = json.load(f)
+    mac = macs[host]
+    subprocess.run(['ssh', f'sv@{IPS["pc2"]}', 'wakeonlan', mac])
+
+def connect(host: str) -> None:
+    wake_on_lan(host)
+    while not ping(host):
+        print(f'Waiting for {host}... ')
+        time.sleep(1)
+    sv_notify("Server is ready ✅", f"Connection to {host} established")
+    subprocess.run(['ssh', f"thib@{host}"])
+
+
+def scout() -> None:
+    for i in range(1,20):
+        is_reachable = ping(f'{IPS["zt_prefix"]}{i}')
+        if is_reachable:
+            print(f'DOP {i} reachable ✅')
+        else:
+            print(f'DOP {i} unreachable ❌')
+
 
 class Dev(object):
     def __init__(self):
         self.build = Build()
         self.start = Start()
-
-    def attach(self):
-        attach()
-
+        self.connect = connect
+        self.attach = attach
+        self.scout = scout
+        self.wake_on_lan = wake_on_lan
 
 if __name__ == '__main__':
     fire.Fire(Dev)
