@@ -50,11 +50,17 @@ def attach(container_name=DEV_CONTAINER_NAME):
 
 
 class Start(object):
-    def _add_mount_args(self, src, dest):
+    def _add_mount_args(self, src, dest) -> List[str]:
         return ['--mount', f'type=bind,source={src},target={dest}']
+
+    def _add_sv_mount_args(self, src, dest) -> List[str]:
+        return ['--custom-run-arg',  f'--mount type=bind,source={src},target={dest}']
 
     def _add_mirror_mount(self, run_args: List[str], path: str) -> None:
         run_args += self._add_mount_args(path, path)
+
+    def _add_sv_mount(self, run_args: List[str], src: str, dest: str) -> None:
+        run_args += self._add_sv_mount_args(src, dest)
 
     def thib(self,
              container_name=DEV_CONTAINER_NAME,
@@ -86,15 +92,23 @@ class Start(object):
         subprocess.run(run_args + [image_tag])
         attach()
 
+    def _add_sv_home_mirror_mount(self, run_args: List[str], relative_path: str) -> None:
+        self._add_sv_mount(run_args, f'{HOST_HOMEDIR}/{relative_path}', f'/home/sv/{relative_path}')
+
     def sv(self):
+        run_args = []
+        self._add_sv_home_mirror_mount(run_args, 'dotfiles')
+        self._add_sv_home_mirror_mount(run_args, '.local/share/nvim/shada')
+        self._add_sv_home_mirror_mount(run_args, '.zsh_history')
+        self._add_sv_home_mirror_mount(run_args, 'Projects')
+        print(run_args)
         subprocess.run([
             'bash',
             f'{HOST_HOMEDIR}/main/docker/run_containers/run_dev.sh',
             '--image',
             'dev_thib',
-            '--mount-zsh-history',
-            #'--wait-for-entrypoint',
             '--restart-tmux-session',
+            *run_args
         ])
 
 def ping(host: str) -> bool:
