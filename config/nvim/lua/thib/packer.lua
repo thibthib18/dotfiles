@@ -47,6 +47,27 @@ return require("packer").startup(
         use "theHamsta/nvim-dap-virtual-text"
         use "sindrets/diffview.nvim"
 
+        -- Github copilot
+        use {
+            "github/copilot.vim",
+            config = function()
+                vim.g.copilot_no_tab_map = true
+                vim.api.nvim_set_keymap("i", "<C-l>", 'copilot#Accept("<CR>")', {silent = true, expr = true})
+                vim.api.nvim_set_keymap(
+                    "i",
+                    "<C-j>",
+                    "<Plug>(copilot-next)",
+                    {silent = true, expr = false, noremap = false}
+                )
+                vim.api.nvim_set_keymap(
+                    "i",
+                    "<C-k>",
+                    "<Plug>(copilot-previous)",
+                    {silent = true, expr = false, noremap = false}
+                )
+            end
+        }
+
         -- Ros
         use "thibthib18/vim-ros"
         use {
