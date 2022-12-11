@@ -42,29 +42,18 @@ return require("packer").startup(
         use "fannheyward/telescope-coc.nvim"
         -- Debug
         use "mfussenegger/nvim-dap"
-        use "jbyuki/one-small-step-for-vimkind"
         use "rcarriga/nvim-dap-ui"
+        use "jbyuki/one-small-step-for-vimkind" -- Lua adapter
         use "theHamsta/nvim-dap-virtual-text"
+
+        -- Diffview
         use "sindrets/diffview.nvim"
 
         -- Github copilot
         use {
             "github/copilot.vim",
             config = function()
-                vim.g.copilot_no_tab_map = true
-                vim.api.nvim_set_keymap("i", "<C-l>", 'copilot#Accept("<CR>")', {silent = true, expr = true})
-                vim.api.nvim_set_keymap(
-                    "i",
-                    "<C-j>",
-                    "<Plug>(copilot-next)",
-                    {silent = true, expr = false, noremap = false}
-                )
-                vim.api.nvim_set_keymap(
-                    "i",
-                    "<C-k>",
-                    "<Plug>(copilot-previous)",
-                    {silent = true, expr = false, noremap = false}
-                )
+                require("thib.copilot")
             end
         }
 
