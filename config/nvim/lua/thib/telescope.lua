@@ -8,7 +8,6 @@ require("telescope").setup {
 require("telescope").load_extension("fzy_native")
 require("telescope").load_extension("dap")
 require("telescope").load_extension("env")
-require("telescope").load_extension("coc")
 
 local M = {}
 

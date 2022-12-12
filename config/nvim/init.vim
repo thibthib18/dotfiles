@@ -33,7 +33,8 @@ source ~/.config/nvim/thib/goodDefaults.vim
 " Plug plugins
 lua require("thib.packer")
 source ~/.config/nvim/thib/plugins/utils.vim
-lua pcall(require,"thib")
+" lua pcall(require,"thib")
+lua require('thib')
 
 
 " TODO: move to lua

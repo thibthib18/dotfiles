@@ -31,3 +31,6 @@ require "format".setup {
         }
     }
 }
+
+-- Auto format on save
+-- vim.fn.nvim_create_auto_cmd("BufWritePre", "*", vim.lsp.buf.format)

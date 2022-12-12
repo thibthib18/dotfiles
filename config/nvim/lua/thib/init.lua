@@ -2,9 +2,9 @@ require("ros-nvim").setup {}
 require("thib.notify")
 require("thib.telescope")
 require("thib.nvim-tree")
-require("thib.lspconfig")
 require("thib.nvim-treesitter")
 require("thib.format")
+require('thib.lsp.setup')
 -- dbg module init.lua somehow cant find the files
 require("thib.dbg.dapui")
 require("thib.dbg.dap-virtual-text")

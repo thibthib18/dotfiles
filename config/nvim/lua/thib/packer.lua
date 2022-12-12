@@ -39,7 +39,6 @@ return require("packer").startup(
         -- Refactoring
         use "ThePrimeagen/refactoring.nvim"
 
-        use "fannheyward/telescope-coc.nvim"
         -- Debug
         use "mfussenegger/nvim-dap"
         use "rcarriga/nvim-dap-ui"
@@ -88,8 +87,6 @@ return require("packer").startup(
 
         use "xiyaowong/telescope-emoji.nvim"
         use "LinArcX/telescope-env.nvim"
-        -- Formatting
-        use "thibthib18/format.nvim"
 
         use "michaeljsmith/vim-indent-object"
 
@@ -121,14 +118,29 @@ return require("packer").startup(
         use "skywind3000/vim-quickui"
 
         -- Builtin LSP config helpers
-        use "neovim/nvim-lspconfig"
-        use {
-            "nvim-lua/completion-nvim",
+        use{  "neovim/nvim-lspconfig",
             config = function()
-                vim.cmd("source" .. CONFIG_PATH .. "completion.vim")
             end
         }
-        use "kabouzeid/nvim-lspinstall"
+        use "williamboman/mason-lspconfig.nvim"
+        use {"williamboman/mason.nvim",
+              config = function()
+                  require("mason").setup()
+              end
+        } -- Package manager
+
+        -- Completion
+        use 'hrsh7th/cmp-nvim-lsp'
+        use 'hrsh7th/cmp-buffer'
+        use 'hrsh7th/cmp-path'
+        use 'hrsh7th/cmp-cmdline'
+        use {'hrsh7th/nvim-cmp' ,
+          config = function()
+          end
+        }
+
+        -- Luasnip
+        use 'L3MON4D3/LuaSnip'
 
         -- TreeSitter
         use "nvim-treesitter/nvim-treesitter"
@@ -157,16 +169,6 @@ return require("packer").startup(
         use "tpope/vim-repeat"
 
         use "tpope/vim-commentary"
-
-        -- LSP plugin
-        use {
-            "neoclide/coc.nvim",
-            branch = "release",
-            run = ":CocInstall -sync coc-sumneko-lua coc-json coc-eslint coc-json coc-marketplace coc-pairs coc-jedi coc-pyright coc-css coc-git coc-prettier coc-snippets coc-tsserver coc-clangd",
-            config = function()
-                vim.cmd("source" .. CONFIG_PATH .. "coc.vim")
-            end
-        }
 
         -- Seamless navigation between vim buffers and tmux panes (must have with Tmux)
         use "christoomey/vim-tmux-navigator"
@@ -233,7 +235,7 @@ return require("packer").startup(
                 }
             end,
             wants = {"nvim-treesitter"}, -- or require if not used so far
-            after = {"completion-nvim"} -- if a completion plugin is using tabs load it before
+            after = {"nvim-cmp"} -- if a completion plugin is using tabs load it before
         }
 
         -- camel/snake_case motions
