@@ -3,7 +3,7 @@ require("thib.notify")
 require("thib.telescope")
 require("thib.nvim-tree")
 require("thib.nvim-treesitter")
-require("thib.format")
+-- require("thib.format")
 require('thib.lsp.setup')
 -- dbg module init.lua somehow cant find the files
 require("thib.dbg.dapui")

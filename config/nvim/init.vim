@@ -36,13 +36,6 @@ source ~/.config/nvim/thib/plugins/utils.vim
 " lua pcall(require,"thib")
 lua require('thib')
 
-
-" TODO: move to lua
-augroup Format
-    autocmd!
-    autocmd BufWritePost * FormatWrite
-augroup END
-
 set pyxversion=3
 set background=dark
 set signcolumn=yes:1

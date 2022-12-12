@@ -118,29 +118,40 @@ return require("packer").startup(
         use "skywind3000/vim-quickui"
 
         -- Builtin LSP config helpers
-        use{  "neovim/nvim-lspconfig",
+        use {
+            "neovim/nvim-lspconfig",
             config = function()
             end
         }
         use "williamboman/mason-lspconfig.nvim"
-        use {"williamboman/mason.nvim",
-              config = function()
-                  require("mason").setup()
-              end
+        use {
+            "williamboman/mason.nvim",
+            config = function()
+                require("mason").setup()
+            end
         } -- Package manager
 
         -- Completion
-        use 'hrsh7th/cmp-nvim-lsp'
-        use 'hrsh7th/cmp-buffer'
-        use 'hrsh7th/cmp-path'
-        use 'hrsh7th/cmp-cmdline'
-        use {'hrsh7th/nvim-cmp' ,
-          config = function()
-          end
+        use "hrsh7th/cmp-nvim-lsp"
+        use "hrsh7th/cmp-buffer"
+        use "hrsh7th/cmp-path"
+        use "hrsh7th/cmp-cmdline"
+        use {
+            "hrsh7th/nvim-cmp",
+            config = function()
+            end
         }
 
+        use{  "jose-elias-alvarez/null-ls.nvim",
+        config = function()
+            require("thib.lsp.null-ls")
+        end
+        }
+
+        use 'onsails/lspkind.nvim'
+
         -- Luasnip
-        use 'L3MON4D3/LuaSnip'
+        use "L3MON4D3/LuaSnip"
 
         -- TreeSitter
         use "nvim-treesitter/nvim-treesitter"
