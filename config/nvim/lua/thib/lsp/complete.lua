@@ -1,13 +1,21 @@
-vim.opt.completeopt = {"menu", "menuone", "noinsert"}
+vim.opt.completeopt = {"menu", "menuone"}
 
 
 -- Set up nvim-cmp.
 local cmp = require'cmp'
 local lspkind = require('lspkind')
 
+-- Lspkind set icon for Copilot
+lspkind.init({
+  symbol_map = {
+    Copilot = "",
+  },
+})
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#6CC644"})
+
 cmp.setup({
   completion = {
-    completeopt = 'menu,menuone,noinsert',
+    completeopt = 'menu,menuone',
   },
   snippet = {
     -- REQUIRED - you must specify a snippet engine
@@ -30,7 +38,18 @@ cmp.setup({
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   }),
   sources = cmp.config.sources({
+    { name = 'copilot' },
     { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+    { name = 'nvim_lsp_signature_help' },
+    { name = 'path' },
+    { name = 'emoji' },
+    { name = 'nvim_lua' },
+    { name = 'treesitter' },
+    { name = 'dictionary', keyword_length = 2 },
+    { name = 'calc' },
+    { name = 'emoji' },
+    { name = 'env' },
     -- { name = 'vsnip' }, -- For vsnip users.
     { name = 'luasnip' }, -- For luasnip users.
     -- { name = 'ultisnips' }, -- For ultisnips users.
