@@ -1,5 +1,5 @@
 
-lua << EOF
+
 require("mongo-nvim").setup(
     {
         list_document_key = {
@@ -17,8 +17,6 @@ require("mongo-nvim").setup(
         delete_document_mapping = "<c-d>"
     }
 )
-EOF
 
-"nnoremap <leader>dbl <cmd>lua require('mongo-nvim.telescope.pickers').document_picker('seervision', 'settings')<cr>
-nnoremap <leader>dbl <cmd>lua require('mongo-nvim.telescope.pickers').collection_picker('seervision')<cr>
-
+local opts = { noremap = true, silent = true }
+vim.keymap.set('n', '<leader>dbl', function() require('mongo-nvim.telescope.pickers').collection_picker('seervision') end , opts)

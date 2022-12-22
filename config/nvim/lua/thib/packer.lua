@@ -42,8 +42,8 @@ return require("packer").startup(
     -- Debug
     use "mfussenegger/nvim-dap"
     use "rcarriga/nvim-dap-ui"
-    use "jbyuki/one-small-step-for-vimkind" -- Lua adapter
     use "theHamsta/nvim-dap-virtual-text"
+    use "jbyuki/one-small-step-for-vimkind" -- Lua adapter
 
     -- Diffview
     use "sindrets/diffview.nvim"
@@ -60,18 +60,19 @@ return require("packer").startup(
     }
 
     -- Chat GPT
-    use({
-      "/home/thib/Projects/ChatGPT.nvim",
-      config = function()
-        require("chatgpt").setup({
-          -- optional configuration
-        })
-      end,
-      requires = {
-        "MunifTanjim/nui.nvim",
-        "nvim-lua/plenary.nvim",
-      }
-    })
+    -- use({
+    --   "/home/thib/Projects/ChatGPT.nvim",
+    --   disable = true,
+    --   config = function()
+    --     require("chatgpt").setup({
+    --       -- optional configuration
+    --     })
+    --   end,
+    --   requires = {
+    --     "MunifTanjim/nui.nvim",
+    --     "nvim-lua/plenary.nvim",
+    --   }
+    -- })
 
     use {
       "zbirenbaum/copilot-cmp",
@@ -85,17 +86,11 @@ return require("packer").startup(
     use "thibthib18/vim-ros"
     use {
       "thibthib18/ros-nvim",
-      config = function()
-        vim.cmd("source" .. CONFIG_PATH .. "ros.vim")
-      end
     }
 
     -- Mongo
     use {
       "thibthib18/mongo-nvim",
-      config = function()
-        vim.cmd("source" .. CONFIG_PATH .. "mongo.vim")
-      end
     }
     use {
       "tpope/vim-dadbod",
@@ -121,7 +116,7 @@ return require("packer").startup(
     use {
       "vim-test/vim-test",
       config = function()
-        vim.cmd("source" .. CONFIG_PATH .. "vimtest.vim")
+        require('thib.vimtest')
       end
     }
 
@@ -134,9 +129,6 @@ return require("packer").startup(
     use {
       "thibthib18/glab.nvim",
       requires = { "pwntester/octo.nvim" },
-      config = function()
-        vim.cmd("source" .. CONFIG_PATH .. "glab.vim")
-      end
     }
 
     -- vim UI libs, might use later
@@ -216,12 +208,7 @@ return require("packer").startup(
     --use "~/dotfiles/config/nvim/plugins/nvim-whid"
 
     -- Git interface
-    use {
-      "tpope/vim-fugitive",
-      config = function()
-        vim.cmd("source" .. CONFIG_PATH .. "fugitive.vim")
-      end
-    }
+    use "tpope/vim-fugitive"
 
     use "tpope/vim-surround"
 
@@ -245,7 +232,7 @@ return require("packer").startup(
     use {
       "tpope/vim-abolish",
       config = function()
-        vim.cmd("source" .. CONFIG_PATH .. "abolish.vim")
+        require('thib.abolish')
       end
     }
 
@@ -312,9 +299,6 @@ return require("packer").startup(
     use "nvim-lua/plenary.nvim"
     use {
       "nvim-telescope/telescope.nvim",
-      config = function()
-        vim.cmd("source" .. CONFIG_PATH .. "telescope.vim")
-      end
     }
     use "nvim-telescope/telescope-symbols.nvim"
     use "nvim-telescope/telescope-dap.nvim"
@@ -325,16 +309,13 @@ return require("packer").startup(
     -- File explorer
     use {
       "kyazdani42/nvim-tree.lua",
-      config = function()
-        vim.cmd("source " .. CONFIG_PATH .. "nvim-tree.vim")
-      end
     }
 
     -- top buffer line
     use {
       "akinsho/nvim-bufferline.lua",
       config = function()
-        vim.cmd("source " .. CONFIG_PATH .. "bufferline.vim")
+        require('bufferline').setup {}
       end
     }
     -- Status line
@@ -342,7 +323,7 @@ return require("packer").startup(
       "glepnir/galaxyline.nvim",
       branch = "main",
       config = function()
-        require("galaxylinePlugin")
+        require("thib.galaxyline")
       end
     }
 
@@ -350,7 +331,7 @@ return require("packer").startup(
     use {
       "kevinhwang91/nvim-hlslens",
       config = function()
-        vim.cmd("source " .. CONFIG_PATH .. "nvim-hlslens.vim")
+        require('thib.nvim-hlslens')
       end
     }
 

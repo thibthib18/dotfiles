@@ -1,3 +1,5 @@
+
+vim.cmd([[
 syntax on
 
 " Some good defaults
@@ -60,3 +62,4 @@ let loaded_matchparen = 1
 set autoread
 au CursorHold * checktime
 
+]])

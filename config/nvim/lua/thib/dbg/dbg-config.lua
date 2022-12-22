@@ -1,30 +1,31 @@
 require("telescope").load_extension("dap")
 
-local utils = require("thib.utils")
 local lua_dap_port = require("thib.dbg.lua-dap")
 
-utils.map("n", "<leader>dc", '<cmd>lua require"dap".continue()<CR>')
-utils.map("n", "<leader>dsv", '<cmd>lua require"dap".step_over()<CR>')
-utils.map("n", "<leader>dsi", '<cmd>lua require"dap".step_into()<CR>')
-utils.map("n", "<leader>dso", '<cmd>lua require"dap".step_out()<CR>')
-utils.map("n", "<leader>dtb", '<cmd>lua require"dap".toggle_breakpoint()<CR>')
-utils.map("n", "<leader>dsbr", '<cmd>lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))<CR>')
-utils.map(
-    "n",
-    "<leader>dsbm",
-    '<cmd>lua require"dap".set_breakpoint(nil, nil, vim.fn.input("Log point message: "))<CR>'
-)
-utils.map("n", "<leader>dro", '<cmd>lua require"dap".repl.open()<CR>')
-utils.map("n", "<leader>drl", '<cmd>lua require"dap".repl.run_last()<CR>')
+local opts = { noremap = true, silent = true }
+-- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+vim.keymap.set("n", "<leader>dc", require"dap".continue, opts)
+vim.keymap.set("n", "<leader>dsv", require"dap".step_over, opts)
+vim.keymap.set("n", "<leader>dsi", require"dap".step_into, opts)
+vim.keymap.set("n", "<leader>dso", require"dap".step_out, opts)
+vim.keymap.set("n", "<leader>dtb", require"dap".toggle_breakpoint, opts)
+vim.keymap.set("n", "<leader>dsb", function() require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: ")) end , opts)
+-- vim.keymap.set(
+--     "n",
+--     "<leader>dsbm",
+--     require"dap".set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
+-- )
+vim.keymap.set("n", "<leader>dro", require"dap".repl.open, opts)
+-- vim.keymap.set("n", "<leader>drl", require"dap".repl.run_last, opts)
 
 -- telescope-dap
-utils.map("n", "<leader>dcc", '<cmd>lua require"telescope".extensions.dap.commands{}<CR>')
-utils.map("n", "<leader>dco", '<cmd>lua require"telescope".extensions.dap.configurations{}<CR>')
-utils.map("n", "<leader>dlb", '<cmd>lua require"telescope".extensions.dap.list_breakpoints{}<CR>')
-utils.map("n", "<leader>dv", '<cmd>lua require"telescope".extensions.dap.variables{}<CR>')
-utils.map("n", "<leader>df", '<cmd>lua require"telescope".extensions.dap.frames{}<CR>')
+vim.keymap.set("n", "<leader>dcc", require"telescope".extensions.dap.commands, opts)
+vim.keymap.set("n", "<leader>dco", require"telescope".extensions.dap.configurations, opts)
+vim.keymap.set("n", "<leader>dlb", require"telescope".extensions.dap.list_breakpoints, opts)
+vim.keymap.set("n", "<leader>dv", require"telescope".extensions.dap.variables, opts)
+vim.keymap.set("n", "<leader>df", require"telescope".extensions.dap.frames, opts)
 
 -- lua debugger
-utils.map("n", "<leader>dss", '<cmd>lua require"osv".launch({port = ' .. lua_dap_port .. "})<CR>")
+vim.keymap.set("n", "<leader>dss", function() require"osv".launch({port = lua_dap_port}) end, opts)
 -- start server
 -- connect
