@@ -143,10 +143,8 @@ return require("packer").startup(
     use "williamboman/mason-lspconfig.nvim"
     use {
       "williamboman/mason.nvim",
-      config = function()
-        require("mason").setup()
-      end
     } -- Package manager
+    use 'WhoIsSethDaniel/mason-tool-installer.nvim'
 
     -- lsp saga
     use {
