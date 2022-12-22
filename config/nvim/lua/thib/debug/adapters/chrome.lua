@@ -2,7 +2,7 @@ local dap = require("dap")
 dap.adapters.chrome = {
     type = "executable",
     command = "node",
-    args = {os.getenv("HOME") .. "/dotfiles/installed/vscode-chrome-debug/out/src/chromeDebug.js"} -- TODO adjust
+    args = {vim.fn.stdpath('data') .. "/mason/packages/chrome-debug-adapter/out/src/chromeDebug.js"}
 }
 
 dap.configurations.javascriptreact = {

@@ -11,6 +11,7 @@ require('mason-tool-installer').setup {
     'clang-format',
     'clangd',
     'cmake-language-server',
+    'debugpy',
     'eslint-lsp',
     'eslint_d',
     'lua-language-server',

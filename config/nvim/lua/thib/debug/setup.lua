@@ -1,6 +1,7 @@
 require("telescope").load_extension("dap")
 
-local lua_dap_port = require("thib.dbg.lua-dap")
+require('thib.debug.dap-virtual-text')
+require('thib.debug.dapui')
 
 local opts = { noremap = true, silent = true }
 -- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
@@ -26,6 +27,11 @@ vim.keymap.set("n", "<leader>dv", require"telescope".extensions.dap.variables, o
 vim.keymap.set("n", "<leader>df", require"telescope".extensions.dap.frames, opts)
 
 -- lua debugger
+local lua_dap_port = require("thib.debug.adapters.lua-dap")
 vim.keymap.set("n", "<leader>dss", function() require"osv".launch({port = lua_dap_port}) end, opts)
 -- start server
 -- connect
+
+
+require('thib.debug.adapters.chrome')
+require('thib.debug.adapters.debugpy')
