@@ -1,7 +1,7 @@
 local null_ls = require("null-ls")
 
 local sources = {
-  null_ls.builtins.formatting.shfmt, -- shell script formatting
+  null_ls.builtins.formatting.beautysh, -- shell script formatting
   null_ls.builtins.formatting.prettier,
   null_ls.builtins.formatting.lua_format,
   null_ls.builtins.formatting.yapf,
