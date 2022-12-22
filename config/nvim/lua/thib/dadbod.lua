@@ -8,6 +8,6 @@ function M.setup()
     vim.g.dbs = {dop = mongo_connection_string}
 end
 
-vim.keymap.set("n", "<leader>dbt", ":DBUIToggle<cr>", {desc = "Open database explorer"})
+vim.keymap.set("n", "<leader>dbt", vim.cmd.DBUIToggle, {desc = "Open database explorer"})
 
 return M
