@@ -35,6 +35,9 @@ M.on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
   -- vim.keymap.set('n', '<space>rr', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+
+  vim.api.nvim_create_autocmd({ 'CursorHold' }, { buffer = bufnr, command = "Lspsaga show_cursor_diagnostics" })
+
 end
 
 M.lsp_flags = {
