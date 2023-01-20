@@ -1,8 +1,8 @@
-vim.opt.completeopt = {"menu", "menuone"}
+vim.opt.completeopt = { "menu", "menuone" }
 
 
 -- Set up nvim-cmp.
-local cmp = require'cmp'
+local cmp = require 'cmp'
 local lspkind = require('lspkind')
 
 -- Lspkind set icon for Copilot
@@ -11,7 +11,7 @@ lspkind.init({
     Copilot = "",
   },
 })
-vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#6CC644"})
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 
 cmp.setup({
   completion = {
@@ -38,8 +38,8 @@ cmp.setup({
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   }),
   sources = cmp.config.sources({
-    { name = 'copilot' },
     { name = 'nvim_lsp' },
+    { name = 'copilot' },
     { name = 'luasnip' },
     { name = 'nvim_lsp_signature_help' },
     { name = 'path' },
@@ -65,7 +65,7 @@ cmp.setup({
 
       -- The function below will be called before any actual modifications from lspkind
       -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
-      before = function (entry, vim_item)
+      before = function(entry, vim_item)
         return vim_item
       end
     })

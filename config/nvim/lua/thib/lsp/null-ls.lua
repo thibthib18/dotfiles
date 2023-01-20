@@ -7,7 +7,7 @@ local sources = {
   null_ls.builtins.formatting.yapf,
   null_ls.builtins.formatting.clang_format,
   -- refactoring
-  null_ls.builtins.code_actions.refactoring
+  null_ls.builtins.code_actions.refactoring,
 }
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
