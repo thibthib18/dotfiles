@@ -38,6 +38,11 @@ require("thib.packer")
 require('thib.goodDefaults')
 require('thib.utils')
 
+if not pcall(require, 'ros-nvim') then
+  -- then probably plugins arent installed yet
+  return
+end
+
 require("ros-nvim").setup {}
 require("thib.notify")
 require("thib.nvim-treesitter")
