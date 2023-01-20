@@ -23,17 +23,6 @@ RUN apt-get update && apt-get -y install \
                         mongodb-clients \
                         silversearcher-ag xclip xsel
 
-# Needed to build tmux
-RUN apt-get -y install wget tar libevent-dev libncurses-dev
-ARG src_path=/tmux-src
-ARG tmux_version=3.2a
-RUN VERSION=${tmux_version} && \
-    mkdir ${src_path} && \
-    wget -qO- https://github.com/tmux/tmux/releases/download/${VERSION}/tmux-${VERSION}.tar.gz | tar xvz -C ${src_path}
-WORKDIR ${src_path}/tmux-${tmux_version}
-RUN ./configure && make -j"$(nproc)" && sudo make install
-RUN cd && rm -rf ${src_path}
-
 # Rust
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 
@@ -79,6 +68,9 @@ WORKDIR /home/${user}/dotfiles
 # Install glab CLI
 RUN curl -sL https://j.mp/glab-cli | sudo sh
 RUN glab auth login --stdin < ./personal/glab_pat.token
+
+# Install tmux
+RUN ./docker/dev/scripts/install_tmux.sh
 
 # Setup symlinks
 RUN ./docker/dev/scripts/setup_symlinks.sh
