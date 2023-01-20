@@ -7,9 +7,6 @@ let mapleader = " "
 " Lets stop using Escape switch
 inoremap jk <Esc>
 
-" Switch betweeen buffered files
-nnoremap J :bprevious<cr>
-nnoremap K :bnext<cr>
 nnoremap <leader>x :bp\|bd #<cr>
 nnoremap <leader>X :bp\|bd! #<cr>
 
@@ -49,10 +46,11 @@ require("thib.debug.setup")
 require("thib.glab")
 require("thib.utils")
 require("thib.refactoring")
+require('thib.gitsigns')
 require("thib.dadbod")
 
 require('thib.telescope.mappings')
 require("thib.nvim-tree.mappings")
 require('thib.mongo')
+require('thib.bufferline')
 require('thib.fugitive')
-
