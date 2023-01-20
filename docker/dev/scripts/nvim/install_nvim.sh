@@ -1,14 +1,16 @@
 #!/bin/bash
 
 function install_from_source(){
-  # Install deps
-  sudo apt-get -y install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
-  # Build latest stable
-  git clone https://github.com/neovim/neovim
-  cd neovim
-  git checkout stable
-  make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=/opt/nvim-linux64"
-  sudo make install
+    # Install deps
+    sudo apt-get -y install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
+    # Build latest stable
+    git clone https://github.com/neovim/neovim
+    cd neovim
+    git checkout stable
+    make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=/opt/nvim-linux64"
+    sudo make install
+    cd ..
+    rm -rf neovim
 }
 
 function install_release(){
@@ -19,12 +21,12 @@ function install_release(){
 }
 
 function install_neovim {
-  if [[ $(lsb_release -rs) == "18.04" ]]; then
-    install_from_source
-  else
-    install_release
-  fi
-  pip3 install neovim
+    if [[ $(lsb_release -rs) == "18.04" ]]; then
+        install_from_source
+    else
+        install_release
+    fi
+    pip3 install neovim
 }
 
 function run_packer_install {
