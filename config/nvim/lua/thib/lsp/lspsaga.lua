@@ -1,8 +1,8 @@
 local keymap = vim.keymap.set
 local saga = require('lspsaga')
 
-saga.init_lsp_saga({
-  code_action_lightbulb = {
+saga.setup({
+  lightbulb = {
     enable = false,
   }
 }
