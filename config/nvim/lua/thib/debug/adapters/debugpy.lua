@@ -1,4 +1,11 @@
 local dap = require('dap')
+
+dap.adapters.python = {
+  type = 'executable';
+  command = vim.fn.stdpath('data') .. '/mason/packages/debugpy/debugpy';
+  args = { '-m', 'debugpy.adapter' };
+}
+
 dap.configurations.python = {
   {
     -- The first three options are required by nvim-dap
@@ -22,5 +29,5 @@ dap.configurations.python = {
         return '/usr/bin/python'
       end
     end;
-  },
+  }
 }
