@@ -208,6 +208,10 @@ return require("packer").startup(
     -- Git interface
     use "tpope/vim-fugitive"
 
+    use {
+      'lewis6991/gitsigns.nvim',
+    }
+
     use "tpope/vim-surround"
 
     use "tpope/vim-repeat"
