@@ -118,6 +118,7 @@ class Start(object):
         self._add_sv_home_mirror_mount(run_args, '.local/share/nvim/shada')
         self._add_sv_home_mirror_mount(run_args, '.zsh_history')
         self._add_sv_home_mirror_mount(run_args, 'Projects')
+        self._add_sv_home_mirror_mount(run_args, 'code')
         print(run_args)
         subprocess.run([
             'bash', f'{HOST_HOMEDIR}/main/docker/run_containers/run_dev.sh',
