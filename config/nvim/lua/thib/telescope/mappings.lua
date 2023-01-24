@@ -3,7 +3,7 @@ local utils = require("thib.telescope.utils")
 
 local opts = { noremap = true, silent = true }
 
-vim.keymap.set('n', '<leader>qf',builtin.quickfix, opts)
+vim.keymap.set('n', '<leader>qf', builtin.quickfix, opts)
 vim.keymap.set('n', '<leader>ff', builtin.find_files, opts)
 vim.keymap.set('n', '<leader>fgg', builtin.live_grep, opts)
 vim.keymap.set('n', '<leader>fb', builtin.buffers, opts)
@@ -24,7 +24,7 @@ vim.keymap.set('v', '<leader>g', utils.grep_current_selection, opts)
 vim.keymap.set('n', '<leader>sd', utils.search_dotfiles, opts)
 vim.keymap.set('n', '<leader>fgsd', utils.grep_dotfiles, opts)
 vim.keymap.set('n', '<leader>/', builtin.current_buffer_fuzzy_find, opts)
-vim.keymap.set('n', '<leader>ee', function() builtin.symbols{ sources = {'emoji'} } end, opts)
+vim.keymap.set('n', '<leader>ee', function() builtin.symbols { sources = { 'emoji' } } end, opts)
 vim.keymap.set('n', '<leader>gb', utils.git_branches, opts)
 vim.keymap.set('n', "<leader>'", builtin.marks, opts)
-vim.keymap.set('n', '<leader>th',  function() builtin.colorscheme({enable_preview=true}) end, opts)
+vim.keymap.set('n', '<leader>th', function() builtin.colorscheme({ enable_preview = true }) end, opts)
