@@ -20,9 +20,9 @@ M.on_attach = function(client, bufnr)
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
-  vim.keymap.set('n', '<space>gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', '<space>gd', vim.lsp.buf.definition, bufopts)
-  -- vim.keymap.set('n', '<space>gr', require('telescope.builtin').lsp_references, bufopts)
+  vim.keymap.set('n', '<space>gd', require('telescope.builtin').lsp_definitions, bufopts)
+  vim.keymap.set('n', '<space>gD', require('telescope.builtin').lsp_implementations, bufopts)
+  vim.keymap.set('n', '<space>gr', require('telescope.builtin').lsp_references, bufopts)
   -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', '<space>gi', vim.lsp.buf.implementation, bufopts)
   -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
