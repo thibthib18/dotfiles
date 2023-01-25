@@ -107,5 +107,10 @@ ENV IS_DOCKER_BUILD=0
 USER root
 RUN chown -R $USER_ID:$GROUP_ID /home/$user
 
+# Replace main with a symlink to code dir for git worktrees
+WORKDIR /home/${user}
+RUN rm -rf /home/${user}/main
+RUN ln -s /home/${user}/code/main main
+
 WORKDIR /home/$user/main
 CMD ["/usr/bin/zsh"]
