@@ -53,6 +53,7 @@ require("thib.utils")
 require("thib.refactoring")
 require('thib.gitsigns')
 require("thib.dadbod")
+require("thib.colors")
 
 require('thib.telescope.mappings')
 require("thib.nvim-tree.mappings")
