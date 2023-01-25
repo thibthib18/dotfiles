@@ -239,12 +239,9 @@ return require("packer").startup(
     }
 
     -- Nice colorscheme
-    use {
-      "sainnhe/sonokai",
-      config = function()
-        vim.cmd("colorscheme sonokai")
-      end
-    }
+    use "sainnhe/sonokai"
+    use 'folke/tokyonight.nvim'
+
     use "morhetz/gruvbox"
     use {
       "sonph/onehalf",
