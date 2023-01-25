@@ -54,11 +54,8 @@ RUN wget install-node.now.sh/lts && \
     rm ./lts && \
     mkdir -p ~/.config
 
-# Install yarn
-RUN sudo npm install -g yarn
-
 # Install lua formatter
-RUN sudo npm install -g lua-fmt
+# RUN sudo npm install -g lua-fmt
 
 # Add dotfiles repo
 ADD . /home/$user/dotfiles
@@ -79,7 +76,7 @@ RUN ./docker/dev/scripts/setup_symlinks.sh
 RUN ./docker/dev/scripts/nvim/install_nvim.sh && ./docker/dev/scripts/nvim/setup.sh
 
 # Install lua-mongo
-RUN ./docker/dev/scripts/nvim/mongo-nvim/install.sh
+# RUN ./docker/dev/scripts/nvim/mongo-nvim/install.sh
 
 # Install latest git
 RUN ./docker/dev/scripts/install_git.sh
