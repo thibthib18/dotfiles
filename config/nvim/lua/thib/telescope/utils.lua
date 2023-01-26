@@ -24,9 +24,19 @@ M.git_branches = function()
   )
 end
 
-M.grep_cwd = function()
+M.search_cwd = function()
   local cwd = vim.fn.expand("%:p:h")
   require("telescope.builtin").find_files(
+    {
+      prompt_title = "< Current file directory >",
+      cwd = cwd
+    }
+  )
+end
+
+M.grep_cwd = function()
+  local cwd = vim.fn.expand("%:p:h")
+  require("telescope.builtin").live_grep(
     {
       prompt_title = "< Current file directory >",
       cwd = cwd
