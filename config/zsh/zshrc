@@ -91,6 +91,7 @@ export PYTHONPATH=$PYTHONPATH:/home/sv/catkin_ws/devel/lib/python3/dist-packages
 export PYTHONPATH=$PYTHONPATH:/home/sv/catkin_ws/src/svpy:/home/sv/catkin_ws/src/backend/host/bash
 export PATH=~/.npm-global/bin:$PATH
 
-# export TERM="xterm-256color"
+# Dont open browser with npm start
+export BROWSER=none
 
 setopt no_bare_glob_qual
