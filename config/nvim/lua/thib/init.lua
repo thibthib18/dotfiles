@@ -48,7 +48,7 @@ require("thib.notify")
 require("thib.nvim-treesitter")
 require('thib.lsp.setup')
 require("thib.debug.setup")
-require("thib.glab")
+-- require("thib.glab") -- disabled for now
 require("thib.utils")
 require("thib.refactoring")
 require('thib.gitsigns')
