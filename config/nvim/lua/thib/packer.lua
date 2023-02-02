@@ -129,6 +129,7 @@ return require("packer").startup(
     use {
       "thibthib18/glab.nvim",
       requires = { "pwntester/octo.nvim" },
+      disable = true,
     }
 
     -- vim UI libs, might use later
