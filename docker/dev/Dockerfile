@@ -67,7 +67,7 @@ RUN curl -sL https://j.mp/glab-cli | sudo sh
 RUN glab auth login --stdin < ./personal/glab_pat.token
 
 # Install tmux
-RUN ./docker/dev/scripts/install_tmux.sh
+RUN sudo ./docker/dev/scripts/install_tmux.sh
 
 # Setup symlinks
 RUN ./docker/dev/scripts/setup_symlinks.sh
