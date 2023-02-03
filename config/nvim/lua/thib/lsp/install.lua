@@ -1,4 +1,3 @@
-
 require("mason").setup()
 require('mason-tool-installer').setup {
 
@@ -8,10 +7,10 @@ require('mason-tool-installer').setup {
 
     'bash-language-server',
     'chrome-debug-adapter',
-    'clang-format',
+    -- 'clang-format',
     'clangd',
-    'cmake-language-server',
-    'debugpy',
+    -- 'cmake-language-server',
+    -- 'debugpy',
     'eslint-lsp',
     'eslint_d',
     'lua-language-server',
@@ -19,7 +18,7 @@ require('mason-tool-installer').setup {
     'prettier',
     'pyright',
     'typescript-language-server',
-    'yapf'
+    -- 'yapf' -- some issues with Python version on SV rn
   },
 
   -- if set to true this will check each tool for updates. If updates
@@ -44,4 +43,3 @@ require('mason-tool-installer').setup {
 require("mason-lspconfig").setup({
   automatic_installation = true,
 })
-
