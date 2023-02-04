@@ -72,10 +72,6 @@ RUN sudo ./docker/dev/scripts/install_tmux.sh
 # Setup symlinks
 RUN ./docker/dev/scripts/setup_symlinks.sh
 
-
-# Remove current packer_compiled
-RUN rm -f ./config/nvim/plugin/packer_compiled.lua
-
 # Install and setup nvim
 RUN ./docker/dev/scripts/nvim/install_nvim.sh && ./docker/dev/scripts/nvim/setup.sh
 
