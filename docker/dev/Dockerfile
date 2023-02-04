@@ -89,9 +89,7 @@ RUN ./docker/dev/scripts/install_git.sh
 RUN git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 
 # Install antigen zsh plugin manager
-RUN sudo apt-get install zsh-antigen # version from Ubuntu rep is broken
-RUN sudo curl -o /usr/share/zsh-antigen/antigen.zsh -sL git.io/antigen
-RUN zsh -c "source ~/.zshrc"
+RUN ./docker/dev/scripts/install_antigen.sh
 
 # Install docker
 RUN ./docker/dev/scripts/install_docker.sh
