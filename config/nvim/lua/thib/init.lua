@@ -35,6 +35,7 @@ nnoremap N Nzzzv
 
 require("thib.packer")
 
+require("thib.session")
 require('thib.goodDefaults')
 require('thib.utils')
 
