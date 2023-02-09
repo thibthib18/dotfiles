@@ -46,6 +46,7 @@ cmp.setup({
     { name = 'nvim_lsp_signature_help' },
     { name = 'path' },
     { name = 'emoji' },
+    { name = 'path' },
     { name = 'nvim_lua' },
     { name = 'treesitter' },
     { name = 'dictionary', keyword_length = 2 },
