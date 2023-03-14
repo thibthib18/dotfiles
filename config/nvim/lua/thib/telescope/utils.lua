@@ -98,6 +98,24 @@ M.grep_ui_components = function()
   )
 end
 
+M.search_nodered = function()
+  require("telescope.builtin").find_files(
+    {
+      prompt_title = "< Node RED >",
+      cwd = "./node-red/node-red-seervision-suite"
+    }
+  )
+end
+
+M.grep_nodered = function()
+  require("telescope.builtin").live_grep(
+    {
+      prompt_title = "< Node RED >",
+      cwd = "./node-red/node-red-seervision-suite"
+    }
+  )
+end
+
 M.search_frontend = function()
   require("telescope.builtin").find_files(
     {
