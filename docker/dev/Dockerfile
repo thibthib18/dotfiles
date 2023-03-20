@@ -63,8 +63,7 @@ RUN sudo chown -R ${user}:${user} ~/dotfiles
 WORKDIR /home/${user}/dotfiles
 
 # Install glab CLI
-RUN curl -sL https://j.mp/glab-cli | sudo sh
-RUN glab auth login --stdin < ./personal/glab_pat.token
+RUN ./docker/dev/scripts/install_glab.sh
 
 # Install tmux
 RUN sudo ./docker/dev/scripts/install_tmux.sh
