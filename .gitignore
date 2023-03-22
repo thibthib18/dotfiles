@@ -7,3 +7,5 @@ config/zsh/antigen.zsh.zwc
 config/tmux/plugins/*
 config/configstore
 config/nvim/plugin/packer_compiled.lua
+installed
+Session.vim
