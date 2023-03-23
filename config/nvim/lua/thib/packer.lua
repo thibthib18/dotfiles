@@ -59,20 +59,28 @@ return require("packer").startup(
       end,
     }
 
-    -- Chat GPT
-    -- use({
-    --   "/home/thib/Projects/ChatGPT.nvim",
-    --   disable = true,
-    --   config = function()
-    --     require("chatgpt").setup({
-    --       -- optional configuration
-    --     })
-    --   end,
-    --   requires = {
-    --     "MunifTanjim/nui.nvim",
-    --     "nvim-lua/plenary.nvim",
-    --   }
-    -- })
+
+    use({
+      "MunifTanjim/nui.nvim",
+      module = { "nui.layout", "nui.popup" },
+      module_pattern = { "nui.*" }
+    })
+
+    use({
+      "jackMort/ChatGPT.nvim",
+      config = function()
+        require("chatgpt").setup({
+          keymaps = {
+            submit = "<C-x>"
+          }
+        })
+      end,
+      requires = {
+        "MunifTanjim/nui.nvim",
+        "nvim-lua/plenary.nvim",
+        "nvim-telescope/telescope.nvim"
+      }
+    })
 
     use {
       "zbirenbaum/copilot-cmp",
