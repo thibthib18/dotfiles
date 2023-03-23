@@ -29,10 +29,4 @@ function install_neovim {
     pip3 install neovim
 }
 
-function run_packer_install {
-    /opt/nvim-linux64/bin/nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-}
-
-
 install_neovim
-run_packer_install
