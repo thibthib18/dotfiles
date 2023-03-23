@@ -14,8 +14,17 @@ cd cmake-build
 cmake -DENABLE_AUTOMATIC_INIT_AND_CLEANUP=OFF ..
 make
 sudo make install
-cd ..
+cd ../..
 rm -rf mongo-c-driver
 
-# Install Mongo C driver
-sudo luarocks install lua-mongo
+# Install lua mongo driver
+sudo apt install lua5.1
+git clone https://github.com/neoxic/lua-mongo.git
+cd lua-mongo
+cmake -D USE_LUA_VERSION=5.1
+make
+make install
+cd ..
+rm -rf lua-mongo
+
+
