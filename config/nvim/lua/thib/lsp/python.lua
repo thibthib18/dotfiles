@@ -13,8 +13,7 @@ require('lspconfig')['pyright'].setup {
         autoSearchPaths = true,
         useLibraryCodeForTypes = true,
         diagnosticMode = "openFilesOnly",
-        extraPaths = { '/home/sv/main/libs/pylib/src' }
-
+        extraPaths = { '/home/sv/main/libs/pylib/src', '/home/sv/main/backend/workflow_automation/src' }
       }
     }
   },
