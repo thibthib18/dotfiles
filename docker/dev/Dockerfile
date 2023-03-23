@@ -26,6 +26,9 @@ RUN apt-get update && apt-get -y install \
 # Rust
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 
+# Typescript REPL
+RUN npm -g install ts-node
+
 # Fix some python version issues atm
 RUN ln -s /usr/lib/python3/dist-packages/apt_pkg.cpython-36m-x86_64-linux-gnu.so /usr/lib/python3/dist-packages/apt_pkg.so && \
     update-alternatives --config python3 && \
