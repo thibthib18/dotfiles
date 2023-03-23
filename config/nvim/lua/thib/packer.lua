@@ -294,6 +294,12 @@ return require("packer").startup(
       after = { "nvim-cmp" } -- if a completion plugin is using tabs load it before
     }
 
+    -- autopairs
+    use {
+      "windwp/nvim-autopairs",
+      config = function() require("nvim-autopairs").setup {} end
+    }
+
     -- camel/snake_case motions
     use "bkad/CamelCaseMotion"
 

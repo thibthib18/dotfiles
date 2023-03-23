@@ -35,7 +35,7 @@ cmp.setup({
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<CR>'] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
     -- ['<CR>'] = cmp.mapping(cmp.mapping.confirm({ select = true }), { 'i', 'c' }), -- force <CR> to complete the entry in command line mode
   }),
   sources = cmp.config.sources({
@@ -101,6 +101,29 @@ cmp.setup.cmdline(':', {
   })
 })
 
+-- Compatibility betwen autopairs and cmp completions
+local ok, cmp_autopairs = pcall(require, 'nvim-autopairs.completion.cmp')
+if not ok then
+  print('nvim-autopairs not found')
+  return
+end
+
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done({
+    filetypes = {
+      -- "*" is a alias to all filetypes
+      ["*"] = {
+        ["("] = {
+          kind = {
+            cmp.lsp.CompletionItemKind.Function,
+            cmp.lsp.CompletionItemKind.Method,
+          },
+        }
+      }
+    }
+  })
+)
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 return capabilities
