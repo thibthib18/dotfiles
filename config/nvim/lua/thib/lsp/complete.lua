@@ -39,7 +39,6 @@ cmp.setup({
     -- ['<CR>'] = cmp.mapping(cmp.mapping.confirm({ select = true }), { 'i', 'c' }), -- force <CR> to complete the entry in command line mode
   }),
   sources = cmp.config.sources({
-    { name = 'codeium' },
     { name = 'nvim_lsp' },
     { name = 'copilot' },
     { name = 'luasnip' },
