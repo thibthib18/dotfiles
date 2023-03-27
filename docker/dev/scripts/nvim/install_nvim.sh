@@ -6,7 +6,7 @@ function install_from_source(){
     # Build latest stable
     git clone https://github.com/neovim/neovim
     cd neovim
-    git checkout stable
+    git checkout v0.8.3
     make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=/opt/nvim-linux64"
     sudo make install
     cd ..
