@@ -157,6 +157,7 @@ return require("packer").startup(
     -- lsp saga
     use {
       "glepnir/lspsaga.nvim",
+      commit = '04617d1f5b1cfbdd2a99d9765ef04fc6ae415622',
       config = function()
         require("thib.lsp.lspsaga")
       end
