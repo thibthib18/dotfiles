@@ -56,6 +56,7 @@ require('thib.gitsigns')
 require("thib.dadbod")
 require("thib.colors")
 require('thib.repl')
+require('thib.noice')
 
 require('thib.telescope.mappings')
 require("thib.nvim-tree.mappings")
