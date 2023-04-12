@@ -33,6 +33,10 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 ]])
 
+local opts = { noremap = true, silent = true }
+vim.api.nvim_set_keymap('n', '<Leader>q', '<Cmd>noh<CR>', opts)
+
+
 require("thib.packer")
 
 require("thib.session")

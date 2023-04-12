@@ -356,14 +356,6 @@ return require("packer").startup(
       end
     }
 
-    -- Nice search highlight
-    use {
-      "kevinhwang91/nvim-hlslens",
-      config = function()
-        require('thib.nvim-hlslens')
-      end
-    }
-
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then
