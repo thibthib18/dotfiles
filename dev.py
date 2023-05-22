@@ -47,7 +47,7 @@ class Build(object):
     def sv(self):
         dockerfile_path = './docker/dev/Dockerfile'
         build_args = [
-            'user=sv', 'BASE_IMAGE=seervision/development:latest',
+            'user=sv', 'BASE_IMAGE=seervision/build:latest',
             f'GROUP_ID={os.getegid()}', f'USER_ID={os.geteuid()}'
         ]
         self.build_image(DEV_IMAGE_TAG, dockerfile_path, build_args)

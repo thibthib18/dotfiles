@@ -19,6 +19,7 @@ RUN apt-get update && apt-get -y install \
                         zsh \
                         httpie \
                         python3-pip ipython3 \
+                        ripgrep \
                         python3-venv \
                         mongodb-clients \
                         silversearcher-ag xclip xsel
@@ -28,15 +29,6 @@ RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 
 # Typescript REPL
 RUN npm -g install ts-node
-
-# Fix some python version issues atm
-RUN ln -s /usr/lib/python3/dist-packages/apt_pkg.cpython-36m-x86_64-linux-gnu.so /usr/lib/python3/dist-packages/apt_pkg.so && \
-    update-alternatives --config python3 && \
-    mv /usr/bin/python3 /usr/bin/python3.bk && \
-    ln -s /usr/bin/python3.6 /usr/bin/python3
-
-# Ripgrep
-RUN add-apt-repository ppa:x4121/ripgrep -y && apt update && apt install ripgrep
 
 # Needed for C++ completion
 RUN apt-get -y install llvm cmake clangd-10
@@ -92,14 +84,8 @@ RUN ./docker/dev/scripts/install_antigen.sh
 # Install docker
 RUN ./docker/dev/scripts/install_docker.sh
 
-# Revert python version hack
-RUN sudo rm /usr/bin/python3 && sudo mv /usr/bin/python3.bk /usr/bin/python3
-
 # Set default shell
 RUN sudo chsh -s $(which zsh) ${user}
-
-# Source once
-#RUN zsh -c "source ~/.zshrc"
 
 ENV IS_DOCKER_BUILD=0
 
