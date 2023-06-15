@@ -7,7 +7,7 @@ import os
 import json
 
 BASE_IMAGE_TAG = 'thib_base'
-DEV_IMAGE_TAG = 'dev_thib'
+DEV_IMAGE_TAG = 'seervision/build:dev_thib'
 DEV_CONTAINER_NAME = 'thib_dev'
 DEV_USER = os.getenv('DEV_USER', 'thib')
 HOST_HOMEDIR = os.path.expanduser('~')
@@ -65,9 +65,7 @@ class Start(object):
         return ['--mount', f'type=bind,source={src},target={dest}']
 
     def _add_sv_mount_args(self, src, dest) -> List[str]:
-        return [
-            '--custom-run-arg', f'--mount type=bind,source={src},target={dest}'
-        ]
+        return ['--volume', f'{src}:{dest}']
 
     def _add_mirror_mount(self, run_args: List[str], path: str) -> None:
         run_args += self._add_mount_args(path, path)
@@ -123,8 +121,9 @@ class Start(object):
         self._add_sv_home_mirror_mount(run_args, '.config/github-copilot')
         print(run_args)
         subprocess.run([
-            'bash', f'{HOST_HOMEDIR}/main/docker/run_containers/run_dev.sh',
-            '--image', 'dev_thib', '--restart-tmux-session', *run_args
+            'python3',
+            f'{HOST_HOMEDIR}/main/docker/run_containers/compose/launch.py',
+            '--tag', 'dev_thib', *run_args
         ])
 
 
