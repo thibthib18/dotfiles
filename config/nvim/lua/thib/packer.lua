@@ -45,6 +45,16 @@ return require("packer").startup(
     use "theHamsta/nvim-dap-virtual-text"
     use "jbyuki/one-small-step-for-vimkind" -- Lua adapter
 
+    -- show hex colors
+    use({
+      'norcalli/nvim-colorizer.lua',
+      config = function()
+        require('colorizer').setup({
+          "*"
+        })
+      end
+    })
+
     -- Diffview
     use "sindrets/diffview.nvim"
 
