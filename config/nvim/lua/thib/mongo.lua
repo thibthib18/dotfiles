@@ -4,6 +4,7 @@ require("mongo-nvim").setup(
       seervision = {
         settings = "setting",
         ptu_configs = "name",
+        ptu_devices = "name",
         ptu_drivers = "ptu_driver_type",
         lens_mappings = function(document)
           return document.camera_name .. "/" .. document.lens_name
