@@ -14,7 +14,7 @@ function install_from_source(){
 }
 
 function install_release(){
-    wget https://github.com/neovim/neovim/releases/download/v0.8.1/nvim-linux64.tar.gz
+    wget https://github.com/neovim/neovim/releases/download/v0.9.0/nvim-linux64.tar.gz
     sudo mv nvim-linux64.tar.gz /opt
     cd /opt/
     sudo tar -xf nvim-linux64.tar.gz
