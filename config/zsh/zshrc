@@ -86,6 +86,8 @@ export EDITOR='vim'
 alias dokcer="docker"
 alias dkcoer="docker"
 
+alias dev="~/dotfiles/dev.py"
+
 # Issue finding tensorflow without this
 export PYTHONPATH=/usr/local:$PYTHONPATH
 export PYTHONPATH=$PYTHONPATH:/home/sv/catkin_ws/devel/lib/python3/dist-packages
