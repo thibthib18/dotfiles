@@ -53,7 +53,9 @@ require("thib.notify")
 require("thib.nvim-treesitter")
 require('thib.lsp.setup')
 require("thib.debug.setup")
-require("thib.glab")
+if pcall(require, 'glab-nvim') then
+  require("thib.glab")
+end
 require("thib.utils")
 require("thib.refactoring")
 require('thib.gitsigns')
