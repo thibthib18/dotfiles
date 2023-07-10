@@ -3,17 +3,20 @@ import fire
 import subprocess
 from typing import List
 import time
+import sys
 import os
 import json
 
 BASE_IMAGE_TAG = 'thib_base'
 DEV_IMAGE_TAG = 'seervision/build:dev_thib'
-DEV_CONTAINER_NAME = 'thib_dev'
+DEV_CONTAINER_NAME = 'sv-app-1'
 DEV_USER = os.getenv('DEV_USER', 'thib')
 HOST_HOMEDIR = os.path.expanduser('~')
 CONTAINER_HOMEDIR = f'/home/{DEV_USER}'
 
-with open('./personal/ips.json') as f:
+SCRIPT_DIR = sys.path[0]
+
+with open(f'{SCRIPT_DIR}/personal/ips.json') as f:
     IPS = json.load(f)
 
 
@@ -35,17 +38,17 @@ class Build(object):
         ])
 
     def base(self):
-        path = './docker/base/Dockerfile'
+        path = f'{SCRIPT_DIR}/docker/base/Dockerfile'
         subprocess.run(
             ['docker', 'build', '-t', BASE_IMAGE_TAG, '-f', path, '.'])
 
     def thib(self):
-        dockerfile_path = './docker/dev/Dockerfile'
+        dockerfile_path = f'{SCRIPT_DIR}/docker/dev/Dockerfile'
         build_args = ['user=thib', f'BASE_IMAGE={BASE_IMAGE_TAG}:latest']
         self.build_image(DEV_IMAGE_TAG, dockerfile_path, build_args)
 
     def sv(self):
-        dockerfile_path = './docker/dev/Dockerfile'
+        dockerfile_path = f'{SCRIPT_DIR}/docker/dev/Dockerfile'
         build_args = [
             'user=sv', 'BASE_IMAGE=seervision/build:latest',
             f'GROUP_ID={os.getegid()}', f'USER_ID={os.geteuid()}'
@@ -151,7 +154,7 @@ def sv_notify(title: str, text: str) -> None:
 
 
 def wake_on_lan(host: str) -> None:
-    with open('./personal/dops_mac.json') as f:
+    with open(f'{SCRIPT_DIR}/personal/dops_mac.json') as f:
         macs = json.load(f)
     mac = macs[host]
     subprocess.run(['ssh', f'sv@{IPS["pc2"]}', 'wakeonlan', mac])
