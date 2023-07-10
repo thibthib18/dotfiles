@@ -123,7 +123,13 @@ class Start(object):
         subprocess.run([
             'python3',
             f'{HOST_HOMEDIR}/main/docker/run_containers/compose/launch.py',
-            '--tag', 'dev_thib', *run_args
+            '--tag',
+            'dev_thib',
+            '--volume',
+            '/tmp/.X11-unix:/tmp/.X11-unix',
+            '--variable',
+            'DISPLAY',
+            *run_args,
         ])
 
 
