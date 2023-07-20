@@ -30,6 +30,9 @@ RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 # Typescript REPL
 RUN npm -g install ts-node
 
+# Websocket CLI
+RUN npm -g install wscat
+
 # Needed for C++ completion
 RUN apt-get -y install llvm cmake clangd-10
 RUN apt -y install zlib1g-dev libncurses-dev rapidjson-dev clang libclang-dev
