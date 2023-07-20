@@ -178,6 +178,13 @@ def scout() -> None:
             print(f'DOP {i} unreachable ❌')
 
 
+def waitfor(ip: str) -> None:
+    while not ping(ip):
+        print(f'Waiting for {ip}... ')
+        time.sleep(1)
+    sv_notify("Server is online ✅", f"{ip} is ready")
+
+
 class Dev(object):
 
     def __init__(self):
@@ -186,6 +193,7 @@ class Dev(object):
         self.connect = connect
         self.attach = attach
         self.scout = scout
+        self.waitfor = waitfor
         self.wake_on_lan = wake_on_lan
 
 
