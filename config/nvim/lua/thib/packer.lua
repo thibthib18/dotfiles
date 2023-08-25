@@ -348,6 +348,7 @@ return require("packer").startup(
     -- File explorer
     use {
       "kyazdani42/nvim-tree.lua",
+      commit = 'a708bd2413d46',
     }
 
     -- top buffer line
