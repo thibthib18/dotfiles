@@ -116,6 +116,24 @@ M.grep_nodered = function()
   )
 end
 
+M.search_3d_viz = function()
+  require("telescope.builtin").find_files(
+    {
+      prompt_title = "< Room control >",
+      cwd = "./frontend/interface/npm/src/components/3d-visualization"
+    }
+  )
+end
+
+M.grep_3d_viz = function()
+  require("telescope.builtin").live_grep(
+    {
+      prompt_title = "< Room control >",
+      cwd = "./frontend/interface/npm/src/components/3d-visualization"
+    }
+  )
+end
+
 M.search_frontend = function()
   require("telescope.builtin").find_files(
     {
