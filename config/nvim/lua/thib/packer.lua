@@ -78,7 +78,7 @@ return require("packer").startup(
 
     use({
       "folke/noice.nvim",
-      commit = "6c87c1d11c38180fb72bf8f45518a0a3e081a",
+      commit = "6c87c1d11c38180fb72bf8f45518a0a3e081afc1",
       requires = {
         -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
         "MunifTanjim/nui.nvim",
