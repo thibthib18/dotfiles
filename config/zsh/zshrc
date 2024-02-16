@@ -18,6 +18,9 @@ fi
 
 setopt auto_cd
 
+# Temporarily set DISPLAY, as sv script doesn't allow setting it
+export DISPLAY=:1
+
 # Vi Mode
 bindkey -v
 bindkey -M viins 'jk' vi-cmd-mode
