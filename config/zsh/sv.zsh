@@ -21,12 +21,10 @@ function launch_system() {
   tmux ${first_command} -n launcher \; \
     split-window -v -p 80 \; \
     split-window -h -p 30 \; \
-    split-window -t launcher.1 -h -p 66 \; \
-    split-window -t launcher.2 -h \; \
-    send-keys -t 1 'launch_mongodb' Enter \; \
-    send-keys -t 2 'launch_ui' Enter \; \
-    send-keys -t 3 'serve_manual' Enter \; \
-    send-keys -t 4 ${1} Enter \; \
-    send-keys -t 5 'launch_operations' Enter
+    split-window -t 0 -h -p 30 \; \
+    send-keys -t 0 'build_ui && sudo launch_ui' Enter \; \
+    send-keys -t 1 'serve_manual' Enter \; \
+    select-pane -t '2' \; \
+    send-keys -t 2 ${1} Enter \; \
+    send-keys -t 3 'launch_operations' Enter
 }
-
