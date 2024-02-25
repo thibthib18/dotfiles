@@ -7,6 +7,14 @@ local sources = {
   null_ls.builtins.formatting.lua_format,
   null_ls.builtins.formatting.yapf,
   null_ls.builtins.formatting.clang_format,
+
+  -- PHP
+  null_ls.builtins.diagnostics.phpstan.with({
+    prefer_local = "vendor/bin/phpstan",
+  }),
+  null_ls.builtins.formatting.pint,
+
+
   -- refactoring
   null_ls.builtins.code_actions.refactoring,
 }

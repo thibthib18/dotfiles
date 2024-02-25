@@ -19,6 +19,11 @@ require('mason-tool-installer').setup {
     'pyright',
     'typescript-language-server',
     -- 'yapf' -- some issues with Python version on SV rn
+
+    -- PHP / Laravel
+    'phpactor',
+    'phpstan',
+    'pint'
   },
 
   -- if set to true this will check each tool for updates. If updates
