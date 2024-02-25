@@ -9,3 +9,4 @@ config/configstore
 config/nvim/plugin/packer_compiled.lua
 installed
 Session.vim
+.null-ls*
