@@ -2,7 +2,7 @@ local tros = require("thib.ros")
 
 require("telescope").setup {
   defaults = {
-    file_ignore_patterns = { "venv/*", "tmux/plugins/*", "node_modules/*", "third_party" }
+    file_ignore_patterns = { "venv/*", "tmux/plugins/*", "node_modules/*", "third_party", "vendor" }
   }
 }
 require("telescope").load_extension("fzy_native")
