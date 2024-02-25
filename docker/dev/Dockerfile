@@ -20,6 +20,7 @@ RUN apt-get update && apt-get -y install \
                         httpie \
                         python3-pip ipython3 \
                         ripgrep \
+                        fd-find \
                         python3-venv \
                         mongodb-clients \
                         silversearcher-ag xclip xsel

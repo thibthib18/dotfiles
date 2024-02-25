@@ -96,7 +96,7 @@ alias dev="~/dotfiles/dev.py"
 export PYTHONPATH=/usr/local:$PYTHONPATH
 export PYTHONPATH=$PYTHONPATH:/home/sv/catkin_ws/devel/lib/python3/dist-packages
 export PYTHONPATH=$PYTHONPATH:/home/sv/catkin_ws/src/svpy:/home/sv/catkin_ws/src/backend/host/bash
-export PATH=~/.npm-global/bin:$PATH
+export PATH=~/.npm-global/bin:$PATH:/usr/lib/cargo/bin
 
 # Dont open browser with npm start
 export BROWSER=none
