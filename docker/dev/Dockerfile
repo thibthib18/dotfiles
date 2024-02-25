@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=seervision/development:latest
+ARG BASE_IMAGE=seervision/build:latest
 FROM $BASE_IMAGE
 
 ARG USER_ID=1000
