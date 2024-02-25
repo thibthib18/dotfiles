@@ -69,6 +69,18 @@ return require("packer").startup(
       end,
     }
 
+    use {
+      "adalessa/laravel.nvim",
+      requires = {
+        "nvim-telescope/telescope.nvim",
+        "tpope/vim-dotenv",
+        "MunifTanjim/nui.nvim",
+        "nvimtools/none-ls.nvim"
+      },
+      config = function()
+        require("thib.laravel")
+      end
+    }
 
     use({
       "MunifTanjim/nui.nvim",
