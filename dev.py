@@ -170,7 +170,7 @@ def connect(host: str) -> None:
 
 
 def scout() -> None:
-    for i in range(1, 20):
+    for i in range(1, 22):
         is_reachable = ping(f'{IPS["zt_prefix"]}{i}')
         if is_reachable:
             print(f'DOP {i} reachable ✅')
