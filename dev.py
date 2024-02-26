@@ -115,7 +115,6 @@ class Start(object):
 
     def sv(self):
         run_args = []
-        # self._add_sv_home_mirror_mount(run_args, 'dotfiles')
         self._add_sv_home_mirror_mount(run_args, '.local/share/nvim/lazy')
         self._add_sv_home_mirror_mount(run_args, '.zsh_history')
         self._add_sv_home_mirror_mount(run_args, 'Projects')
