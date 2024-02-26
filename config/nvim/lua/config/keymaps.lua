@@ -7,6 +7,8 @@
 print("Loading keymaps.lua...")
 vim.keymap.del("n", "<leader>ft")
 vim.keymap.del("n", "<leader>fT")
+vim.keymap.del("n", "n")
+vim.keymap.set('n','n', {noremap = true, silent = true})
 
 -- Buffer navigation
 --
