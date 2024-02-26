@@ -102,7 +102,7 @@ class Start(object):
             self._add_mirror_mount(run_args, f'{HOST_HOMEDIR}/.zsh_history')
         if mount_nvim_history:
             self._add_mirror_mount(run_args,
-                                   f'{HOST_HOMEDIR}/.local/share/nvim/shada')
+                                   f'{HOST_HOMEDIR}/.local/share/nvim/lazy')
         if mount_projects_dir:
             self._add_mirror_mount(run_args, f'{HOST_HOMEDIR}/Projects')
         subprocess.run(run_args + [image_tag])
@@ -116,7 +116,7 @@ class Start(object):
     def sv(self):
         run_args = []
         # self._add_sv_home_mirror_mount(run_args, 'dotfiles')
-        self._add_sv_home_mirror_mount(run_args, '.local/share/nvim/shada')
+        self._add_sv_home_mirror_mount(run_args, '.local/share/nvim/lazy')
         self._add_sv_home_mirror_mount(run_args, '.zsh_history')
         self._add_sv_home_mirror_mount(run_args, 'Projects')
         self._add_sv_home_mirror_mount(run_args, 'code')
