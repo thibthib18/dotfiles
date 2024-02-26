@@ -19,27 +19,23 @@ return {
     end,
     keys = {
       -- Pickers
-      {
-        "n",
-        "<leader>rtl",
-        function() require("ros-nvim.telescope.pickers").topic_picker() end,
-      },
-      { "n", "<leader>rnl", function() require("ros-nvim.telescope.pickers").node_picker() end },
-      { "n", "<leader>rsl", function() require("ros-nvim.telescope.pickers").service_picker() end },
-      { "n", "<leader>rpl", function() require("ros-nvim.telescope.pickers").param_picker() end },
-      { "n", "<leader>rds", function() require("ros-nvim.telescope.pickers").srv_picker() end },
-      { "n", "<leader>rdm", function() require("ros-nvim.telescope.pickers").msg_picker() end },
+      { "<leader>rtl", function() require("ros-nvim.telescope.pickers").topic_picker() end },
+      { "<leader>rnl", function() require("ros-nvim.telescope.pickers").node_picker() end },
+      { "<leader>rsl", function() require("ros-nvim.telescope.pickers").service_picker() end },
+      { "<leader>rpl", function() require("ros-nvim.telescope.pickers").param_picker() end },
+      { "<leader>rds", function() require("ros-nvim.telescope.pickers").srv_picker() end },
+      { "<leader>rdm", function() require("ros-nvim.telescope.pickers").msg_picker() end },
 
       -- Build
-      { "n", "<leader>bb", function() require("ros-nvim.build").catkin_make() end },
-      { "n", "<leader>bp", function() require("ros-nvim.build").catkin_make_pkg() end },
+      { "<leader>bb", function() require("ros-nvim.build").catkin_make() end },
+      { "<leader>bp", function() require("ros-nvim.build").catkin_make_pkg() end },
 
       -- Test
-      { "n", "<leader>rt", function() require("ros-nvim.test").rostest() end },
+      { "<leader>rt", function() require("ros-nvim.test").rostest() end },
 
       -- Find/grep
-      { "n", "<leader>fp", function() require("ros-nvim.telescope.package").search_package() end },
-      { "n", "<leader>fgp", function() require("ros-nvim.telescope.package").grep_package() end },
+      { "<leader>fp", function() require("ros-nvim.telescope.package").search_package() end },
+      { "<leader>fgp", function() require("ros-nvim.telescope.package").grep_package() end },
     },
   },
 }
