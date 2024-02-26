@@ -6,6 +6,9 @@
 
 return {
   "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-neotest/neotest-jest",
+    },
   -- stylua: ignore
   keys = {
     { "<leader>tf", false},
@@ -16,5 +19,14 @@ return {
     { "<leader>to", function() require("neotest").output.open({ enter = true, auto_close = true }) end, desc = "Show Output" },
     { "<leader>tO", function() require("neotest").output_panel.toggle() end, desc = "Toggle Output Panel" },
     { "<leader>tS", function() require("neotest").run.stop() end, desc = "Stop" },
+  },
+  opts = {
+    adapters = {
+      ["neotest-jest"] = {
+          cwd = function(path)
+            return path:match'(.*/npm)'
+          end,
+      },
+    },
   },
 }
