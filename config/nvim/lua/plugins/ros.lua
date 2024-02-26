@@ -1,5 +1,4 @@
 return {
-  { "thibthib18/vim-ros" },
   {
     "thibthib18/ros-nvim",
     dependencies = { "nvim-telescope/telescope.nvim" },
