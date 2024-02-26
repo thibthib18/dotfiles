@@ -6,13 +6,13 @@
 
 return {
   "nvim-neotest/neotest",
-    dependencies = {
-      "nvim-neotest/neotest-jest",
-    },
+  dependencies = {
+    "nvim-neotest/neotest-jest",
+  },
   -- stylua: ignore
   keys = {
-    { "<leader>tf", false},
     { "<leader>tT", false},
+    { "<leader>tf", function() require("neotest").run.run(vim.fn.expand("%")) end, desc = "Run File" },
     { "<leader>tn", function() require("neotest").run.run() end, desc = "Run Nearest" },
     { "<leader>tl", false},
     { "<leader>ts", false},
@@ -23,9 +23,7 @@ return {
   opts = {
     adapters = {
       ["neotest-jest"] = {
-          cwd = function(path)
-            return path:match'(.*/npm)'
-          end,
+        cwd = function(path) return path:match("(.*/npm)") end,
       },
     },
   },
