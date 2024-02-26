@@ -22,6 +22,7 @@ RUN apt-get update && apt-get -y install \
                         ripgrep \
                         fd-find \
                         python3-venv \
+                        tmuxp \
                         mongodb-clients \
                         silversearcher-ag xclip xsel
 
