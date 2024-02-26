@@ -1,9 +1,3 @@
--- Tests
--- kinda works: Python
--- no colors in output
--- default output in panel
--- TS: not working
-
 return {
   "nvim-neotest/neotest",
   dependencies = {
