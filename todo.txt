@@ -1,9 +1,0 @@
-set CocCommand eslint.showOutputChannel
-
-
-
-run catkin_make in a new terminal window/tab
-
-set lsp fuzzy completion
-
-fix docker socket group id issue
