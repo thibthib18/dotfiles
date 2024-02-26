@@ -28,6 +28,9 @@ RUN apt-get update && apt-get -y install \
 # Rust
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 
+# PHP and composer
+RUN apt-get -y install php-cli php-xml composer
+
 # Typescript REPL
 RUN npm -g install ts-node
 

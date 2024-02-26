@@ -10,6 +10,7 @@ source "${zsh_files_path}/nvim.zsh"
 source "${zsh_files_path}/ros.zsh"
 source "${zsh_files_path}/openai.zsh"
 source "${zsh_files_path}/glab.zsh"
+source "${zsh_files_path}/laravel.zsh"
 
 # Load sv.zsh only if catkin_ws is present
 if [ -d "/home/sv/catkin_ws" ] && [ "$IS_DOCKER_BUILD" != "1" ]
