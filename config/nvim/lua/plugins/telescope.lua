@@ -50,14 +50,10 @@ return {
 
   {
     "nvim-telescope/telescope-fzy-native.nvim",
-    config = function()
-      require("telescope").load_extension("fzy_native")
-    end,
+    config = function() require("telescope").load_extension("fzy_native") end,
   },
   {
     "LinArcX/telescope-env.nvim",
-    config = function()
-      require("telescope").load_extension("env")
-    end,
+    config = function() require("telescope").load_extension("env") end,
   },
 }

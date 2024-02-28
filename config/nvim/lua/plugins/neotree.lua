@@ -4,16 +4,12 @@ return {
   keys = {
     {
       "<leader>ftt",
-      function()
-        require("neo-tree.command").execute({ toggle = true })
-      end,
+      function() require("neo-tree.command").execute({ toggle = true }) end,
       desc = "Explorer NeoTree (root dir)",
     },
     {
       "<leader>ftf",
-      function()
-        require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
-      end,
+      function() require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() }) end,
       desc = "Explorer NeoTree (cwd)",
     },
     { "<leader>e", false },
