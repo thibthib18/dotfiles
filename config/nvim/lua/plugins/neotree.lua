@@ -13,6 +13,7 @@ return {
       desc = "Explorer NeoTree (cwd)",
     },
     { "<leader>e", false },
+    { "<leader>fe", false },
     { "<leader>E", false },
     { "<leader>ge", false },
     { "<leader>be", false },

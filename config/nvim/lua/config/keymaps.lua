@@ -5,7 +5,9 @@
 --
 
 vim.keymap.del("n", "<leader>ft")
+vim.keymap.del("n", "f")
 vim.keymap.del("n", "<leader>fT")
+vim.keymap.del("n", "<leader>g")
 vim.keymap.del("n", "n")
 
 -- Buffer navigation
