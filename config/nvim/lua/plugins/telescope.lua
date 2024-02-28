@@ -11,7 +11,7 @@ return {
         },
       },
       defaults = {
-        file_ignore_patterns = { "venv/*", "tmux/plugins/*", "node_modules/*", "third_party", "vendor" },
+        file_ignore_patterns = { "venv/*", ".git", "tmux/plugins/*", "node_modules/*", "third_party", "vendor" },
       },
     },
     keys = function()
