@@ -15,6 +15,6 @@ mkdir -p ~/.ipython/profile_default
 ln -svf ~/dotfiles/config/ipython/ipython_config.py ~/.ipython/profile_default/ipython_config.py
 
 mkdir -p ~/.local/share/nvim/site/pack/packer/start
-ln -s ~/.local/share/nvim/site/pack/packer/start ~/plugged
+ln -s ~/.local/share/nvim/lazy ~/plugged
 
 ln -s ~/dotfiles/config/pyrightconfig.json ~/pyrightconfig.json
