@@ -22,6 +22,7 @@ return {
         "phpactor",
         "phpstan",
         "pint",
+        "blade-formatter",
       },
     },
   },

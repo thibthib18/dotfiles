@@ -11,6 +11,7 @@ local sources = {
     prefer_local = "vendor/bin/phpstan",
   }),
   null_ls.builtins.formatting.pint,
+  null_ls.builtins.formatting.blade_formatter,
 
   -- refactoring
   null_ls.builtins.code_actions.refactoring,
