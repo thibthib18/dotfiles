@@ -5,3 +5,6 @@ function run_packer_install {
 }
 
 run_packer_install
+
+# Create the .local/state directory if it doesn't exist, needed for persistence
+mkdir -p ~/.local/state
