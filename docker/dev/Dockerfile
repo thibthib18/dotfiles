@@ -68,6 +68,9 @@ WORKDIR /home/${user}/dotfiles
 # Install glab CLI
 RUN ./docker/dev/scripts/install_glab.sh
 
+# Install Go
+RUN sudo ./docker/dev/scripts/install_go.sh
+
 # Install tmux
 RUN sudo ./docker/dev/scripts/install_tmux.sh
 
