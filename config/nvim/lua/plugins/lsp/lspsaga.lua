@@ -2,6 +2,9 @@ return {
   "nvimdev/lspsaga.nvim",
   config = function()
     require("lspsaga").setup({
+      lightbulb = {
+        enable = false,
+      },
       finder = {
         keys = {
           toggle_or_open = "<cr>",
