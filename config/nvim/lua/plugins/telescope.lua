@@ -32,7 +32,7 @@ return {
         { "<leader>fg3d", utils.grep_3d_viz },
         { "<leader>nr", utils.search_nodered },
         { "<leader>fgnr", utils.grep_nodered },
-        { "<leader>op", utils.search_opera },
+        { "<leader>op", utils.search_operations },
         { "<leader>fgop", utils.grep_operations },
         { "<leader>wa", utils.search_workflow_automation },
         { "<leader>fgwa", utils.grep_workflow_automation },
