@@ -27,8 +27,8 @@ return {
       { "<leader>rdm", function() require("ros-nvim.telescope.pickers").msg_picker() end },
 
       -- Build
-      { "<leader>bb", function() require("ros-nvim.build").catkin_make() end },
-      { "<leader>bp", function() require("ros-nvim.build").catkin_make_pkg() end },
+      { "<leader>rbb", function() require("ros-nvim.build").catkin_make() end },
+      { "<leader>rbp", function() require("ros-nvim.build").catkin_make_pkg() end },
 
       -- Test
       { "<leader>rt", function() require("ros-nvim.test").rostest() end },
