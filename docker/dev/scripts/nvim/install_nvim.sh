@@ -6,7 +6,7 @@ function install_from_source() {
 	# Build latest stable
 	git clone https://github.com/neovim/neovim
 	cd neovim
-	git checkout v0.9.5
+	git checkout v0.10.0
 	make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=/opt/nvim-linux64"
 	sudo make install
 	cd ..
@@ -14,7 +14,7 @@ function install_from_source() {
 }
 
 function install_release() {
-	wget https://github.com/neovim/neovim/releases/download/v0.9.5/nvim-linux64.tar.gz
+	wget https://github.com/neovim/neovim/releases/download/v0.10.0/nvim-linux64.tar.gz
 	sudo mv nvim-linux64.tar.gz /opt
 	cd /opt/
 	sudo tar -xf nvim-linux64.tar.gz
